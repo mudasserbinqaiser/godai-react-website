@@ -1,9 +1,8 @@
-// src/App.tsx
 import { useState } from 'react';
+import { ParallaxProvider } from 'react-scroll-parallax';
 import Preloader from './components/preloader/preloader';
-import HeroBanner from './components/sections/heroBanner/heroBanner';
+import Home from './pages/Home';
 import './App.css';
-import Layout from './components/layout/layout';
 
 function App() {
   const [loadingComplete, setLoadingComplete] = useState(false);
@@ -13,18 +12,17 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <Preloader onLoadingComplete={handleLoadingComplete} />
-      
-      {loadingComplete && (
-        <main className="main-content">
-          <Layout>
-            <HeroBanner />
-            {/* Other sections will be added here later */}
-          </Layout>
-        </main>
-      )}
-    </div>
+    <ParallaxProvider>
+      <div className="app">
+        <Preloader onLoadingComplete={handleLoadingComplete} />
+        
+        {loadingComplete && (
+          <main className="main-content">
+            <Home />
+          </main>
+        )}
+      </div>
+    </ParallaxProvider>
   );
 }
 
