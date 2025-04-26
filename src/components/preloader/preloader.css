@@ -1,0 +1,437 @@
+@font-face {
+    font-family: 'Cyberjunkies';
+    src: url('/assets/fonts/Cyberjunkies.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.preloader::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg,
+            var(--color-rust) 0%,
+            var(--color-dark-blue) 25%,
+            var(--color-navy) 50%,
+            var(--color-dark-blue) 75%,
+            var(--color-rust) 100%);
+    animation: bgPulse 8s linear infinite;
+    opacity: 0.05;
+}
+
+.preloader::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center,
+            rgba(7, 23, 38, 0.5) 0%,
+            rgba(0, 0, 0, 0.9) 70%);
+}
+
+.preloader.loaded {
+    animation: fadeOutLoader 1.5s ease forwards;
+    pointer-events: none;
+}
+
+@keyframes fadeOutLoader {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes bgPulse {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.preloader-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+.loading-progress {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -30px;
+    left: 0;
+    background: rgba(243, 237, 224, 0.1);
+    overflow: hidden;
+}
+
+.loading-bar {
+    height: 100%;
+    background: linear-gradient(90deg,
+            var(--color-rust) 0%,
+            var(--color-cream) 100%);
+    width: 0%;
+    animation: loadingProgress 3.5s ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes loadingProgress {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+.loading-percentage {
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    color: var(--color-cream);
+    position: absolute;
+    bottom: -60px;
+    width: 100%;
+    text-align: center;
+    opacity: 0.8;
+}
+
+.godai-text {
+    position: relative;
+    width: 427px;
+    font-family: 'Cyberjunkies', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 80px;
+    line-height: 86px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #F3EDE0;
+    border: 6px solid rgba(243, 237, 224, 0.24);
+    margin: 0 auto;
+    padding: 10px;
+    box-shadow: 0 0 20px rgba(243, 237, 224, 0.2);
+    text-shadow: 0 0 10px rgba(243, 237, 224, 0.5);
+    animation: glitchText 5s infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.godai-text::before {
+    content: 'GODAI';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: rgba(217, 75, 24, 0.7);
+    filter: blur(1.5px);
+    animation: glitchBefore 2s infinite alternate-reverse;
+    z-index: -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.godai-text::after {
+    content: 'GODAI';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: rgba(30, 34, 61, 0.7);
+    filter: blur(1.5px);
+    animation: glitchAfter 3s infinite alternate-reverse;
+    z-index: -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 50px 50px;
+    background-image:
+        linear-gradient(rgba(243, 237, 224, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(243, 237, 224, 0.05) 1px, transparent 1px);
+    z-index: 1;
+    pointer-events: none;
+    animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 50px 50px;
+    }
+}
+
+@keyframes glitchText {
+
+    0%,
+    100% {
+        clip-path: inset(0 0 0 0);
+    }
+
+    5% {
+        clip-path: inset(0 0 45% 0);
+    }
+
+    10% {
+        clip-path: inset(45% 0 40% 0);
+    }
+
+    15% {
+        clip-path: inset(40% 0 0 0);
+    }
+
+    20% {
+        clip-path: inset(0 40% 0 0);
+    }
+
+    25% {
+        clip-path: inset(0 0 0 40%);
+    }
+
+    30% {
+        clip-path: inset(0 0 0 0);
+    }
+
+    70% {
+        clip-path: inset(0 0 0 0);
+    }
+
+    75% {
+        clip-path: inset(5% 0 0 0);
+    }
+
+    80% {
+        clip-path: inset(0 5% 0 0);
+    }
+
+    85% {
+        clip-path: inset(0 0 5% 0);
+    }
+
+    90% {
+        clip-path: inset(0 0 0 5%);
+    }
+
+    95% {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes glitchBefore {
+
+    0%,
+    100% {
+        transform: translate(0);
+    }
+
+    25% {
+        transform: translate(-5px, 2px);
+    }
+
+    50% {
+        transform: translate(5px, -2px);
+    }
+
+    75% {
+        transform: translate(-2px, -3px);
+    }
+}
+
+@keyframes glitchAfter {
+
+    0%,
+    100% {
+        transform: translate(0);
+    }
+
+    25% {
+        transform: translate(5px, -2px);
+    }
+
+    50% {
+        transform: translate(-5px, 2px);
+    }
+
+    75% {
+        transform: translate(2px, 3px);
+    }
+}
+
+.email-form-container {
+    margin-top: 5rem;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    position: relative;
+    z-index: 2;
+}
+
+.email-form {
+    background-color: rgba(243, 237, 224, 0.05);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid rgba(243, 237, 224, 0.1);
+    box-shadow: 0 0 15px rgba(217, 75, 24, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.email-form h2 {
+    color: var(--color-cream);
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.form-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.form-group input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    background-color: rgba(243, 237, 224, 0.1);
+    color: var(--color-cream);
+    border: 1px solid rgba(243, 237, 224, 0.2);
+}
+
+.form-group input::placeholder {
+    color: rgba(243, 237, 224, 0.6);
+}
+
+.form-group button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: var(--color-rust);
+    color: var(--color-cream);
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.form-group button:hover {
+    background-color: var(--color-rust-dark);
+    box-shadow: 0 0 15px rgba(217, 75, 24, 0.5);
+}
+
+.form-group button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(rgba(255, 255, 255, 0.2),
+            rgba(255, 255, 255, 0));
+    transform: rotate(30deg);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.form-group button:hover::after {
+    opacity: 1;
+}
+
+.thank-you-message {
+    margin-top: 5rem;
+    color: var(--color-cream);
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    position: relative;
+    z-index: 2;
+}
+
+.thank-you-message h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.thank-you-message p {
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .godai-text {
+        font-size: 4rem;
+        width: 85%;
+    }
+
+    .form-group {
+        flex-direction: column;
+    }
+
+    .email-form {
+        padding: 1.5rem;
+        margin: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .godai-text {
+        font-size: 3rem;
+        width: 90%;
+    }
+}
