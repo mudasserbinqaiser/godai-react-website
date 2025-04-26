@@ -1,0 +1,198 @@
+/* Project Section Styles */
+.project-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: #071726;
+  overflow: hidden;
+}
+
+/* Video container */
+.video-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+/* Project blur gradient */
+.project-blur-gradient {
+  position: absolute;
+  width: 100%;
+  height: 40%;
+  left: 0;
+  bottom: 0;
+  background: linear-gradient(to top,
+          rgba(7, 23, 38, 1) 0%,
+          rgba(7, 23, 38, 0.8) 50%,
+          rgba(7, 23, 38, 0.4) 75%,
+          rgba(7, 23, 38, 0) 100%);
+  z-index: 4;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Lines Container */
+.project-lines {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+/* Left Side Lines */
+.left-side {
+  position: absolute;
+  width: 29px;
+  height: 474px;
+  left: 50px;
+  top: 122.5px;
+}
+
+.left-side .vector-8 {
+  position: absolute;
+  width: 29px;
+  height: 100%;
+  border: 1.5px solid rgba(243, 237, 224, 0.05);
+}
+
+.left-side .vector-9 {
+  position: absolute;
+  width: 0;
+  height: 260px;
+  left: 7.5px;
+  top: 106px;
+  border: 5px solid rgba(243, 237, 224, 0.05);
+}
+
+/* Right Side Lines */
+.right-side {
+  position: absolute;
+  width: 29px;
+  height: 474px;
+  right: 21.5px;
+  top: 122.5px;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.right-side .vector-8 {
+  position: absolute;
+  width: 29px;
+  height: 100%;
+  border: 1.5px solid rgba(243, 237, 224, 0.05);
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.right-side .vector-9 {
+  position: absolute;
+  width: 0;
+  height: 260px;
+  right: 7.5px;
+  top: 106px;
+  border: 5px solid rgba(243, 237, 224, 0.05);
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+/* Vertical Lines */
+.vertical-line {
+  position: absolute;
+  width: 0;
+  height: 100%;
+  top: 0;
+  border: 1px solid rgba(243, 237, 224, 0.05);
+  transition: transform 0.5s ease-out;
+}
+
+.v1 { left: 8%; }
+.v2 { left: 28%; }
+.v3 { left: 50%; }
+.v4 { left: 72%; }
+.v5 { left: 92%; }
+
+.project-avatar {
+  pointer-events: none;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.project-avatar img {
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+}
+
+/* Project Description */
+.project-description {
+  position: absolute;
+  width: 25%;
+  right: 7%;
+  top: 15%;
+  font-family: 'IBM Plex Mono', monospace;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: right;
+  color: #FFFFFF;
+  transition: transform 0.3s ease-out;
+}
+
+.project-outline {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(217, 217, 217, 0.05);
+    border: 1px solid rgba(243, 237, 224, 0.5);
+    z-index: 9;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+  .project-description {
+    width: 30%;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-description {
+    width: 80%;
+    right: 10%;
+    text-align: center;
+  }
+
+  .left-side,
+  .right-side {
+    display: none;
+  }
+
+  .vertical-line {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-description {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .vertical-line {
+    opacity: 0.3;
+  }
+}

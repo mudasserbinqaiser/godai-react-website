@@ -1,0 +1,102 @@
+.hero-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* overflow: visible !important; */
+}
+
+.hero-characters-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  pointer-events: none;
+  /* overflow: visible !important; */
+z-index: 11;
+}
+
+.hero-characters-image {
+  position: relative;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.hero-orange-border {
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+/* Blur gradient for hero layer */
+.blur-gradient-bottom-characters {
+  position: absolute;
+  width: 100%;
+  height: 40%;
+  left: 0;
+  bottom: 0;
+  background: linear-gradient(to top,
+          var(--primary-color) 0%,
+          var(--primary-color) 15%,
+          rgba(15, 23, 42, 0.8) 50%,
+          rgba(15, 23, 42, 0.4) 75%,
+          rgba(15, 23, 42, 0) 100%);
+  z-index: 5;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Enter Godai container with reduced size */
+.enter-godai-container {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 6;
+}
+
+.enter-godai-image {
+  width: auto;
+  height: auto;
+  max-width: 500px;
+  transform: scale(0.7);
+  transition: transform 0.3s ease;
+  z-index: 91;
+}
+
+/* Make sure ParallaxBanner doesn't clip */
+.parallax-banner {
+  overflow: visible !important;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+  .enter-godai-image {
+    max-width: 250px;
+    z-index: 91;
+  }
+}
+
+@media (max-width: 768px) {
+  .enter-godai-container {
+    bottom: 15%;
+  }
+
+  .enter-godai-image {
+    max-width: 200px;
+    transform: scale(0.6);
+  }
+}
+
+@media (max-width: 480px) {
+  .enter-godai-container {
+    bottom: 12%;
+  }
+
+  .enter-godai-image {
+    max-width: 150px;
+    transform: scale(0.5);
+  }
+}
