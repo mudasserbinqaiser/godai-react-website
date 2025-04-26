@@ -6,13 +6,14 @@ interface PreloaderProps {
 }
 
 const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
-  const [loading, setLoading] = useState(true);
-  const [showForm, setShowForm] = useState(false);
-  const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-  const [loadingPercentage, setLoadingPercentage] = useState(0);
-  const loadingInterval = useRef<number | null>(null);
-  const assetsLoaded = useRef<boolean>(false);
+    const [loading, setLoading] = useState(true);
+    const [showForm, setShowForm] = useState(false);
+    const [email, setEmail] = useState('');
+    const [submitted, setSubmitted] = useState(false);
+    const [validationError, setValidationError] = useState('');
+    const [loadingPercentage, setLoadingPercentage] = useState(0);
+    const loadingInterval = useRef<number | null>(null);
+    const assetsLoaded = useRef<boolean>(false);
 
   // Track actual asset loading
   useEffect(() => {
@@ -91,13 +92,20 @@ const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
 
       setLoadingPercentage(percentage);
       
-      if (percentage >= 100) {
+              if (percentage >= 100) {
         if (loadingInterval.current) clearInterval(loadingInterval.current);
         setLoading(false);
+        
+        // Add a delay before showing the form to ensure animation completes
         setTimeout(() => {
           setShowForm(true);
-        }, 1000);
-        onLoadingComplete();
+          console.log("Form should be visible now"); // Debug log
+        }, 1500); // Increased delay to 1.5s
+        
+        // Only notify about loading complete after form is visible
+        setTimeout(() => {
+          onLoadingComplete();
+        }, 2000);
       }
     }, 50);
 
@@ -106,8 +114,24 @@ const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
     };
   }, [onLoadingComplete]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Custom validation
+    if (!email) {
+      setValidationError('Please fill out this field.');
+      return;
+    }
+    
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setValidationError('Please enter a valid email address.');
+      return;
+    }
+    
+    // Clear any previous validation errors
+    setValidationError('');
+    
     localStorage.setItem('userEmail', email);
     console.log('Email submitted:', email);
     setSubmitted(true);
@@ -126,19 +150,35 @@ const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
           {loading ? `INITIALIZING... ${loadingPercentage}%` : 'COMPLETE'}
         </div>
         
-        {showForm && !submitted && (
-          <div className="email-form-container" style={{ animation: 'fadeIn 1.5s ease-out forwards' }}>
+                {showForm && !submitted && (
+          <div className="email-form-container">
             <form onSubmit={handleSubmit} className="email-form">
               <h2>Get Early Access</h2>
               <div className="form-group">
                 <input
-                  type="email"
+                  type="text" 
+                  inputMode="email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (validationError) setValidationError('');
+                  }}
                   placeholder="Enter your email"
-                  required
+                  style={{ pointerEvents: 'auto' }}
+                  autoFocus
+                  aria-invalid={!!validationError}
                 />
-                <button type="submit">Submit</button>
+                {validationError && (
+                  <div className="validation-message">
+                    {validationError}
+                  </div>
+                )}
+                <button 
+                  type="submit"
+                  style={{ pointerEvents: 'auto' }}
+                >
+                  Submit
+                </button>
               </div>
             </form>
           </div>
