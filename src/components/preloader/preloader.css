@@ -532,6 +532,40 @@ input:invalid {
     }
 }
 
+/* Add these styles to your existing preloader.css file */
+
+.preloader.fade-out {
+    animation: fadeOutPreloader 1s forwards;
+    pointer-events: none;
+}
+
+.thank-you-message.fade-out {
+    animation: fadeOutThankYou 0.8s forwards;
+}
+
+@keyframes fadeOutPreloader {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes fadeOutThankYou {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
 /* Media Queries for responsiveness */
 @media (max-width: 768px) {
     .godai-text {
