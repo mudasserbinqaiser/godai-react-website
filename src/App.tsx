@@ -1,7 +1,9 @@
 // src/App.tsx
 import { useState } from 'react';
 import Preloader from './components/preloader/preloader';
+import HeroBanner from './components/sections/heroBanner/heroBanner';
 import './App.css';
+import Layout from './components/layout/layout';
 
 function App() {
   const [loadingComplete, setLoadingComplete] = useState(false);
@@ -14,11 +16,13 @@ function App() {
     <div className="app">
       <Preloader onLoadingComplete={handleLoadingComplete} />
       
-      {/* Main content will go here once we progress to the next sections */}
       {loadingComplete && (
-        <div style={{ display: 'none' }}>
-          {/* This is just a placeholder. We'll add content in future steps */}
-        </div>
+        <main className="main-content">
+          <Layout>
+            <HeroBanner />
+            {/* Other sections will be added here later */}
+          </Layout>
+        </main>
       )}
     </div>
   );

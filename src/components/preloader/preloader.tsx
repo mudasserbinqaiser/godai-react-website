@@ -12,6 +12,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
     const [submitted, setSubmitted] = useState(false);
     const [validationError, setValidationError] = useState('');
     const [loadingPercentage, setLoadingPercentage] = useState(0);
+    const [fadeOut, setFadeOut] = useState(false);
     const loadingInterval = useRef<number | null>(null);
     const assetsLoaded = useRef<boolean>(false);
 
@@ -92,7 +93,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
 
       setLoadingPercentage(percentage);
       
-              if (percentage >= 100) {
+      if (percentage >= 100) {
         if (loadingInterval.current) clearInterval(loadingInterval.current);
         setLoading(false);
         
@@ -101,20 +102,32 @@ const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
           setShowForm(true);
           console.log("Form should be visible now"); // Debug log
         }, 1500); // Increased delay to 1.5s
-        
-        // Only notify about loading complete after form is visible
-        setTimeout(() => {
-          onLoadingComplete();
-        }, 2000);
       }
     }, 50);
 
     return () => {
       if (loadingInterval.current) clearInterval(loadingInterval.current);
     };
-  }, [onLoadingComplete]);
+  }, []);
 
-    const handleSubmit = (e: React.FormEvent) => {
+  // Transition after form submission and thank you message
+  useEffect(() => {
+    if (submitted) {
+      // Show the thank you message for 3 seconds, then fade out
+      const timer = setTimeout(() => {
+        setFadeOut(true);
+        
+        // After fadeout animation, notify parent that loading is complete
+        setTimeout(() => {
+          onLoadingComplete();
+        }, 1000);
+      }, 3000);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [submitted, onLoadingComplete]);
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     // Custom validation
@@ -138,7 +151,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
   };
 
   return (
-    <div className={`preloader ${!loading ? 'loaded' : ''}`}>
+    <div className={`preloader ${!loading ? 'loaded' : ''} ${fadeOut ? 'fade-out' : ''}`}>
       <div className="grid-overlay"></div>
       <div className="preloader-content">
         <h1 className="godai-text">Godai</h1>
@@ -146,11 +159,11 @@ const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
         <div className="loading-progress">
           <div className="loading-bar" style={{ width: `${loadingPercentage}%` }}></div>
         </div>
-                <div className="loading-percentage">
+        <div className="loading-percentage">
           {loading ? `INITIALIZING... ${loadingPercentage}%` : 'COMPLETE'}
         </div>
         
-                {showForm && !submitted && (
+        {showForm && !submitted && (
           <div className="email-form-container">
             <form onSubmit={handleSubmit} className="email-form">
               <h2>Get Early Access</h2>
@@ -185,7 +198,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
         )}
         
         {submitted && (
-          <div className="thank-you-message" style={{ animation: 'fadeIn 1.5s ease-out forwards' }}>
+          <div className={`thank-you-message ${fadeOut ? 'fade-out' : ''}`}>
             <h2>Thank You!</h2>
             <p>We'll notify you when early access becomes available.</p>
           </div>
