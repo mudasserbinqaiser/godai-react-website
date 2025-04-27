@@ -245,7 +245,7 @@ export default function NftCarousel() {
         </svg>
         </div>
         <div className="nft-dots">
-          {[0, 1, 2].map((idx) => (
+          {[0, 1, 2,3,4,5,6].map((idx) => (
             <span
               key={idx}
               className={`nft-dot${getDotIdx() === idx ? " active" : ""}`}
