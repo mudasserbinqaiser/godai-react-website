@@ -7,6 +7,9 @@ import '../components/parallax/ProjectSection.css';
 import NftSection from '../components/parallax/NftSection';
 import GamingSection from '../components/parallax/GamingSection';
 import MangaSection from '../components/parallax/MangaSection';
+import TeamSection from '../components/parallax/TeamSection';
+import SocialSection from '../components/parallax/SocialSection';
+
 
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 
@@ -35,10 +38,10 @@ const mobileStyles = `
 `;
 
 const Home = () => {
-  const [transitionProgress, setTransitionProgress] = useState(0); // 0 = hero, 1 = project, 2 = NFT, 3 = gaming, 4 = manga
+  const [transitionProgress, setTransitionProgress] = useState(0); // 0 = hero, 1 = project, 2 = NFT, 3 = gaming, 4 = manga, 5 = team, 6 = socials
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   
-  const MAX_PROGRESS = 4; // 0-1: vertical, 1-2: NFT, 2-3: gaming, 3-4: manga
+  const MAX_PROGRESS = 6; // 0-1: vertical, 1-2: NFT, 2-3: gaming, 3-4: manga, 4-5: team, 5-6: socials
   
   // Constants for the "settle zone" - where project layer stays fixed
   const PROJECT_SETTLE_START = 1.0;  // Project is fully visible at 1.0
@@ -116,6 +119,10 @@ const Home = () => {
   const nftLayerProgress = calculateLayerProgress(PROJECT_SETTLE_END, 2.25);
 const gamingLayerProgress = calculateLayerProgress(1.7 , 2.7);
 const mangaLayerProgress = calculateLayerProgress(2.2, 3.1);
+const teamLayerProgress = calculateLayerProgress(2.65, 3.515);
+  const socialLayerProgress = calculateLayerProgress(3.1, 4.0);
+
+
 
 
   // Fade out project elements only after the settle period
@@ -401,6 +408,16 @@ const mangaLayerProgress = calculateLayerProgress(2.2, 3.1);
         {/* Manga Layer */}
         {mangaLayerProgress > 0 && (
           <MangaSection progress={mangaLayerProgress} />
+        )}
+
+        {/* Team Layer */}
+        {teamLayerProgress > 0 && (
+          <TeamSection progress={teamLayerProgress} />
+        )}
+
+         {/* Socials Layer */}
+        {socialLayerProgress > 0 && (
+          <SocialSection progress={socialLayerProgress} />
         )}
       </div>
     </>

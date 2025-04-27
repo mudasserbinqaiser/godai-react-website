@@ -1,0 +1,338 @@
+.socials-section-bg {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background: #071726;
+    overflow: hidden;
+    z-index: 15;
+}
+
+.socials-video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.socials-bg-video {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Radial gradient overlay for the video */
+.socials-radial-gradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: radial-gradient(circle at center,
+            rgba(7, 23, 38, 0.5) 0%,
+            rgba(7, 23, 38, 0.6) 40%,
+            rgba(7, 23, 38, 0.8) 70%,
+            rgba(7, 23, 38, 0.9) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Banner styling */
+.socials-banner-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: initial;
+}
+
+.socials-banner-image {
+    width: 170%;
+    height: 10%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 15px rgba(217, 75, 24, 0.4));
+    animation: pulse 3s infinite ease-in-out;
+}
+
+.socials-banner-text {
+    position: absolute;
+    width: 21%;
+    top: 50%;
+    left: 44%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Social Buttons Container */
+.social-buttons-container {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 9px;
+    width: 40%;
+    height: 20%;
+    margin-top: 220px;
+    transform: translateX(4%);
+}
+
+.signup-button-container {
+    position: absolute;
+    width: 15%;
+    height: 10%;
+    margin-top: 220px;
+    transform: translate(-40%, 160%);
+}
+
+.signup-button-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.signup-button-image:hover {
+    transform: scale(1.1);
+}
+
+.socials-center-blur {
+    position: absolute;
+    top: 65%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    /* Spread wider */
+    height: 100%;
+    /* Spread taller */
+    background: radial-gradient(circle,
+            rgba(7, 23, 38, 1) 0%,
+            /* Pure dark center */
+            rgba(7, 23, 38, 0.85) 35%,
+            /* Stay darker longer */
+            rgba(7, 23, 38, 0.5) 60%,
+            /* Gradual fade */
+            rgba(7, 23, 38, 0.1) 85%,
+            /* Light haze */
+            rgba(7, 23, 38, 0) 100%
+            /* Fully transparent at edges */
+        );
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 50%;
+    filter: blur(60px);
+    /* Stronger blur for smoother, wider spread */
+}
+
+/* Social Button Styles */
+.social-button {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    width: 60px;
+    height: 60px;
+    border: 1px solid #F3EDE0;
+    border-radius: 500px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.social-button:hover {
+    transform: scale(1.1);
+    background-color: rgba(243, 237, 224, 0.1);
+    box-shadow: 0 0 15px rgba(243, 237, 224, 0.3);
+}
+
+/* Social Button Icons */
+.social-button-icon {
+    background-color: #F3EDE0;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+
+/* Icon 1 - Discord-like */
+.icon-1 {
+    width: 26px;
+    height: 20px;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='26' height='20' viewBox='0 0 26 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22.0367 1.67319C20.3811 0.892964 18.6027 0.324899 16.7389 0.000488C16.6999 -0.00664787 16.6591 0.00482078 16.6277 0.0326233C16.4095 0.407059 16.1684 0.891799 16.0039 1.28415C14.0085 0.982242 12.026 0.982242 10.0724 1.28415C9.90782 0.883473 9.65791 0.407059 9.43851 0.0326233C9.40711 0.00598578 9.36628 -0.00548287 9.32738 0.000488C7.46481 0.323734 5.6864 0.891799 4.03 1.67319C3.9986 1.68552 3.97166 1.70566 3.95297 1.73246C0.578466 6.87986 -0.34558 11.9022 0.107396 16.8607C0.111736 16.9078 0.138007 16.9525 0.175089 16.9818C2.34117 18.5996 4.4333 19.6335 6.4894 20.3256C6.52831 20.338 6.57033 20.3271 6.59841 20.2963C7.09332 19.63 7.53582 18.926 7.91486 18.1845C7.94513 18.1304 7.91921 18.0664 7.86414 18.0437C7.17243 17.7722 6.51392 17.4466 5.88176 17.0847C5.82018 17.0481 5.81458 16.9612 5.87046 16.9181C6.00126 16.8201 6.13205 16.7187 6.25595 16.616C6.28651 16.59 6.32891 16.583 6.36563 16.5968C10.5413 18.4844 15.0307 18.4844 19.1586 16.5968C19.1953 16.5819 19.2377 16.5888 19.2695 16.6149C19.3934 16.7175 19.5242 16.8201 19.6562 16.9181C19.7121 16.9612 19.7077 17.0481 19.6461 17.0847C19.0139 17.4536 18.3554 17.7722 17.6626 18.0425C17.6075 18.0653 17.5827 18.1304 17.6129 18.1845C17.9996 18.9248 18.4421 19.6289 18.9283 20.2952C18.9552 20.3271 18.9984 20.338 19.0373 20.3256C21.1046 19.6335 23.1967 18.5996 25.3628 16.9818C25.4011 16.9525 25.4261 16.909 25.4305 16.8619C25.9789 11.1249 24.5637 6.137 22.0827 1.73362C22.0652 1.70566 22.0383 1.68552 22.0069 1.67319H22.0367Z' fill='white'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg width='26' height='20' viewBox='0 0 26 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22.0367 1.67319C20.3811 0.892964 18.6027 0.324899 16.7389 0.000488C16.6999 -0.00664787 16.6591 0.00482078 16.6277 0.0326233C16.4095 0.407059 16.1684 0.891799 16.0039 1.28415C14.0085 0.982242 12.026 0.982242 10.0724 1.28415C9.90782 0.883473 9.65791 0.407059 9.43851 0.0326233C9.40711 0.00598578 9.36628 -0.00548287 9.32738 0.000488C7.46481 0.323734 5.6864 0.891799 4.03 1.67319C3.9986 1.68552 3.97166 1.70566 3.95297 1.73246C0.578466 6.87986 -0.34558 11.9022 0.107396 16.8607C0.111736 16.9078 0.138007 16.9525 0.175089 16.9818C2.34117 18.5996 4.4333 19.6335 6.4894 20.3256C6.52831 20.338 6.57033 20.3271 6.59841 20.2963C7.09332 19.63 7.53582 18.926 7.91486 18.1845C7.94513 18.1304 7.91921 18.0664 7.86414 18.0437C7.17243 17.7722 6.51392 17.4466 5.88176 17.0847C5.82018 17.0481 5.81458 16.9612 5.87046 16.9181C6.00126 16.8201 6.13205 16.7187 6.25595 16.616C6.28651 16.59 6.32891 16.583 6.36563 16.5968C10.5413 18.4844 15.0307 18.4844 19.1586 16.5968C19.1953 16.5819 19.2377 16.5888 19.2695 16.6149C19.3934 16.7175 19.5242 16.8201 19.6562 16.9181C19.7121 16.9612 19.7077 17.0481 19.6461 17.0847C19.0139 17.4536 18.3554 17.7722 17.6626 18.0425C17.6075 18.0653 17.5827 18.1304 17.6129 18.1845C17.9996 18.9248 18.4421 19.6289 18.9283 20.2952C18.9552 20.3271 18.9984 20.338 19.0373 20.3256C21.1046 19.6335 23.1967 18.5996 25.3628 16.9818C25.4011 16.9525 25.4261 16.909 25.4305 16.8619C25.9789 11.1249 24.5637 6.137 22.0827 1.73362C22.0652 1.70566 22.0383 1.68552 22.0069 1.67319H22.0367Z' fill='white'/%3E%3C/svg%3E");
+}
+
+/* Icon 2 - X/Twitter-like */
+.icon-2 {
+    width: 19px;
+    height: 20px;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='19' height='20' viewBox='0 0 19 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.5 8.5L19 0H17.3L10.8 7.4L5.5 0H0L8 11.2L0 20H1.7L8.7 12.1L14.3 20H19.8L11.5 8.5ZM9.6 11L8.8 9.9L2.4 1.5H4.7L9.9 8.4L10.7 9.5L17.5 18.4H15.2L9.6 11Z' fill='white'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg width='19' height='20' viewBox='0 0 19 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.5 8.5L19 0H17.3L10.8 7.4L5.5 0H0L8 11.2L0 20H1.7L8.7 12.1L14.3 20H19.8L11.5 8.5ZM9.6 11L8.8 9.9L2.4 1.5H4.7L9.9 8.4L10.7 9.5L17.5 18.4H15.2L9.6 11Z' fill='white'/%3E%3C/svg%3E");
+}
+
+/* Icon 3 - Telegram-like */
+.icon-3 {
+    width: 23px;
+    height: 20px;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='23' height='20' viewBox='0 0 23 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.9658 1.85079L18.6106 18.5992C18.3555 19.6788 17.654 19.9833 16.7467 19.4743L11.7184 15.8096L9.29178 18.1401C9.0198 18.4121 8.791 18.6408 8.26387 18.6408L8.62913 13.5161L18.0317 5.06815C18.4404 4.70289 17.9397 4.49981 17.384 4.86507L5.82474 12.0663L0.870189 10.5495C-0.191147 10.1976 -0.21787 9.40268 1.10697 8.89117L20.5641 0.0878284C21.4544 -0.263886 22.2663 0.290945 21.9658 1.85079Z' fill='white'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg width='23' height='20' viewBox='0 0 23 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.9658 1.85079L18.6106 18.5992C18.3555 19.6788 17.654 19.9833 16.7467 19.4743L11.7184 15.8096L9.29178 18.1401C9.0198 18.4121 8.791 18.6408 8.26387 18.6408L8.62913 13.5161L18.0317 5.06815C18.4404 4.70289 17.9397 4.49981 17.384 4.86507L5.82474 12.0663L0.870189 10.5495C-0.191147 10.1976 -0.21787 9.40268 1.10697 8.89117L20.5641 0.0878284C21.4544 -0.263886 22.2663 0.290945 21.9658 1.85079Z' fill='white'/%3E%3C/svg%3E");
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.socials-blur-gradient {
+    position: absolute;
+    width: 100%;
+    height: 139px;
+    left: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(7, 23, 38, 0) 0%, #071726 89.9%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Content styling */
+.socials-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    padding: 0 24px;
+}
+
+.socials-title {
+    font-family: 'Cyberjunkies', sans-serif;
+    font-size: 80px;
+    line-height: 86px;
+    color: #F3EDE0;
+    text-transform: uppercase;
+    margin: 0 0 60px 0;
+    text-shadow: 0 0 10px rgba(243, 237, 224, 0.5);
+    text-align: center;
+}
+
+.socials-links-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    max-width: 800px;
+}
+
+.social-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    color: #F3EDE0;
+    text-decoration: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-5px);
+    opacity: 0.9;
+}
+
+.social-icon {
+    width: 60px;
+    height: 60px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.social-icon.discord {
+    background-image: url('/assets/images/discord-icon.svg');
+}
+
+.social-icon.x-twitter {
+    background-image: url('/assets/images/x-icon.svg');
+}
+
+.social-icon.telegram {
+    background-image: url('/assets/images/telegram-icon.svg');
+}
+
+.social-icon.medium {
+    background-image: url('/assets/images/medium-icon.svg');
+}
+
+.social-link span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    text-transform: uppercase;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+    .socials-title {
+        font-size: 60px;
+        line-height: 66px;
+        margin-bottom: 40px;
+    }
+
+    .socials-links-container {
+        gap: 30px;
+    }
+
+    .social-icon {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .socials-title {
+        font-size: 40px;
+        line-height: 46px;
+        margin-bottom: 30px;
+    }
+
+    .socials-links-container {
+        gap: 20px;
+    }
+
+    .social-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .social-link span {
+        font-size: 12px;
+    }
+}
