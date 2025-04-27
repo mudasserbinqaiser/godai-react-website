@@ -22,8 +22,17 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
   const gamingInProgress = Math.max(0, Math.min(1, (progress - (1 - BUFFER)) / BUFFER));
   const gamingLayerX = (1 - gamingInProgress) * window.innerWidth;
 
+  const startAutoSlide = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = window.setInterval(() => {
+      setCenterIdx((prev) => (prev + 1) % gamingItems.length);
+    }, 3000);
+  };
+  
   // Auto-advance
   useEffect(() => {
+    if (progress > 0) startAutoSlide();
+
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
@@ -41,6 +50,7 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
   const y = V_OFFSETS[offset + 2];
   const x = X_OFFSETS[offset + 2];
   const isCenter = offset === 0;
+
 
   return {
     visible: true,
