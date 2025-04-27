@@ -5,7 +5,7 @@ import './Home.css';
 import '../components/parallax/HeroParallax.css';
 import '../components/parallax/ProjectSection.css';
 import NftCarousel from '../components/parallax/NftCarousel';
-
+import GamingSection from '../components/parallax/GamingSection';
 
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 
@@ -34,7 +34,7 @@ const mobileStyles = `
 `;
 
 const Home = () => {
-  const [transitionProgress, setTransitionProgress] = useState(0); // 0 = hero, 1 = project
+  const [transitionProgress, setTransitionProgress] = useState(0); // 0 = hero, 1 = project, 2 = NFT, 3 = gaming
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   // Derived transforms
@@ -68,7 +68,7 @@ const Home = () => {
   // Calculate top position (from center to bottom)
   const top = `${(window.innerHeight - CARD_HEIGHT - FINAL_BOTTOM_POSITION) * transitionProgress}px`;
 
-  const MAX_PROGRESS = 2; // 0-1: vertical, 1-2: horizontal
+  const MAX_PROGRESS = 3; // 0-1: vertical, 1-2: NFT, 2-3: gaming
 
   // Resize handler
   useEffect(() => {
@@ -81,29 +81,30 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-  let ticking = false;
+    let ticking = false;
 
-  const handleWheel = (e: WheelEvent) => {
-    e.preventDefault();
-    const delta = e.deltaY / 400;  // Smooth and responsive
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      const delta = e.deltaY / 400;  // Smooth and responsive
 
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        setTransitionProgress(prev => clamp(prev + delta, 0, MAX_PROGRESS));
-        ticking = false;
-      });
-      ticking = true;
-    }
-  };
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setTransitionProgress(prev => clamp(prev + delta, 0, MAX_PROGRESS));
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
 
-  window.addEventListener('wheel', handleWheel, { passive: false });
-  return () => window.removeEventListener('wheel', handleWheel);
-}, []);
-
-
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    return () => window.removeEventListener('wheel', handleWheel);
+  }, []);
 
   // Calculate horizontal parallax for NFT layer
   const nftLayerProgress = clamp(transitionProgress - 1, 0, 1);
+
+  // Calculate horizontal parallax for Gaming layer
+  const gamingLayerProgress = clamp(transitionProgress - 2, 0, 1);
 
   // Fade out project elements quickly as we enter NFT layer (opacity only, no scale)
   const projectElementOpacity = 1 - Math.min(nftLayerProgress * 3, 1); // fades out even faster
@@ -111,8 +112,15 @@ const Home = () => {
   // Project avatar fade only (no scale/rotate)
   const avatarFade = projectElementOpacity;
 
-  // NFT layer slide-in
-  const nftLayerX = (1 - nftLayerProgress) * window.innerWidth;
+  const BUFFER = 0.2; // 20% buffer
+
+  // NFT layer progress for sliding out (0: fully visible, 1: fully out)
+  const nftOutProgress = clamp((gamingLayerProgress - (1 - BUFFER)) / BUFFER, 0, 1);
+
+  // NFT layer X: stays at 0 until buffer, then slides out
+  const nftLayerTotalX =
+    (1 - nftLayerProgress) * window.innerWidth
+    - nftOutProgress * window.innerWidth;
 
   return (
     <>
@@ -376,25 +384,30 @@ const Home = () => {
             ]}
           />
         </div>
+        {/* NFT Layer */}
         {nftLayerProgress > 0 && (
-        <div
-          className="nft-layer"
-          style={{
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            zIndex: 3,
-            pointerEvents: 'auto',
-            opacity: nftLayerProgress,
-            transform: `translateX(${(1 - nftLayerProgress) * window.innerWidth}px)`,
-            transition: 'opacity 0.4s cubic-bezier(.68,-0.55,.27,1.55), transform 0.7s cubic-bezier(.68,-0.55,.27,1.55)',
-            background: '#071726',
-            display: nftLayerProgress > 0 ? 'block' : 'none',
-          }}
-        >
-          <NftCarousel />
-        </div>
-      )}
+          <div
+            className="nft-layer"
+            style={{
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              zIndex: 3,
+              pointerEvents: 'auto',
+              opacity: nftLayerProgress > 0 ? 1 : 0,
+              transform: `translateX(${nftLayerTotalX}px)`,
+              transition: 'opacity 0.4s cubic-bezier(.68,-0.55,.27,1.55), transform 0.7s cubic-bezier(.68,-0.55,.27,1.55)',
+              background: '#071726',
+              display: nftLayerProgress > 0 ? 'block' : 'none',
+            }}
+          >
+            <NftCarousel />
+          </div>
+        )}
+        {/* Gaming Layer */}
+        {gamingLayerProgress > 0 && (
+          <GamingSection progress={gamingLayerProgress} />
+        )}
       </div>
     </>
   );

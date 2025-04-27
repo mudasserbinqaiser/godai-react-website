@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./NftCarousel.css";
+import "../parallax/ProjectSection.css";
 
 const nftImages = [
   "/assets/images/nft1.png",
@@ -143,6 +144,21 @@ export default function NftCarousel() {
         {/* <source src="/assets/videos/nft.mp4" type="video/mp4" /> */}
       </video>
         <div className="nft-blur-gradient"></div>
+    <div className="project-lines" >
+        <div className="left-side">
+        <div className="vector-8"></div>
+        <div className="vector-9"></div>
+        </div>
+        <div className="right-side">
+        <div className="vector-8"></div>
+        <div className="vector-9"></div>
+        </div>
+        <div className="vertical-line v1"></div>
+        <div className="vertical-line v2"></div>
+        <div className="vertical-line v3"></div>
+        <div className="vertical-line v4"></div>
+        <div className="vertical-line v5"></div>
+    </div>
       <div
         className="nft-carousel"
         onMouseEnter={pauseSlider}
@@ -229,7 +245,7 @@ export default function NftCarousel() {
         </svg>
         </div>
         <div className="nft-dots">
-          {[0, 1, 2].map((dot, idx) => (
+          {[0, 1, 2].map((idx) => (
             <span
               key={idx}
               className={`nft-dot${getDotIdx() === idx ? " active" : ""}`}
