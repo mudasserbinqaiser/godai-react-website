@@ -4,8 +4,9 @@ import Header from '../components/common/header/header';
 import './Home.css';
 import '../components/parallax/HeroParallax.css';
 import '../components/parallax/ProjectSection.css';
-import NftCarousel from '../components/parallax/NftCarousel';
+import NftSection from '../components/parallax/NftSection';
 import GamingSection from '../components/parallax/GamingSection';
+import MangaSection from '../components/parallax/MangaSection';
 
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 
@@ -34,18 +35,26 @@ const mobileStyles = `
 `;
 
 const Home = () => {
-  const [transitionProgress, setTransitionProgress] = useState(0); // 0 = hero, 1 = project, 2 = NFT, 3 = gaming
+  const [transitionProgress, setTransitionProgress] = useState(0); // 0 = hero, 1 = project, 2 = NFT, 3 = gaming, 4 = manga
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-
-  // Derived transforms
-  const heroScale = 1 - 0.6 * transitionProgress;
-  const heroX = -window.innerWidth * 0.25 * transitionProgress;
-  const heroY = window.innerHeight * 0.25 * transitionProgress;
+  
+  const MAX_PROGRESS = 4; // 0-1: vertical, 1-2: NFT, 2-3: gaming, 3-4: manga
+  
+  // Constants for the "settle zone" - where project layer stays fixed
+  const PROJECT_SETTLE_START = 1.0;  // Project is fully visible at 1.0
+  const PROJECT_SETTLE_END = 1.25;   // Start transitioning to NFT after this threshold
+  
+  // Adjust progress for the settle zone
+  const adjustedProgress = transitionProgress < PROJECT_SETTLE_START 
+    ? transitionProgress 
+    : transitionProgress < PROJECT_SETTLE_END 
+      ? PROJECT_SETTLE_START 
+      : PROJECT_SETTLE_START + (transitionProgress - PROJECT_SETTLE_END) * (MAX_PROGRESS - PROJECT_SETTLE_START) / (MAX_PROGRESS - PROJECT_SETTLE_END);
 
   // Character specific transforms
-  const characterScale = 1 - 0.6 * transitionProgress;
-  const characterY = 114 * transitionProgress;
-  const characterX = -445 * transitionProgress;
+  const characterScale = 1 - 0.6 * adjustedProgress;
+  const characterY = 114 * adjustedProgress;
+  const characterX = -445 * adjustedProgress;
 
   // Responsive card dimensions
   const CARD_WIDTH = isMobile ? 300 : 1050; // px
@@ -59,16 +68,14 @@ const Home = () => {
   const maxWidth = window.innerWidth;
   const maxHeight = window.innerHeight;
 
-  const width = minWidth + (maxWidth - minWidth) * (1 - transitionProgress);
-  const height = minHeight + (maxHeight - minHeight) * (1 - transitionProgress);
+  const width = minWidth + (maxWidth - minWidth) * (1 - adjustedProgress);
+  const height = minHeight + (maxHeight - minHeight) * (1 - adjustedProgress);
 
   // Calculate left position (from center to bottom left)
-  const left = `${FINAL_LEFT_POSITION * transitionProgress}px`;
+  const left = `${FINAL_LEFT_POSITION * adjustedProgress}px`;
 
   // Calculate top position (from center to bottom)
-  const top = `${(window.innerHeight - CARD_HEIGHT - FINAL_BOTTOM_POSITION) * transitionProgress}px`;
-
-  const MAX_PROGRESS = 3; // 0-1: vertical, 1-2: NFT, 2-3: gaming
+  const top = `${(window.innerHeight - CARD_HEIGHT - FINAL_BOTTOM_POSITION) * adjustedProgress}px`;
 
   // Resize handler
   useEffect(() => {
@@ -100,27 +107,23 @@ const Home = () => {
     return () => window.removeEventListener('wheel', handleWheel);
   }, []);
 
-  // Calculate horizontal parallax for NFT layer
-  const nftLayerProgress = clamp(transitionProgress - 1, 0, 1);
+  const calculateLayerProgress = (start: number, end: number) => {
+  const rawProgress = (transitionProgress - start) / (end - start);
+  return clamp(rawProgress, 0, 1);
+};
 
-  // Calculate horizontal parallax for Gaming layer
-  const gamingLayerProgress = clamp(transitionProgress - 2, 0, 1);
 
-  // Fade out project elements quickly as we enter NFT layer (opacity only, no scale)
-  const projectElementOpacity = 1 - Math.min(nftLayerProgress * 3, 1); // fades out even faster
+  const nftLayerProgress = calculateLayerProgress(PROJECT_SETTLE_END, 2.25);
+const gamingLayerProgress = calculateLayerProgress(1.7 , 2.7);
+const mangaLayerProgress = calculateLayerProgress(2.2, 3.1);
+
+
+  // Fade out project elements only after the settle period
+  const projectElementOpacity = 1 - Math.min(nftLayerProgress * 3, 1);
 
   // Project avatar fade only (no scale/rotate)
   const avatarFade = projectElementOpacity;
 
-  const BUFFER = 0.2; // 20% buffer
-
-  // NFT layer progress for sliding out (0: fully visible, 1: fully out)
-  const nftOutProgress = clamp((gamingLayerProgress - (1 - BUFFER)) / BUFFER, 0, 1);
-
-  // NFT layer X: stays at 0 until buffer, then slides out
-  const nftLayerTotalX =
-    (1 - nftLayerProgress) * window.innerWidth
-    - nftOutProgress * window.innerWidth;
 
   return (
     <>
@@ -129,8 +132,8 @@ const Home = () => {
       <div
         className="enter-godai-container"
         style={{
-          opacity: transitionProgress < 0.8 ? 1 - transitionProgress / 0.8 : 0,
-          transform: `scale(${1 - 0.3 * transitionProgress})`,
+          opacity: adjustedProgress < 0.8 ? 1 - adjustedProgress / 0.8 : 0,
+          transform: `scale(${1 - 0.3 * adjustedProgress})`,
           transition: 'opacity 0.2s linear, transform 0.2s linear',
           zIndex: 14
         }}
@@ -145,7 +148,7 @@ const Home = () => {
       <div 
         className="blur-gradient-bottom-characters"
         style={{
-          opacity: 1 - transitionProgress,
+          opacity: 1 - adjustedProgress,
           zIndex: 13
         }}
       ></div>
@@ -194,7 +197,7 @@ const Home = () => {
             height,
             zIndex: 3,
             pointerEvents: 'none',
-            transform: `scale(${1 - 0.6 * transitionProgress})`,
+            transform: `scale(${1 - 0.6 * adjustedProgress})`,
             opacity: 1,
             transition: 'width 0.2s linear, height 0.2s linear, left 0.2s linear, top 0.2s linear, transform 0.05s linear',
             willChange: 'width, height, left, top, transform'
@@ -213,7 +216,7 @@ const Home = () => {
               borderRadius: 0,
               pointerEvents: 'none',
               boxSizing: 'border-box',
-              opacity: transitionProgress > 0 ? 1 : 0,
+              opacity: adjustedProgress > 0 ? 1 : 0,
               zIndex: 2,
               transition: 'opacity 0.2s linear'
             }}
@@ -246,7 +249,7 @@ const Home = () => {
                 children: (
                   <div className="hero-content">
                     {/* Hero Decorative Lines */}
-                    <div className="project-lines" style={{ opacity: 1 - transitionProgress }}>
+                    <div className="project-lines" style={{ opacity: 1 - adjustedProgress }}>
                       <div className="left-side">
                         <div className="vector-8"></div>
                         <div className="vector-9"></div>
@@ -278,8 +281,8 @@ const Home = () => {
             height: '100%',
             zIndex: 2,
             pointerEvents: 'none',
-            opacity: clamp((transitionProgress - 0.1) * 1.2, 0, 1),
-            transform: `scale(${0.9 + 0.1 * transitionProgress})`,
+            opacity: clamp((adjustedProgress - 0.1) * 1.2, 0, 1),
+            transform: `scale(${0.9 + 0.1 * adjustedProgress})`,
             transition: 'opacity 0.2s linear, transform 0.2s linear',
             willChange: 'opacity, transform'
           }}
@@ -320,11 +323,11 @@ const Home = () => {
                         <div className="vector-8"></div>
                         <div className="vector-9"></div>
                       </div>
-                      <div className="vertical-line v1" style={{ transform: `translateY(${transitionProgress * 5}px)` }}></div>
-                      <div className="vertical-line v2" style={{ transform: `translateY(${transitionProgress * 10}px)` }}></div>
-                      <div className="vertical-line v3" style={{ transform: `translateY(${transitionProgress * 15}px)` }}></div>
-                      <div className="vertical-line v4" style={{ transform: `translateY(${transitionProgress * 10}px)` }}></div>
-                      <div className="vertical-line v5" style={{ transform: `translateY(${transitionProgress * 5}px)` }}></div>
+                      <div className="vertical-line v1" style={{ transform: `translateY(${adjustedProgress * 5}px)` }}></div>
+                      <div className="vertical-line v2" style={{ transform: `translateY(${adjustedProgress * 10}px)` }}></div>
+                      <div className="vertical-line v3" style={{ transform: `translateY(${adjustedProgress * 15}px)` }}></div>
+                      <div className="vertical-line v4" style={{ transform: `translateY(${adjustedProgress * 10}px)` }}></div>
+                      <div className="vertical-line v5" style={{ transform: `translateY(${adjustedProgress * 5}px)` }}></div>
                     </div>
                   </>
                 )
@@ -338,12 +341,12 @@ const Home = () => {
                       className="project-avatar"
                       style={{
                         position: 'absolute',
-                        bottom: `${transitionProgress * (isMobile ? 50 : 65)}px`,
+                        bottom: `${adjustedProgress * (isMobile ? 50 : 65)}px`,
                         left: isMobile ? '50%' : '55%',
                         transform: `
-                          translate(-50%, ${(1 - transitionProgress) * -50}%)
-                          rotateY(${180 * (1 - transitionProgress)}deg)
-                          scale(${0.4 + (transitionProgress * (isMobile ? 0.4 : 0.6))})
+                          translate(-50%, ${(1 - adjustedProgress) * -50}%)
+                          rotateY(${180 * (1 - adjustedProgress)}deg)
+                          scale(${0.4 + (adjustedProgress * (isMobile ? 0.4 : 0.6))})
                         `,
                         transformOrigin: 'center bottom',
                         zIndex: 5,
@@ -369,7 +372,7 @@ const Home = () => {
                     <div
                       className="project-description"
                       style={{
-                        transform: `translateY(${transitionProgress * 10}px)`,
+                        transform: `translateY(${adjustedProgress * 10}px)`,
                         opacity: projectElementOpacity,
                         transition: 'opacity 0.2s'
                       }}
@@ -384,29 +387,20 @@ const Home = () => {
             ]}
           />
         </div>
+        
         {/* NFT Layer */}
         {nftLayerProgress > 0 && (
-          <div
-            className="nft-layer"
-            style={{
-              position: 'absolute',
-              width: '100%',
-              height: '100%',
-              zIndex: 3,
-              pointerEvents: 'auto',
-              opacity: nftLayerProgress > 0 ? 1 : 0,
-              transform: `translateX(${nftLayerTotalX}px)`,
-              transition: 'opacity 0.4s cubic-bezier(.68,-0.55,.27,1.55), transform 0.7s cubic-bezier(.68,-0.55,.27,1.55)',
-              background: '#071726',
-              display: nftLayerProgress > 0 ? 'block' : 'none',
-            }}
-          >
-            <NftCarousel />
-          </div>
+          <NftSection progress={nftLayerProgress} />
         )}
+        
         {/* Gaming Layer */}
         {gamingLayerProgress > 0 && (
           <GamingSection progress={gamingLayerProgress} />
+        )}
+
+        {/* Manga Layer */}
+        {mangaLayerProgress > 0 && (
+          <MangaSection progress={mangaLayerProgress} />
         )}
       </div>
     </>

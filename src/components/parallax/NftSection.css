@@ -1,0 +1,25 @@
+.nft-section-bg {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: #071726;
+    overflow: hidden;
+}
+
+.nft-bg-video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.nft-blur-gradient {
+    position: absolute;
+    width: 100%;
+    height: 139px;
+    left: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(7, 23, 38, 0) 0%, #071726 89.9%);
+    z-index: 1;
+}

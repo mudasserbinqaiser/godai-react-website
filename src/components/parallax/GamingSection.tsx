@@ -2,25 +2,41 @@ import React, { useState, useEffect, useRef } from "react";
 import "./GamingSection.css";
 
 const gamingItems = [
-  { icon: "/assets/images/gaming.png", title: "Blackout", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown." },
-  { icon: "/assets/images/gaming.png", title: "Blackout", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown." },
-  { icon: "/assets/images/gaming.png", title: "Blackout", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown." },
-  { icon: "/assets/images/gaming.png", title: "Blackout", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown." },
-  { icon: "/assets/images/gaming.png", title: "Blackout", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown." },
+  { icon: "/assets/images/gaming.png", title: "Blackout", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown." },
+  { icon: "/assets/images/gaming.png", title: "Blackout", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown." },
+  { icon: "/assets/images/gaming.png", title: "Blackout", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown." },
+  { icon: "/assets/images/gaming.png", title: "Blackout", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown." },
+  { icon: "/assets/images/gaming.png", title: "Blackout", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown." },
 ];
 
 const V_ANGLES = [0, 0, 0, 0, 0];
 const V_OFFSETS = [240, 120, 0, -120, -240];
 const X_OFFSETS = [150, 80, 0, 80, 150];
-const BUFFER = 0.2;
+const BUFFER = 0.3;
+const DELAY = 0.3;
 
 const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
   const [centerIdx, setCenterIdx] = useState(2);
   const intervalRef = useRef<number | null>(null);
 
-  // Horizontal scroll logic (buffered, just like Home.tsx)
-  const gamingInProgress = Math.max(0, Math.min(1, (progress - (1 - BUFFER)) / BUFFER));
-  const gamingLayerX = (1 - gamingInProgress) * window.innerWidth;
+  // Real-time scroll progress with DELAY
+  const adjustedProgress = Math.max(0, Math.min(1, (progress - DELAY) / (1 - DELAY)));
+
+  // More sophisticated horizontal scroll logic:
+  // 1. Slow/gradual entry from right (first 15% of progress)
+  // 2. Direct linear exit to left (remaining progress) 
+  let gamingLayerX = 0;
+  
+  if (adjustedProgress < BUFFER) {
+    // Entry phase - smoother curve from right to center
+    gamingLayerX = (1 - adjustedProgress / BUFFER) * window.innerWidth;
+  } else if (adjustedProgress > 1 - BUFFER) {
+    // Exit phase - direct proportional to scroll (responsive)
+    gamingLayerX = -((adjustedProgress - (1 - BUFFER)) / BUFFER) * window.innerWidth;
+  }
+
+    const zoom = 1 + adjustedProgress * 0.08;
+
 
   const startAutoSlide = () => {
     if (intervalRef.current) clearInterval(intervalRef.current);
@@ -41,27 +57,25 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
 
   // For V formation, only show 5 items (2 above, center, 2 below)
   const getCardProps = (i: number) => {
-  const total = gamingItems.length;
-  let offset = (i - centerIdx + total) % total;
-  if (offset > total / 2) offset -= total;
-  if (Math.abs(offset) > 2) return { visible: false };
+    const total = gamingItems.length;
+    let offset = (i - centerIdx + total) % total;
+    if (offset > total / 2) offset -= total;
+    if (Math.abs(offset) > 2) return { visible: false };
 
-  const angle = V_ANGLES[offset + 2];
-  const y = V_OFFSETS[offset + 2];
-  const x = X_OFFSETS[offset + 2];
-  const isCenter = offset === 0;
+    const angle = V_ANGLES[offset + 2];
+    const y = V_OFFSETS[offset + 2];
+    const x = X_OFFSETS[offset + 2];
+    const isCenter = offset === 0;
 
-
-  return {
-    visible: true,
-    angle,
-    x,
-    y,
-    isCenter,
-    z: 10 - Math.abs(offset),
+    return {
+      visible: true,
+      angle,
+      x,
+      y,
+      isCenter,
+      z: 10 - Math.abs(offset),
+    };
   };
-};
-
 
   return (
     <div
@@ -73,9 +87,8 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
         top: 0,
         left: 0,
         background: "#071726",
-        zIndex: 4,
-        transform: `translateX(${gamingLayerX}px)`,
-        transition: "transform 0.7s cubic-bezier(.68,-0.55,.27,1.55)",
+        zIndex: 11,
+        transform: `translateX(${gamingLayerX}px) scale(${zoom})`,
         opacity: progress > 0 ? 1 : 0,
         pointerEvents: progress > 0 ? "auto" : "none",
       }}
