@@ -4,6 +4,8 @@ import Header from '../components/common/header/header';
 import './Home.css';
 import '../components/parallax/HeroParallax.css';
 import '../components/parallax/ProjectSection.css';
+import NftCarousel from '../components/parallax/NftCarousel';
+
 
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 
@@ -66,6 +68,8 @@ const Home = () => {
   // Calculate top position (from center to bottom)
   const top = `${(window.innerHeight - CARD_HEIGHT - FINAL_BOTTOM_POSITION) * transitionProgress}px`;
 
+  const MAX_PROGRESS = 2; // 0-1: vertical, 1-2: horizontal
+
   // Resize handler
   useEffect(() => {
     const handleResize = () => {
@@ -76,16 +80,39 @@ const Home = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Wheel event for virtual scroll
   useEffect(() => {
-    const handleWheel = (e: WheelEvent) => {
-      const delta = e.deltaY / 800;
-      if (delta === 0) return;
-      setTransitionProgress(prev => clamp(prev + delta, 0, 1));
-    };
-    window.addEventListener('wheel', handleWheel, { passive: false });
-    return () => window.removeEventListener('wheel', handleWheel);
-  }, []);
+  let ticking = false;
+
+  const handleWheel = (e: WheelEvent) => {
+    e.preventDefault();
+    const delta = e.deltaY / 400;  // Smooth and responsive
+
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        setTransitionProgress(prev => clamp(prev + delta, 0, MAX_PROGRESS));
+        ticking = false;
+      });
+      ticking = true;
+    }
+  };
+
+  window.addEventListener('wheel', handleWheel, { passive: false });
+  return () => window.removeEventListener('wheel', handleWheel);
+}, []);
+
+
+
+  // Calculate horizontal parallax for NFT layer
+  const nftLayerProgress = clamp(transitionProgress - 1, 0, 1);
+
+  // Fade out project elements quickly as we enter NFT layer (opacity only, no scale)
+  const projectElementOpacity = 1 - Math.min(nftLayerProgress * 3, 1); // fades out even faster
+
+  // Project avatar fade only (no scale/rotate)
+  const avatarFade = projectElementOpacity;
+
+  // NFT layer slide-in
+  const nftLayerX = (1 - nftLayerProgress) * window.innerWidth;
 
   return (
     <>
@@ -94,26 +121,26 @@ const Home = () => {
       <div
         className="enter-godai-container"
         style={{
-        opacity: transitionProgress < 0.8 ? 1 - transitionProgress / 0.8 : 0,
-        transform: `scale(${1 - 0.3 * transitionProgress})`,
-        transition: 'opacity 0.2s linear, transform 0.2s linear',
-        zIndex: 14
+          opacity: transitionProgress < 0.8 ? 1 - transitionProgress / 0.8 : 0,
+          transform: `scale(${1 - 0.3 * transitionProgress})`,
+          transition: 'opacity 0.2s linear, transform 0.2s linear',
+          zIndex: 14
         }}
-    >
+      >
         <img 
-        src="/assets/images/enter-godai.png" 
-        alt="Enter Godai" 
-        className="enter-godai-image" 
+          src="/assets/images/enter-godai.png" 
+          alt="Enter Godai" 
+          className="enter-godai-image" 
         />
-    </div>
+      </div>
 
-    <div 
+      <div 
         className="blur-gradient-bottom-characters"
         style={{
-        opacity: 1 - transitionProgress,
-        zIndex: 13
+          opacity: 1 - transitionProgress,
+          zIndex: 13
         }}
-    ></div>
+      ></div>
       <div className="single-section-container" style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden' }}>
         {/* Separate Character Layer */}
         <div 
@@ -256,7 +283,7 @@ const Home = () => {
                 speed: -15,
                 expanded: false,
                 children: (
-                  <div className="video-container">
+                  <div className="video-container" style={{ opacity: 1, transition: 'opacity 0.4s' }}>
                     <video
                       autoPlay
                       muted
@@ -274,9 +301,9 @@ const Home = () => {
                 speed: -10,
                 children: (
                   <>
-                    <div className="project-outline"></div>
-                    <div className="project-blur-gradient"></div>
-                    <div className="project-lines">
+                    <div className="project-outline" style={{ opacity: projectElementOpacity, transition: 'opacity 0.2s' }}></div>
+                    <div className="project-blur-gradient" style={{ opacity: projectElementOpacity, transition: 'opacity 0.2s' }}></div>
+                    <div className="project-lines" style={{ opacity: projectElementOpacity, transition: 'opacity 0.2s' }}>
                       <div className="left-side">
                         <div className="vector-8"></div>
                         <div className="vector-9"></div>
@@ -298,6 +325,7 @@ const Home = () => {
                 speed: -7,
                 children: (
                   <>
+                    {/* Project Avatar with fade only */}
                     <div 
                       className="project-avatar"
                       style={{
@@ -305,15 +333,15 @@ const Home = () => {
                         bottom: `${transitionProgress * (isMobile ? 50 : 65)}px`,
                         left: isMobile ? '50%' : '55%',
                         transform: `
-                          translate(-50%, ${(1 - transitionProgress) * -50}%) 
+                          translate(-50%, ${(1 - transitionProgress) * -50}%)
                           rotateY(${180 * (1 - transitionProgress)}deg)
                           scale(${0.4 + (transitionProgress * (isMobile ? 0.4 : 0.6))})
                         `,
                         transformOrigin: 'center bottom',
                         zIndex: 5,
-                        opacity: transitionProgress,
+                        opacity: avatarFade,
                         perspective: '1000px',
-                        transition: 'transform 0.3s ease-out, bottom 0.3s ease-out'
+                        transition: 'opacity 0.2s, transform 0.3s ease-out, bottom 0.3s ease-out'
                       }}
                     >
                       <img 
@@ -329,11 +357,13 @@ const Home = () => {
                       />
                     </div>
 
+                    {/* Project Description */}
                     <div
                       className="project-description"
                       style={{
                         transform: `translateY(${transitionProgress * 10}px)`,
-                        opacity: transitionProgress
+                        opacity: projectElementOpacity,
+                        transition: 'opacity 0.2s'
                       }}
                     >
                       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -346,6 +376,25 @@ const Home = () => {
             ]}
           />
         </div>
+        {nftLayerProgress > 0 && (
+        <div
+          className="nft-layer"
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            zIndex: 3,
+            pointerEvents: 'auto',
+            opacity: nftLayerProgress,
+            transform: `translateX(${(1 - nftLayerProgress) * window.innerWidth}px)`,
+            transition: 'opacity 0.4s cubic-bezier(.68,-0.55,.27,1.55), transform 0.7s cubic-bezier(.68,-0.55,.27,1.55)',
+            background: '#071726',
+            display: nftLayerProgress > 0 ? 'block' : 'none',
+          }}
+        >
+          <NftCarousel />
+        </div>
+      )}
       </div>
     </>
   );
