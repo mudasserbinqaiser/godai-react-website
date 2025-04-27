@@ -1,0 +1,158 @@
+.gaming-carousel-bg {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+}
+
+.gaming-bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.gaming-blur-gradient {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 1617px;
+    height: 139px;
+    background: linear-gradient(180deg, rgba(7, 23, 38, 0) 0%, #071726 89.9%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.project-lines {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.gaming-carousel {
+    position: absolute;
+    right: 350px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    height: 400px;
+    width: 400px;
+    z-index: 3;
+}
+
+.gaming-card {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: none;
+    box-shadow: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    transition: box-shadow 0.3s;
+}
+
+.gaming-card.center {
+    cursor: default;
+}
+
+.gaming-card-svg-wrapper {
+    position: relative;
+    width: 175px;
+    height: 175px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hex-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: scale(1) translate(1px, 3px) rotate(0deg);
+    /* Adjust these values */
+    z-index: 1;
+    pointer-events: none;
+}
+
+.gaming-card-img {
+    width: 100px;
+    /* Keep the icon centered */
+    height: 100px;
+    object-fit: contain;
+    z-index: 2;
+}
+
+.gaming-card-img.center-img {
+    border: 3px solid #D94B18;
+    box-shadow: 0px 0px 15px #D94B18, 0px 0px 10px #D94B18;
+}
+
+.gaming-card-title {
+    margin-left: 24px;
+    color: #F3EDE0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: 0px 0px 10px #000;
+}
+
+.gaming-dots {
+    position: absolute;
+    left: 160px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    z-index: 4;
+}
+
+.gaming-dot {   
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #F3EDE0;
+    opacity: 0.5;
+    transition: background 0.2s, opacity 0.2s;
+    cursor: pointer;
+}
+
+.gaming-dot.active {
+    background: #D94B18;
+    opacity: 1;
+}
+
+.gaming-description {
+    width: 407px;
+    height: 80px;
+    left: 986px;
+    top: 383px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    text-align: left;
+    color: #FFFFFF;
+    text-shadow: 0px 0px 20px #000000;
+    z-index: 5;
+    box-sizing: border-box;
+    transform: translateX(65%);
+}
