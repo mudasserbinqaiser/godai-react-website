@@ -99,23 +99,23 @@ z-index: 11;
     }
 
     .hero-section-bg {
-      overflow: auto;
+      overflow: hidden;
     }
 
     .hero-characters-container {
-      overflow: auto;
+      overflow: hidden;
     }
 
     .hero-orange-border {
-      overflow: auto;
+      overflow: hidden;
     }
 
     .blur-gradient-bottom-characters {
-      overflow: auto;
+      overflow: hidden;
     }
 
     .enter-godai-container {
-      overflow: auto;
+      overflow: hidden;
     }
 
     
@@ -123,12 +123,15 @@ z-index: 11;
 
 @media (max-width: 480px) {
   .enter-godai-container {
-    bottom: 12%;
+    z-index: 90;
+    position: fixed;
+    height: 400px;
   }
 
   .enter-godai-image {
-    max-width: 250px;
-    transform: translateY(100px);
+    max-width: 400px;
+    /* transform: translateY(70px); */
+    z-index: 90;
   }
     .hero-characters-container {
       width: 130% !important;
@@ -144,22 +147,22 @@ z-index: 11;
     }
 
     .hero-section-bg {
-      overflow: auto;
+      overflow: hidden;
     }
 
     .hero-characters-container {
-      overflow: auto;
+      overflow: hidden;
     }
 
     .hero-orange-border {
-      overflow: auto;
+      overflow: hidden;
     }
 
     .blur-gradient-bottom-characters {
-      overflow: auto;
+      overflow: hidden;
     }
 
     .enter-godai-container {
-      overflow: auto;
+      overflow: hidden;
     }
 }

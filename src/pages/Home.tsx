@@ -196,9 +196,12 @@ const teamLayerProgress = calculateLayerProgress(2.65, 3.515);
         className="enter-godai-container"
         style={{
           opacity: adjustedProgress < 0.8 ? 1 - adjustedProgress / 0.8 : 0,
-          transform: `scale(${1 - 0.3 * adjustedProgress})`,
+          transform: isMobile ? 'none' : `scale(${1 - 0.3 * adjustedProgress})`,
           transition: 'opacity 0.2s linear, transform 0.2s linear',
-          zIndex: 14
+          zIndex: 999,
+          position: isMobile ? 'fixed' : 'absolute',
+          top: isMobile ? '70%' : 'auto',
+          bottom: isMobile ? 'auto' : 0
         }}
       >
         <img 
@@ -212,10 +215,15 @@ const teamLayerProgress = calculateLayerProgress(2.65, 3.515);
         className="blur-gradient-bottom-characters"
         style={{
           opacity: 1 - adjustedProgress,
-          zIndex: 13
+          zIndex: 5
         }}
       ></div>
-      <div className="single-section-container" style={{ position: 'relative', width: '100vw', height: '100vh', overflow: isMobile ? 'auto' : 'hidden' }}>
+      <div className="single-section-container" style={{ 
+        position: 'relative', 
+        width: '100vw', 
+        height: '100vh', 
+        overflow: isMobile ? 'visible' : 'hidden'
+      }}>
         {/* Separate Character Layer */}
         <div 
           className="hero-characters-container"
@@ -281,6 +289,7 @@ const teamLayerProgress = calculateLayerProgress(2.65, 3.515);
               boxSizing: 'border-box',
               opacity: adjustedProgress > 0 ? 1 : 0,
               zIndex: 2,
+              display: isMobile ? 'none' : 'block',
               transition: 'opacity 0.2s linear'
             }}
           />
@@ -293,7 +302,7 @@ const teamLayerProgress = calculateLayerProgress(2.65, 3.515);
                 speed: -15,
                 expanded: false,
                 children: (
-                  <div className="video-container" style={{ overflow: isMobile ? 'auto' : 'hidden' }}>
+                  <div className="video-container" style={{ overflow:'hidden' }}>
                     <video
                       autoPlay
                       muted

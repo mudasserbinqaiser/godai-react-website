@@ -121,7 +121,7 @@
     }
 
     .section {
-        overflow: auto;
+        overflow: hidden;
     }
 
 
@@ -142,6 +142,6 @@
     }
 
     .section {
-        overflow: auto;
+        overflow: hidden;
     }
 }

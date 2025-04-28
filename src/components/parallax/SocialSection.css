@@ -300,7 +300,7 @@
     }
 
     .socials-section-bg {
-        overflow: auto;
+        overflow: hidden;
     }
 }
 
@@ -348,6 +348,6 @@
     }
 
     .socials-section-bg {
-        overflow: auto;
+        overflow: hidden;
     }
 }

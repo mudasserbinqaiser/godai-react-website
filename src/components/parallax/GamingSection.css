@@ -285,7 +285,7 @@
     }
 
     .gaming-carousel-bg {
-        overflow: auto;
+        overflow: hidden;
     }
 }
 
@@ -301,7 +301,7 @@
     }
 
     .gaming-carousel-bg {
-        overflow: auto;
+        overflow: hidden;
     }
 
     .gaming-card-svg-wrapper {

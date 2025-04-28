@@ -251,7 +251,7 @@
     }
 
     .nft-carousel-bg {
-        overflow: auto;
+        overflow: hidden;
     }
 }
 
@@ -271,7 +271,7 @@
     }
 
     .nft-carousel-bg {
-        overflow: auto;
+        overflow: hidden;
     }
     
 }

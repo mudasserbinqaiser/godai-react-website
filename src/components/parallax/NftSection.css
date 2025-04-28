@@ -26,19 +26,19 @@
 
 @media (max-width: 768px) {
     .nft-section-bg {
-        overflow: auto;
+        overflow: hidden;
     }
 }
 
 @media (max-width: 480px) {
     .nft-section-bg {
-        overflow: auto;
+        overflow: hidden;
     }
 }
 
 @media (max-width: 320px) {
     .nft-section-bg {
-        overflow: auto;
+        overflow: hidden;
     }
 }
 
