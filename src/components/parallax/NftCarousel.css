@@ -239,6 +239,8 @@
     .nft-slider-controls {
         gap: 80px !important;
         top: 650px !important;
+        z-index: 1000 !important;
+        position: fixed !important;
     }
 
     .nft-carousel-description {
@@ -252,14 +254,24 @@
     }
 
     .nft-carousel-bg {
-        overflow: hidden;
+        overflow: visible !important;
+    }
+    
+    .nft-arrow-btn {
+        width: 60px !important;
+        height: 60px !important;
+        padding: 10px !important;
+        background: rgba(7, 23, 38, 0.5) !important;
+        border-radius: 50% !important;
     }
 }
 
 @media (max-width: 480px) {
     .nft-slider-controls {
         gap: 50px !important;
-        bottom: 50px;
+        bottom: 80px !important;
+        z-index: 1000 !important;
+        position: fixed !important;
     }
 
     .nft-carousel-description {
@@ -271,9 +283,12 @@
     .nft-card {
         width: 100vh;
     }
-
+    
     .nft-carousel-bg {
-        overflow: hidden;
+        overflow: visible !important;
     }
     
+    .nft-carousel {
+        overflow: visible !important;
+    }
 }

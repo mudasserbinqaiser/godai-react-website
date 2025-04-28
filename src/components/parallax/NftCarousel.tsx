@@ -107,13 +107,15 @@ export default function NftCarousel() {
   }, 2500);
 };
 
-  const handlePrev = () => {
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setFlipped(false);
     setCenterIdx((idx) => (idx - 1 + nftImages.length) % nftImages.length);
     startAutoAdvance();
 };
 
-    const handleNext = () => {
+    const handleNext = (e: React.MouseEvent) => {
+        e.stopPropagation();
         setFlipped(false);
         setCenterIdx((idx) => (idx + 1) % nftImages.length);
         startAutoAdvance();
@@ -238,11 +240,16 @@ export default function NftCarousel() {
 
       {/* Slider controls */}
       <div className="nft-slider-controls">
-        <div className="nft-arrow-btn" onClick={handlePrev}>
-        {/* Left arrow SVG */}
-        <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
+        <div 
+          className="nft-arrow-btn" 
+          onClick={handlePrev}
+          style={{ touchAction: 'auto' }} 
+          data-touch-action="auto"
+        >
+          {/* Left arrow SVG */}
+          <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
             <path d="M12 2L4 12L12 22" stroke="#D94B18" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
+          </svg>
         </div>
         <div className="nft-dots">
           {[0, 1, 2,3,4,5,6].map((idx) => (
@@ -252,11 +259,16 @@ export default function NftCarousel() {
             />
           ))}
         </div>
-        <div className="nft-arrow-btn" onClick={handleNext}>
-        {/* Right arrow SVG */}
-        <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
+        <div 
+          className="nft-arrow-btn" 
+          onClick={handleNext}
+          style={{ touchAction: 'auto' }} 
+          data-touch-action="auto"
+        >
+          {/* Right arrow SVG */}
+          <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
             <path d="M4 2L12 12L4 22" stroke="#D94B18" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
+          </svg>
         </div>
       </div>
     </div>
