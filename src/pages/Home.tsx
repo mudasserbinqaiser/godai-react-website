@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ParallaxBanner } from 'react-scroll-parallax';
 import Header from '../components/common/header/header';
 import './Home.css';
@@ -9,6 +9,7 @@ import GamingSection from '../components/parallax/GamingSection';
 import MangaSection from '../components/parallax/MangaSection';
 import TeamSection from '../components/parallax/TeamSection';
 import SocialSection from '../components/parallax/SocialSection';
+import { ScrollProgressContext } from '../context/ScrollProgressContext';
 
 
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
@@ -28,7 +29,8 @@ const mobileStyles = `
 
   @media screen and (max-width: 480px) {
     .project-avatar {
-      bottom: 30px !important;
+      width: 300px !important;
+      transform: translate(-175px, -10px) !important;
     }
     
     .project-avatar img {
@@ -40,6 +42,8 @@ const mobileStyles = `
 const Home = () => {
   const [transitionProgress, setTransitionProgress] = useState(0); // 0 = hero, 1 = project, 2 = NFT, 3 = gaming, 4 = manga, 5 = team, 6 = socials
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const { setProgress } = useContext(ScrollProgressContext);
+
   
   const MAX_PROGRESS = 6; // 0-1: vertical, 1-2: NFT, 2-3: gaming, 3-4: manga, 4-5: team, 5-6: socials
   
@@ -54,13 +58,27 @@ const Home = () => {
       ? PROJECT_SETTLE_START 
       : PROJECT_SETTLE_START + (transitionProgress - PROJECT_SETTLE_END) * (MAX_PROGRESS - PROJECT_SETTLE_START) / (MAX_PROGRESS - PROJECT_SETTLE_END);
 
+  // Update global progress for the progress bar
+  useEffect(() => {
+    // Normalize the progress value between 0 and 1
+    setProgress(transitionProgress / MAX_PROGRESS);
+  }, [transitionProgress, MAX_PROGRESS, setProgress]);
+
   // Character specific transforms
-  const characterScale = 1 - 0.6 * adjustedProgress;
-  const characterY = 114 * adjustedProgress;
-  const characterX = -445 * adjustedProgress;
+  const characterScale = isMobile 
+  ? 1 - 200 * adjustedProgress    // Less aggressive scaling on mobile
+  : 1 - 0.6 * adjustedProgress;
+
+const characterY = isMobile 
+  ? 60 * adjustedProgress         // Smaller vertical movement
+  : 114 * adjustedProgress;
+
+const characterX = isMobile 
+  ? -100 * adjustedProgress       // Minimal horizontal shift
+  : -445 * adjustedProgress;
 
   // Responsive card dimensions
-  const CARD_WIDTH = isMobile ? 300 : 1050; // px
+  const CARD_WIDTH = isMobile ? 0 : 1050; // px
   const CARD_HEIGHT = isMobile ? 200 : 550; // px
   const FINAL_LEFT_POSITION = isMobile ? -80 : -200; // px from left
   const FINAL_BOTTOM_POSITION = isMobile ? -45 : -120;
@@ -184,7 +202,7 @@ const teamLayerProgress = calculateLayerProgress(2.65, 3.515);
             className="hero-characters-image"
             style={{
               position: 'relative',
-              width: '61%',
+              width: '58%',
               height: 'auto',
               transform: 'translateY(15%)',
               objectFit: 'contain',
@@ -351,9 +369,11 @@ const teamLayerProgress = calculateLayerProgress(2.65, 3.515);
                         bottom: `${adjustedProgress * (isMobile ? 50 : 65)}px`,
                         left: isMobile ? '50%' : '55%',
                         transform: `
-                          translate(-50%, ${(1 - adjustedProgress) * -50}%)
+                          translate(-50%, ${isMobile 
+                          ? ( (1 - adjustedProgress) * 40 ) 
+                          : ( (1 - adjustedProgress) * -50 ) }%)
                           rotateY(${180 * (1 - adjustedProgress)}deg)
-                          scale(${0.4 + (adjustedProgress * (isMobile ? 0.4 : 0.6))})
+                          scale(${0.4 + (adjustedProgress * (isMobile ? 0.8 : 0.6))})
                         `,
                         transformOrigin: 'center bottom',
                         zIndex: 5,

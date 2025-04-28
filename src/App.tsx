@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
+import { ScrollProgressProvider } from './context/ScrollProgressContext';
 import Preloader from './components/preloader/preloader';
 import Home from './pages/Home';
 import './App.css';
@@ -12,17 +13,19 @@ function App() {
   };
 
   return (
-    <ParallaxProvider>
-      <div className="app">
-        <Preloader onLoadingComplete={handleLoadingComplete} />
-        
-        {loadingComplete && (
-          <main className="main-content">
-            <Home />
-          </main>
-        )}
-      </div>
-    </ParallaxProvider>
+    <ScrollProgressProvider>
+      <ParallaxProvider>
+        <div className="app">
+          <Preloader onLoadingComplete={handleLoadingComplete} />
+          
+          {loadingComplete && (
+            <main className="main-content">
+              <Home />
+            </main>
+          )}
+        </div>
+      </ParallaxProvider>
+    </ScrollProgressProvider>
   );
 }
 

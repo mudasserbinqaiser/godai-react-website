@@ -1,13 +1,13 @@
 /* Navigation */
 .navigation {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    padding: 12px 48px;
+    align-items: flex-start;
+    padding: 12px 24px;
     width: 100%;
     position: fixed;
-    top: 0;
+    margin-top: 15px;
     left: 0;
     z-index: 100;
 }
@@ -34,26 +34,69 @@
     color: var(--color-rust);
 }
 
+/* Progress bar */
+.progress-container {
+    position: relative;
+    width: 100%;
+    max-width: 1234px;
+    height: 77px;
+    margin-top: -53px;
+    margin-left: -26px;
+}
+
+.progress-fill {
+    transition: clip-path 0.3s ease-out;
+}
+
+/* Default SVG behavior */
+.progress-svg {
+    width: 100%;
+}
+
+/* Tablet View */
 @media (max-width: 768px) {
     .navigation {
-        padding: 12px 20px;
+        padding-top: 12px;
+        padding-left: 8px;
     }
 
     .nav-links {
-        gap: 20px;
+        gap: 15px !important;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .progress-container {
+        height: 50px;
     }
 }
 
+/* Mobile View */
 @media (max-width: 480px) {
     .nav-links {
         gap: 10px;
     }
 
     .nav-links a {
-        font-size: 12px;
+        font-size: 9px;
+    }
+
+    .progress-container {
+        height: 40px;
+    }
+
+    /* Increase SVG width on mobile */
+    .progress-svg {
+        width: 130%;
+        margin-left: -15%;
+        
     }
 }
 
+/* Extra Small Devices */
 @media (max-width: 320px) {
     .nav-links {
         gap: 8px;

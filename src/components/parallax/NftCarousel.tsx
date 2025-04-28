@@ -33,7 +33,7 @@ const nftDescriptions = [
 
 const fanAngles = [-45.17, -30.76, -15.45, 0, 15.45, 30.76, 45.17];
 const fanOffsets = [-650, -470, -250, 0, 250, 470, 650];
-const fanCurve = [200, 80, 10, 0, 10, 80, 240];   // Increased Y-offset for deeper curve
+const fanCurve = [200, 80, 10, 0, 10, 80, 200];   // Increased Y-offset for deeper curve
 
 export default function NftCarousel() {
   const [centerIdx, setCenterIdx] = useState(3);
