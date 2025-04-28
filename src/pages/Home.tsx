@@ -255,7 +255,7 @@ const teamLayerProgress = calculateLayerProgress(2.65, 3.515);
                 speed: -15,
                 expanded: false,
                 children: (
-                  <div className="video-container" style={{ overflow: 'hidden' }}>
+                  <div className="video-container" style={{ overflow: isMobile ? 'auto' : 'hidden' }}>
                     <video
                       autoPlay
                       muted
