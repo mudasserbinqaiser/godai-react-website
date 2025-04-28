@@ -212,7 +212,7 @@
     .mobile-gaming-slider {
         position: relative;
         width: 100vw;
-        height: 250px;
+        height: 280px;
         /* Increased height for vertical V */
         display: flex;
         align-items: center;
@@ -297,7 +297,7 @@
     }
 
     .mobile-gaming-slider {
-        height: 250px;
+        height: 280px;
     }
 
     .gaming-carousel-bg {
