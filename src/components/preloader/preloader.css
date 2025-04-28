@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&display=swap');
+
+/* This disables default browser validation visuals */
+:root {
+    --invalid-border-color: var(--color-rust);
+}
+
 @font-face {
     font-family: 'Cyberjunkies';
     src: url('/assets/fonts/Cyberjunkies.ttf') format('truetype');
@@ -47,17 +54,18 @@
 }
 
 .preloader.loaded {
-    animation: fadeOutLoader 1.5s ease forwards;
+    animation: fadeOutLoaderBg 1.5s ease forwards;
+    background-color: rgba(0, 0, 0, 0.8);
     pointer-events: none;
 }
 
-@keyframes fadeOutLoader {
+@keyframes fadeOutLoaderBg {
     0% {
-        opacity: 1;
+        background-color: #000;
     }
 
     100% {
-        opacity: 0;
+        background-color: rgba(0, 0, 0, 0.8);
     }
 }
 
@@ -77,6 +85,7 @@
     text-align: center;
     width: 100%;
     max-width: 800px;
+    pointer-events: auto;
 }
 
 .loading-progress {
@@ -110,7 +119,7 @@
 }
 
 .loading-percentage {
-    font-family: 'Courier New', monospace;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 1rem;
     color: var(--color-cream);
     position: absolute;
@@ -118,6 +127,7 @@
     width: 100%;
     text-align: center;
     opacity: 0.8;
+    letter-spacing: 0.05em;
 }
 
 .godai-text {
@@ -295,11 +305,29 @@
 }
 
 .email-form-container {
-    margin-top: 5rem;
+    margin-top: 7rem;
     opacity: 0;
-    animation: fadeIn 1s forwards;
+    animation: formFadeIn 1.5s forwards 0.5s;
     position: relative;
-    z-index: 2;
+    z-index: 10000;
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    pointer-events: auto !important;
+}
+
+@keyframes formFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .email-form {
@@ -309,8 +337,9 @@
     max-width: 600px;
     margin: 0 auto;
     border: 1px solid rgba(243, 237, 224, 0.1);
-    box-shadow: 0 0 15px rgba(217, 75, 24, 0.2);
+    box-shadow: 0 0 15px rgba(217, 75, 24, 0.2), 0 0 30px rgba(243, 237, 224, 0.1);
     backdrop-filter: blur(5px);
+    transform: translateZ(0);
 }
 
 .email-form h2 {
@@ -319,11 +348,16 @@
     font-size: 1.8rem;
     text-transform: uppercase;
     letter-spacing: 2px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
 }
 
 .form-group {
     display: flex;
+    flex-direction: column;
     gap: 0.5rem;
+    position: relative;
+    width: 100%;
 }
 
 .form-group input {
@@ -335,14 +369,26 @@
     background-color: rgba(243, 237, 224, 0.1);
     color: var(--color-cream);
     border: 1px solid rgba(243, 237, 224, 0.2);
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.03em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--color-cream);
+    box-shadow: 0 0 10px rgba(243, 237, 224, 0.3);
 }
 
 .form-group input::placeholder {
     color: rgba(243, 237, 224, 0.6);
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 300;
 }
 
 .form-group button {
     padding: 0.75rem 1.5rem;
+    margin-top: 0.5rem;
     font-size: 1rem;
     background-color: var(--color-rust);
     color: var(--color-cream);
@@ -354,6 +400,8 @@
     letter-spacing: 1px;
     position: relative;
     overflow: hidden;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
 }
 
 .form-group button:hover {
@@ -379,6 +427,72 @@
     opacity: 1;
 }
 
+/* Custom validation styling */
+/* Fix incomplete rule */
+input:invalid {
+    box-shadow: none;
+    /* Remove default browser styling */
+}
+
+/* Style for validation messages */
+.form-group .validation-message {
+    position: relative;
+    color: var(--color-rust);
+    padding: 0.5rem 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.5rem;
+}
+
+.form-group .validation-message::before {
+    content: "✕";
+    margin-right: 8px;
+    font-size: 0.9rem;
+    color: var(--color-rust);
+}
+
+/* Input styling when invalid */
+.form-group input[aria-invalid="true"] {
+    border: 1px solid var(--color-rust) !important;
+    box-shadow: 0 0 8px rgba(217, 75, 24, 0.3);
+}
+
+@keyframes errorPulse {
+    0% {
+        box-shadow: 0 0 15px rgba(217, 75, 24, 0.3);
+    }
+
+    100% {
+        box-shadow: 0 0 20px rgba(217, 75, 24, 0.6);
+    }
+}
+
+/* Input styling when invalid */
+.form-group input[aria-invalid="true"] {
+    border: 1px solid var(--color-rust) !important;
+    box-shadow: 0 0 8px rgba(217, 75, 24, 0.3);
+    animation: errorShake 0.4s ease-in-out;
+}
+
+@keyframes errorShake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
 .thank-you-message {
     margin-top: 5rem;
     color: var(--color-cream);
@@ -386,6 +500,8 @@
     animation: fadeIn 1s forwards;
     position: relative;
     z-index: 2;
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.03em;
 }
 
 .thank-you-message h2 {
@@ -393,11 +509,15 @@
     margin-bottom: 1rem;
     text-transform: uppercase;
     letter-spacing: 2px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
 }
 
 .thank-you-message p {
     font-size: 1.1rem;
     opacity: 0.8;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 300;
 }
 
 @keyframes fadeIn {
@@ -409,6 +529,40 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Add these styles to your existing preloader.css file */
+
+.preloader.fade-out {
+    animation: fadeOutPreloader 1s forwards;
+    pointer-events: none;
+}
+
+.thank-you-message.fade-out {
+    animation: fadeOutThankYou 0.8s forwards;
+}
+
+@keyframes fadeOutPreloader {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes fadeOutThankYou {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
     }
 }
 

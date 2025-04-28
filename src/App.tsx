@@ -1,6 +1,8 @@
-// src/App.tsx
 import { useState } from 'react';
+import { ParallaxProvider } from 'react-scroll-parallax';
+import { ScrollProgressProvider } from './context/ScrollProgressContext';
 import Preloader from './components/preloader/preloader';
+import Home from './pages/Home';
 import './App.css';
 
 function App() {
@@ -11,16 +13,19 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <Preloader onLoadingComplete={handleLoadingComplete} />
-      
-      {/* Main content will go here once we progress to the next sections */}
-      {loadingComplete && (
-        <div style={{ display: 'none' }}>
-          {/* This is just a placeholder. We'll add content in future steps */}
+    <ScrollProgressProvider>
+      <ParallaxProvider>
+        <div className="app">
+          <Preloader onLoadingComplete={handleLoadingComplete} />
+          
+          {loadingComplete && (
+            <main className="main-content">
+              <Home />
+            </main>
+          )}
         </div>
-      )}
-    </div>
+      </ParallaxProvider>
+    </ScrollProgressProvider>
   );
 }
 

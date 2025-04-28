@@ -6,13 +6,15 @@ interface PreloaderProps {
 }
 
 const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
-  const [loading, setLoading] = useState(true);
-  const [showForm, setShowForm] = useState(false);
-  const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-  const [loadingPercentage, setLoadingPercentage] = useState(0);
-  const loadingInterval = useRef<number | null>(null);
-  const assetsLoaded = useRef<boolean>(false);
+    const [loading, setLoading] = useState(true);
+    const [showForm, setShowForm] = useState(false);
+    const [email, setEmail] = useState('');
+    const [submitted, setSubmitted] = useState(false);
+    const [validationError, setValidationError] = useState('');
+    const [loadingPercentage, setLoadingPercentage] = useState(0);
+    const [fadeOut, setFadeOut] = useState(false);
+    const loadingInterval = useRef<number | null>(null);
+    const assetsLoaded = useRef<boolean>(false);
 
   // Track actual asset loading
   useEffect(() => {
@@ -94,27 +96,62 @@ const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
       if (percentage >= 100) {
         if (loadingInterval.current) clearInterval(loadingInterval.current);
         setLoading(false);
+        
+        // Add a delay before showing the form to ensure animation completes
         setTimeout(() => {
           setShowForm(true);
-        }, 1000);
-        onLoadingComplete();
+          console.log("Form should be visible now"); // Debug log
+        }, 1500); // Increased delay to 1.5s
       }
     }, 50);
 
     return () => {
       if (loadingInterval.current) clearInterval(loadingInterval.current);
     };
-  }, [onLoadingComplete]);
+  }, []);
+
+  // Transition after form submission and thank you message
+  useEffect(() => {
+    if (submitted) {
+      // Show the thank you message for 3 seconds, then fade out
+      const timer = setTimeout(() => {
+        setFadeOut(true);
+        
+        // After fadeout animation, notify parent that loading is complete
+        setTimeout(() => {
+          onLoadingComplete();
+        }, 1000);
+      }, 3000);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [submitted, onLoadingComplete]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Custom validation
+    if (!email) {
+      setValidationError('Please fill out this field.');
+      return;
+    }
+    
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setValidationError('Please enter a valid email address.');
+      return;
+    }
+    
+    // Clear any previous validation errors
+    setValidationError('');
+    
     localStorage.setItem('userEmail', email);
     console.log('Email submitted:', email);
     setSubmitted(true);
   };
 
   return (
-    <div className={`preloader ${!loading ? 'loaded' : ''}`}>
+    <div className={`preloader ${!loading ? 'loaded' : ''} ${fadeOut ? 'fade-out' : ''}`}>
       <div className="grid-overlay"></div>
       <div className="preloader-content">
         <h1 className="godai-text">Godai</h1>
@@ -122,30 +159,46 @@ const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
         <div className="loading-progress">
           <div className="loading-bar" style={{ width: `${loadingPercentage}%` }}></div>
         </div>
-                <div className="loading-percentage">
+        <div className="loading-percentage">
           {loading ? `INITIALIZING... ${loadingPercentage}%` : 'COMPLETE'}
         </div>
         
         {showForm && !submitted && (
-          <div className="email-form-container" style={{ animation: 'fadeIn 1.5s ease-out forwards' }}>
+          <div className="email-form-container">
             <form onSubmit={handleSubmit} className="email-form">
               <h2>Get Early Access</h2>
               <div className="form-group">
                 <input
-                  type="email"
+                  type="text" 
+                  inputMode="email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (validationError) setValidationError('');
+                  }}
                   placeholder="Enter your email"
-                  required
+                  style={{ pointerEvents: 'auto' }}
+                  autoFocus
+                  aria-invalid={!!validationError}
                 />
-                <button type="submit">Submit</button>
+                {validationError && (
+                  <div className="validation-message">
+                    {validationError}
+                  </div>
+                )}
+                <button 
+                  type="submit"
+                  style={{ pointerEvents: 'auto' }}
+                >
+                  Submit
+                </button>
               </div>
             </form>
           </div>
         )}
         
         {submitted && (
-          <div className="thank-you-message" style={{ animation: 'fadeIn 1.5s ease-out forwards' }}>
+          <div className={`thank-you-message ${fadeOut ? 'fade-out' : ''}`}>
             <h2>Thank You!</h2>
             <p>We'll notify you when early access becomes available.</p>
           </div>
