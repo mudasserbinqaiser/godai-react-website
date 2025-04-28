@@ -88,6 +88,15 @@ z-index: 11;
     max-width: 200px;
     transform: scale(0.6);
   }
+
+  .hero-characters-container {
+    bottom: 10%;
+    width: 151%;
+  }
+  
+    .blur-gradient-bottom-characters {
+      height: 35%;
+    }
 }
 
 @media (max-width: 480px) {
@@ -96,7 +105,19 @@ z-index: 11;
   }
 
   .enter-godai-image {
-    max-width: 150px;
-    transform: scale(0.5);
+    max-width: 250px;
+    transform: translateY(100px);
   }
+    .hero-characters-container {
+      width: 130% !important;
+    }
+
+    .hero-characters-image {
+      width: 5000px !important;
+      transform: translate(-60px, -40px) !important;
+    }
+  
+    .blur-gradient-bottom-characters {
+      height: 30%;
+    }
 }

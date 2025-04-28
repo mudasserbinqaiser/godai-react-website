@@ -104,3 +104,34 @@
 .world-section {
     background-color: var(--primary-color);
 }
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .hero-characters-image {
+        max-width: 80%;
+        transform: translateY(5%);
+    }
+
+    .enter-godai-container {
+        bottom: 60px;
+    }
+
+    .enter-godai-image {
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-characters-image {
+        max-width: 75%;
+        transform: translateY(0%);
+    }
+
+    .enter-godai-container {
+        bottom: 40px;
+    }
+
+    .enter-godai-image {
+        max-width: 150px;
+    }
+}

@@ -16,7 +16,7 @@
     position: relative;
     width: 100vw;
     height: 400px;
-    top: -15%;
+    top: -8%;
     user-select: none;
 }
 
@@ -156,7 +156,7 @@
     width: 404px;
     height: 60px;
     left: calc(50% - 404px/2);
-    top: 480px;
+    top: 508px;
 
     font-family: 'IBM Plex Mono', monospace;
     font-style: normal;
@@ -233,4 +233,37 @@
     background: #D94B18;
     box-shadow: 0 0 10px #D94B18;
     border: none;
+}
+
+@media (max-width: 768px) {
+    .nft-slider-controls {
+        gap: 80px !important;
+    }
+
+    .nft-carousel-description {
+        top: 620px;
+        left: calc(50% - 300px/2);
+        width: 300px;
+    }
+
+    .nft-card {
+        width: 100vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .nft-slider-controls {
+        gap: 50px !important;
+    }
+
+    .nft-carousel-description {
+        top: 620px;
+        left: calc(50% - 300px/2);
+        width: 300px;
+    }
+
+    .nft-card {
+        width: 100vh;
+    }
+    
 }
