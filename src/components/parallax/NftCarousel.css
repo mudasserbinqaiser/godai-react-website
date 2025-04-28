@@ -238,6 +238,7 @@
 @media (max-width: 768px) {
     .nft-slider-controls {
         gap: 80px !important;
+        bottom: 50px;
     }
 
     .nft-carousel-description {
