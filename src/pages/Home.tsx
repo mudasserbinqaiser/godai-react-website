@@ -138,7 +138,7 @@ const characterX = isMobile
 const gamingLayerProgress = calculateLayerProgress(1.7 , 2.7);
 const mangaLayerProgress = calculateLayerProgress(2.2, 3.1);
 const teamLayerProgress = calculateLayerProgress(2.65, 3.515);
-  const socialLayerProgress = calculateLayerProgress(3.1, 4.0);
+  const socialLayerProgress = calculateLayerProgress(3.4, 4.0);
 
 
 

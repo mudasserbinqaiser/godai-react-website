@@ -83,7 +83,7 @@ const TeamSection: React.FC<{ progress: number }> = ({ progress }) => {
   if (adjustedProgress < BUFFER) {
     teamLayerX = (1 - adjustedProgress / BUFFER) * window.innerWidth;
   } else if (adjustedProgress > 1 - BUFFER) {
-    teamLayerY = -((adjustedProgress - (1 - BUFFER)) / BUFFER) * window.innerHeight;
+    // teamLayerY = -((adjustedProgress - (1 - BUFFER)) / BUFFER) * window.innerHeight;
   }
 
   const zoom = 1 + adjustedProgress * 0.08;
