@@ -147,10 +147,9 @@
 @media (max-width: 768px) {
     .manga-description {
         width: 300px;
-        height: 60px;
         font-size: 12px;
         line-height: 16px;
-        top: 700px;
+        top: 650px;
         text-align: center;
     }
 
@@ -168,9 +167,5 @@
                 rgba(7, 23, 38, 0.1) 100%);
         /* Was 0.8 */
         z-index: 90;
-    }
-
-    .manga-section-bg {
-        overflow: hidden;
     }
 }
