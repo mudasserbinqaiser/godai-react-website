@@ -4,7 +4,9 @@ import { ScrollProgressProvider } from './context/ScrollProgressContext';
 import Preloader from './components/preloader/preloader';
 import Home from './pages/Home';
 import { Helmet } from 'react-helmet';
+import { Analytics } from "@vercel/analytics/react"
 import './App.css';
+
 
 function App() {
   const [loadingComplete, setLoadingComplete] = useState(false);
@@ -26,6 +28,7 @@ function App() {
           {loadingComplete && (
             <main className="main-content">
               <Home />
+              <Analytics />
             </main>
           )}
         </div>
