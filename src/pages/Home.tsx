@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useRef } from 'react';
 import { ParallaxBanner } from 'react-scroll-parallax';
 import Header from '../components/common/header/header';
 import './Home.css';
@@ -43,8 +43,10 @@ const Home = () => {
   const [transitionProgress, setTransitionProgress] = useState(0); // 0 = hero, 1 = project, 2 = NFT, 3 = gaming, 4 = manga, 5 = team, 6 = socials
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const { setProgress } = useContext(ScrollProgressContext);
+  const touchStartRef = useRef(0);
+  const touchLastRef = useRef(0);
+  const isScrollingRef = useRef(false);
 
-  
   const MAX_PROGRESS = 6; // 0-1: vertical, 1-2: NFT, 2-3: gaming, 3-4: manga, 4-5: team, 5-6: socials
   
   // Constants for the "settle zone" - where project layer stays fixed
@@ -126,6 +128,42 @@ const characterX = isMobile
 
     window.addEventListener('wheel', handleWheel, { passive: false });
     return () => window.removeEventListener('wheel', handleWheel);
+  }, []);
+
+  // Touch event handlers for mobile
+  useEffect(() => {
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartRef.current = e.touches[0].clientY;
+      touchLastRef.current = e.touches[0].clientY;
+      isScrollingRef.current = true;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!isScrollingRef.current) return;
+      
+      const touchY = e.touches[0].clientY;
+      const deltaY = touchLastRef.current - touchY;
+      touchLastRef.current = touchY;
+      
+      // Use smaller multiplier for more natural touch scrolling feel
+      const scrollMultiplier = 0.0025;
+      setTransitionProgress(prev => clamp(prev + deltaY * scrollMultiplier, 0, MAX_PROGRESS));
+    };
+
+    const handleTouchEnd = () => {
+      isScrollingRef.current = false;
+    };
+
+    // Add touch event listeners
+    document.addEventListener('touchstart', handleTouchStart, { passive: false });
+    document.addEventListener('touchmove', handleTouchMove, { passive: false });
+    document.addEventListener('touchend', handleTouchEnd, { passive: false });
+
+    return () => {
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleTouchEnd);
+    };
   }, []);
 
   const calculateLayerProgress = (start: number, end: number) => {
