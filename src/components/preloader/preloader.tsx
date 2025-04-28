@@ -141,7 +141,6 @@ const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
     setValidationError('');
     
     localStorage.setItem('userEmail', email);
-    console.log('Email submitted:', email);
     setSubmitted(true);
   };
 
