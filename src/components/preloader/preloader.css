@@ -104,7 +104,7 @@
             var(--color-rust) 0%,
             var(--color-cream) 100%);
     width: 0%;
-    animation: loadingProgress 3.5s ease;
+    animation: loadingProgress 5s ease;
     animation-fill-mode: forwards;
 }
 
@@ -587,5 +587,10 @@ input:invalid {
     .godai-text {
         font-size: 3rem;
         width: 90%;
+    }
+
+    .loading-progress {
+        width: 90%;
+        left: 5%;
     }
 }

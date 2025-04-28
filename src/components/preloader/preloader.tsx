@@ -72,43 +72,38 @@ const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
 
   // Simulate loading process with percentage counter, but respect actual asset loading
   useEffect(() => {
-    let startTime = Date.now();
-    const minLoadingTime = 2000; // Minimum time to show loader (2s)
-    const maxLoadingTime = 5000; // Maximum time to show loader (5s)
+  let startTime = Date.now();
+  const minLoadingTime = 5000;  // Increased Minimum time (5s)
+  const maxLoadingTime = 8000;  // Increased Maximum time (8s)
 
-    loadingInterval.current = window.setInterval(() => {
-      const elapsed = Date.now() - startTime;
-      let percentage: number;
+  loadingInterval.current = window.setInterval(() => {
+    const elapsed = Date.now() - startTime;
+    let percentage: number;
 
-      if (assetsLoaded.current) {
-        // If assets are loaded, accelerate to 100%
-        percentage = Math.min(Math.floor((elapsed / minLoadingTime) * 100), 100);
-      } else if (elapsed > maxLoadingTime) {
-        // If taking too long, force to 100%
-        percentage = 100;
-      } else {
-        // Normal progression, but cap at 95% until assets are loaded
-        percentage = Math.min(Math.floor((elapsed / maxLoadingTime) * 100), 95);
-      }
+    if (assetsLoaded.current) {
+      percentage = Math.min(Math.floor((elapsed / minLoadingTime) * 100), 100);
+    } else if (elapsed > maxLoadingTime) {
+      percentage = 100;
+    } else {
+      percentage = Math.min(Math.floor((elapsed / maxLoadingTime) * 100), 95);
+    }
 
-      setLoadingPercentage(percentage);
-      
-      if (percentage >= 100) {
-        if (loadingInterval.current) clearInterval(loadingInterval.current);
-        setLoading(false);
-        
-        // Add a delay before showing the form to ensure animation completes
-        setTimeout(() => {
-          setShowForm(true);
-          console.log("Form should be visible now"); // Debug log
-        }, 1500); // Increased delay to 1.5s
-      }
-    }, 50);
+    setLoadingPercentage(percentage);
 
-    return () => {
+    if (percentage >= 100) {
       if (loadingInterval.current) clearInterval(loadingInterval.current);
-    };
-  }, []);
+      setLoading(false);
+      setTimeout(() => {
+        setShowForm(true);
+      }, 1500); // Slight delay before form shows up
+    }
+  }, 50);
+
+  return () => {
+    if (loadingInterval.current) clearInterval(loadingInterval.current);
+  };
+}, []);
+
 
   // Transition after form submission and thank you message
   useEffect(() => {
