@@ -55,7 +55,7 @@ const MangaSection: React.FC<{ progress: number }> = ({ progress }) => {
       />
 
       {/* Decorative elements */}
-      <div className="nft-blur-gradient" style={{ zIndex: 1 }}></div>
+      <div className="manga-blur-gradient" style={{ zIndex: 1 }}></div>
       <div className="manga-art-placeholder" />
       <div className="project-lines">
         <div className="left-side">

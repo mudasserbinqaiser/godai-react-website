@@ -22,12 +22,12 @@
 
 .manga-blur-gradient {
     position: absolute;
-    width: 1617px;
+    width: 100%;
     height: 139px;
-    left: -99px;
-    top: 664px;
+    left: 0;
+    bottom: 0;
     background: linear-gradient(180deg, rgba(7, 23, 38, 0) 0%, #071726 89.9%);
-    z-index: 2;
+    z-index: 1;
 }
 
 .manga-art-placeholder {
@@ -143,4 +143,31 @@
     z-index: 75;
     padding: 12px 18px;
         /* For debugging */
+}
+
+@media (max-width: 768px) {
+    .manga-description {
+        width: 300px;
+        height: 60px;
+        font-size: 12px;
+        line-height: 16px;
+        top: 700px;
+        text-align: center;
+    }
+
+    .manga-blur-gradient {
+        height: 100%;
+        background: linear-gradient(to top,
+                rgba(7, 23, 38, 1) 0%,
+                /* Was 1 */
+                rgba(7, 23, 38, 0.7) 30%,
+                /* Was 0.95 */
+                rgba(7, 23, 38, 0.6) 60%,
+                /* Was 0.9 */
+                rgba(7, 23, 38, 0.4) 80%,
+                /* Was 0.85 */
+                rgba(7, 23, 38, 0.1) 100%);
+        /* Was 0.8 */
+        z-index: 90;
+    }
 }

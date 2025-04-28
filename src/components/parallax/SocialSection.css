@@ -323,8 +323,31 @@
         margin-bottom: 30px;
     }
 
+    .social-buttons-container {
+        transform: translate(-11%, -170%);
+    }
+
+    .socials-banner-wrapper {
+        width: 75%;
+        left: 200px;
+    }
+
+    .signup-button-container {
+        transform: translate(-24%, -165%);
+        width: 70px
+    }
+
     .socials-links-container {
         gap: 20px;
+    }
+
+    .socials-banner-text {
+        top: 47%;
+    }
+
+    .social-button{
+        width: 30px;
+        height: 30px;
     }
 
     .social-icon {
