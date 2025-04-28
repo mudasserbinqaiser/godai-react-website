@@ -52,7 +52,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow: initial;
 }
 
 .socials-banner-image {
@@ -298,10 +298,6 @@
         width: 50px;
         height: 50px;
     }
-
-    .socials-section-bg {
-        overflow: hidden;
-    }
 }
 
 @media (max-width: 480px) {
@@ -333,7 +329,7 @@
         top: 47%;
     }
 
-    .social-button{
+    .social-button {
         width: 30px;
         height: 30px;
     }
@@ -345,9 +341,5 @@
 
     .social-link span {
         font-size: 12px;
-    }
-
-    .socials-section-bg {
-        overflow: hidden;
     }
 }

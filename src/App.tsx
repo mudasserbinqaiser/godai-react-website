@@ -3,6 +3,7 @@ import { ParallaxProvider } from 'react-scroll-parallax';
 import { ScrollProgressProvider } from './context/ScrollProgressContext';
 import Preloader from './components/preloader/preloader';
 import Home from './pages/Home';
+import { Helmet } from 'react-helmet';
 import './App.css';
 
 function App() {
@@ -13,6 +14,10 @@ function App() {
   };
 
   return (
+    <>
+    <Helmet>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      </Helmet>
     <ScrollProgressProvider>
       <ParallaxProvider>
         <div className="app">
@@ -26,6 +31,7 @@ function App() {
         </div>
       </ParallaxProvider>
     </ScrollProgressProvider>
+    </>
   );
 }
 

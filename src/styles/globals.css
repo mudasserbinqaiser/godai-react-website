@@ -19,6 +19,13 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     font-family: 'Inter', sans-serif;
+    touch-action: pan-x pan-y;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
 }
 
 .container {

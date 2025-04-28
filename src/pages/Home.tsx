@@ -166,6 +166,22 @@ const characterX = isMobile
     };
   }, []);
 
+  useEffect(() => {
+  const preventDefault = (e: TouchEvent) => {
+    // Prevent zoom by blocking touchmove with more than one touch point (pinch)
+    if (e.touches.length > 1) {
+      e.preventDefault();
+    }
+  };
+
+  // Add the event listeners with passive: false to allow preventDefault
+  document.addEventListener('touchmove', preventDefault, { passive: false });
+  
+  return () => {
+    document.removeEventListener('touchmove', preventDefault);
+  };
+}, []);
+
   const calculateLayerProgress = (start: number, end: number) => {
   const rawProgress = (transitionProgress - start) / (end - start);
   return clamp(rawProgress, 0, 1);
