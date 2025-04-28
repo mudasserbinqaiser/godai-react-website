@@ -308,17 +308,18 @@
     }
 
     .social-buttons-container {
-        transform: translate(-11%, -170%);
+        transform: translate(-11%, -165%);
     }
 
     .socials-banner-wrapper {
         width: 75%;
-        left: 240px;
+        left: 235px;
     }
 
     .signup-button-container {
-        transform: translate(-24%, -165%);
-        width: 70px
+        transform: translate(-24%, -45%);
+        width: 80px;
+        height: 80px;
     }
 
     .socials-links-container {
