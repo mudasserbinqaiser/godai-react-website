@@ -97,6 +97,28 @@ z-index: 11;
     .blur-gradient-bottom-characters {
       height: 35%;
     }
+
+    .hero-section-bg {
+      overflow: auto;
+    }
+
+    .hero-characters-container {
+      overflow: auto;
+    }
+
+    .hero-orange-border {
+      overflow: auto;
+    }
+
+    .blur-gradient-bottom-characters {
+      overflow: auto;
+    }
+
+    .enter-godai-container {
+      overflow: auto;
+    }
+
+    
 }
 
 @media (max-width: 480px) {
@@ -119,5 +141,25 @@ z-index: 11;
   
     .blur-gradient-bottom-characters {
       height: 30%;
+    }
+
+    .hero-section-bg {
+      overflow: auto;
+    }
+
+    .hero-characters-container {
+      overflow: auto;
+    }
+
+    .hero-orange-border {
+      overflow: auto;
+    }
+
+    .blur-gradient-bottom-characters {
+      overflow: auto;
+    }
+
+    .enter-godai-container {
+      overflow: auto;
     }
 }

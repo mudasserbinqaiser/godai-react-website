@@ -66,7 +66,7 @@
     justify-content: center;
     background: transparent;
     transform: rotateY(180deg);
-    overflow: visible;
+    overflow: hidden;
 }
 
 .nft-card-glow {
@@ -249,6 +249,10 @@
     .nft-card {
         width: 100vh;
     }
+
+    .nft-carousel-bg {
+        overflow: auto;
+    }
 }
 
 @media (max-width: 480px) {
@@ -264,6 +268,10 @@
 
     .nft-card {
         width: 100vh;
+    }
+
+    .nft-carousel-bg {
+        overflow: auto;
     }
     
 }

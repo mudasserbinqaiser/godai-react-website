@@ -169,4 +169,8 @@
         /* Was 0.8 */
         z-index: 90;
     }
+
+    .manga-section-bg {
+        overflow: auto;
+    }
 }

@@ -177,7 +177,7 @@ const teamLayerProgress = calculateLayerProgress(2.65, 3.515);
           zIndex: 13
         }}
       ></div>
-      <div className="single-section-container" style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden' }}>
+      <div className="single-section-container" style={{ position: 'relative', width: '100vw', height: '100vh', overflow: isMobile ? 'auto' : 'hidden' }}>
         {/* Separate Character Layer */}
         <div 
           className="hero-characters-container"
