@@ -217,7 +217,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        overflow: visible;
+        overflow: hidden;
         margin-bottom: 30px;
         /* Add space below the slider */
     }

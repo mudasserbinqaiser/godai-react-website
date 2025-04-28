@@ -52,7 +52,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: initial;
+    overflow: hidden;
 }
 
 .socials-banner-image {

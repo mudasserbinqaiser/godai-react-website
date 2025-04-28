@@ -171,6 +171,6 @@
     }
 
     .manga-section-bg {
-        overflow: auto;
+        overflow: hidden;
     }
 }

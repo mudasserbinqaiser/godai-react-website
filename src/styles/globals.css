@@ -15,6 +15,7 @@
 html,
 body {
     overflow-x: hidden;
+    overflow-y: hidden;
     background-color: var(--background-color);
     color: var(--text-color);
     font-family: 'Inter', sans-serif;

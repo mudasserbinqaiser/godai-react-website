@@ -222,7 +222,7 @@ const teamLayerProgress = calculateLayerProgress(2.65, 3.515);
         position: 'relative', 
         width: '100vw', 
         height: '100vh', 
-        overflow: isMobile ? 'visible' : 'hidden'
+        overflow:'hidden'
       }}>
         {/* Separate Character Layer */}
         <div 
