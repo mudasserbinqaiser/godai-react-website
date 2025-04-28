@@ -121,7 +121,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
         setTimeout(() => {
           onLoadingComplete();
         }, 1000);
-      }, 3000);
+      }, 1000);
       
       return () => clearTimeout(timer);
     }
