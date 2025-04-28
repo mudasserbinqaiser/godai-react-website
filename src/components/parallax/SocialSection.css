@@ -274,22 +274,6 @@
     background-position: center;
 }
 
-.social-icon.discord {
-    background-image: url('/assets/images/discord-icon.svg');
-}
-
-.social-icon.x-twitter {
-    background-image: url('/assets/images/x-icon.svg');
-}
-
-.social-icon.telegram {
-    background-image: url('/assets/images/telegram-icon.svg');
-}
-
-.social-icon.medium {
-    background-image: url('/assets/images/medium-icon.svg');
-}
-
 .social-link span {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 14px;

@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import "./GamingSection.css";
 
 const gamingItems = [
-  { icon: "/assets/images/gaming.png", title: "Blackout", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown." },
-  { icon: "/assets/images/gaming.png", title: "Blackout", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown." },
-  { icon: "/assets/images/gaming.png", title: "Blackout", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown." },
-  { icon: "/assets/images/gaming.png", title: "Blackout", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown." },
-  { icon: "/assets/images/gaming.png", title: "Blackout", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown." },
+  { icon: "/assets/images/gaming.png", title: "Blackout", description: "Lorem Ipsum has been the placeholder text of the printing industry, widely used since the 1500s when an anonymous printer scrambled type to create a specimen book." },
+  { icon: "/assets/images/gaming.png", title: "Blackout", description: "For centuries, Lorem Ipsum has served as standard dummy text in typesetting, originating in the 1500s when a printer used it to fill pages with nonsensical content." },
+  { icon: "/assets/images/gaming.png", title: "Blackout", description: "Since the 16th century, Lorem Ipsum has been the go-to filler text for printers and designers, ever since an unknown printer crafted it from scrambled Latin." },
+  { icon: "/assets/images/gaming.png", title: "Blackout", description: "Lorem Ipsum, the classic dummy text, has been used by the printing industry since the 1500s, when a printer created it to showcase typefaces without distraction." },
+  { icon: "/assets/images/gaming.png", title: "Blackout", description: "Dating back to the 1500s, Lorem Ipsum has remained the industry standard for placeholder text, born when a printer jumbled Latin words to produce sample layouts." },
 ];
 
 const V_ANGLES = [0, 0, 0, 0, 0];
