@@ -593,9 +593,4 @@ input:invalid {
         width: 90%;
         left: 5%;
     }
-
-    .email-form {
-        padding: 1rem;
-        margin: 0 1rem;
-    }
 }
