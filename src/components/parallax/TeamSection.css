@@ -383,6 +383,10 @@
         width: 320px;
         right: 30px;
     }
+
+    .team-section-bg {
+        overflow: auto;
+    }
 }
 
 @media (max-width: 992px) {
@@ -412,6 +416,10 @@
     .x-account-link {
         left: 30px;
         bottom: 70px;
+    }
+
+    .team-section-bg {
+        overflow: auto;
     }
 }
 
@@ -508,6 +516,10 @@
     .project-lines {
         display: none;
     }
+
+    .team-section-bg {
+        overflow: auto;
+    }
 }
 
 @media (max-width: 480px) {
@@ -560,6 +572,10 @@
         margin: 15px auto 25px;
         bottom: -20px;
     }
+
+    .team-section-bg {
+        overflow: auto;
+    }
 }
 
 @media (max-height: 700px) {
@@ -579,5 +595,9 @@
 
     .team-description {
         margin: 10px auto 20px;
+    }
+
+    .team-section-bg {
+        overflow: auto;
     }
 }

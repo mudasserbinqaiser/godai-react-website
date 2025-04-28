@@ -23,3 +23,23 @@
     background: linear-gradient(180deg, rgba(7, 23, 38, 0) 0%, #071726 89.9%);
     z-index: 1;
 }
+
+@media (max-width: 768px) {
+    .nft-section-bg {
+        overflow: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .nft-section-bg {
+        overflow: auto;
+    }
+}
+
+@media (max-width: 320px) {
+    .nft-section-bg {
+        overflow: auto;
+    }
+}
+
+

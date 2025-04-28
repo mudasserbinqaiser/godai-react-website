@@ -283,6 +283,10 @@
         left: 0;
         transform: none;
     }
+
+    .gaming-carousel-bg {
+        overflow: auto;
+    }
 }
 
 /* Small mobile screens */
@@ -294,6 +298,10 @@
 
     .mobile-gaming-slider {
         height: 200px;
+    }
+
+    .gaming-carousel-bg {
+        overflow: auto;
     }
 
     .gaming-card-svg-wrapper {
