@@ -68,15 +68,15 @@ const Home = () => {
 
   // Character specific transforms
   const characterScale = isMobile 
-  ? 1 - 200 * adjustedProgress    // Less aggressive scaling on mobile
+  ? 1 - 0.3 * adjustedProgress    // Less aggressive scaling on mobile
   : 1 - 0.6 * adjustedProgress;
 
 const characterY = isMobile 
-  ? 60 * adjustedProgress         // Smaller vertical movement
+  ? 0 * adjustedProgress         // Smaller vertical movement
   : 128 * adjustedProgress;
 
 const characterX = isMobile 
-  ? -100 * adjustedProgress       // Minimal horizontal shift
+  ? -0 * adjustedProgress       // Minimal horizontal shift
   : -445 * adjustedProgress;
 
   // Responsive card dimensions
@@ -254,6 +254,7 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
             alignItems: 'flex-end',
             zIndex: 4,
             pointerEvents: 'none',
+            opacity: isMobile ? 1 - adjustedProgress : 1,
             transform: `translate(${characterX}px, ${characterY}px) scale(${characterScale})`,
             transition: 'transform 0.2s ease-out'
           }}
@@ -278,14 +279,16 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
           className="hero-layer"
           style={{
             position: 'absolute',
-            left,
-            top,
+            left: isMobile ? '50%' : left,           // Center on mobile
+            top: isMobile ? '50%' : top, 
             width,
             height,
             zIndex: 3,
             pointerEvents: 'none',
-            transform: `scale(${1 - 0.6 * adjustedProgress})`,
-            opacity: 1,
+            transform: isMobile 
+              ? `translate(-50%, -50%) scale(${1 - 0.4 * adjustedProgress})`  // Simple centered zoom for mobile
+              : `scale(${1 - 0.6 * adjustedProgress})`,
+            opacity: 1, 
             transition: 'width 0.2s linear, height 0.2s linear, left 0.2s linear, top 0.2s linear, transform 0.05s linear',
             willChange: 'width, height, left, top, transform'
           }}
