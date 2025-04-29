@@ -32,7 +32,7 @@ const SocialSection: React.FC<{ progress: number }> = ({ progress }) => {
         opacity: adjustedProgress > 0 ? 1 : 0,
         pointerEvents: adjustedProgress > 0 ? "auto" : "none",
         zIndex: 15,
-        transition: "transform 2s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.4s ease-in-out", // Updated transition
+        transition: "transform 1s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.4s ease-in-out", // Updated transition
       }}
     >
       {/* Video background with radial gradient overlay */}
