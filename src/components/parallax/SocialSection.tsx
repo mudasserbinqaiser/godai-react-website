@@ -5,24 +5,28 @@ import "../parallax/ProjectSection.css";
 const SocialSection: React.FC<{ progress: number }> = ({ progress }) => {
   // For smooth entrance animation
   const BUFFER = 0.4;
+  const DELAY = 0.35;
 
   // Adjust progress for smoother transitions
-  const adjustedProgress = Math.max(0, Math.min(1, progress / (1 - BUFFER)));
+  const adjustedProgress = Math.max(0, Math.min(1, (progress - DELAY) / (1 - DELAY)));
 
-  // New smooth vertical movement calculation
+  // Updated smooth vertical movement calculation for both directions
   const calculateLayerY = (progress: number) => {
     if (progress < BUFFER) {
       // Smooth entry from bottom with cubic easing
       const t = progress / BUFFER;
-      // Using t * t * t for even smoother vertical motion
       return window.innerHeight * (1 - t * t * t);
     }
+    // else if (progress > 1 - BUFFER) {
+    //   // Smooth exit to top with cubic easing
+    //   const t = (progress - (1 - BUFFER)) / BUFFER;
+    //   return -(window.innerHeight * (t * t * t));
+    // }
     return 0;
   };
 
   // Calculate the vertical position
   const socialsLayerY = calculateLayerY(adjustedProgress);
-
 
   return (
     <div
@@ -32,7 +36,8 @@ const SocialSection: React.FC<{ progress: number }> = ({ progress }) => {
         opacity: adjustedProgress > 0 ? 1 : 0,
         pointerEvents: adjustedProgress > 0 ? "auto" : "none",
         zIndex: 15,
-        transition: "transform 1s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.4s ease-in-out", // Updated transition
+        // Increased transition duration and updated easing curve for smoother movement
+        transition: "transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1.000), opacity 0.6s ease-in-out",
       }}
     >
       {/* Video background with radial gradient overlay */}
