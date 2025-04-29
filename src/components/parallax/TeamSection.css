@@ -328,8 +328,8 @@
 .team-description {
     position: absolute;
     width: 407px;
-    bottom: 10px;
-    right: 50px;
+    bottom: 50px;
+    right: 75px;
     font-family: 'IBM Plex Mono', monospace;
     font-style: normal;
     font-weight: 400;
@@ -340,88 +340,7 @@
     text-shadow: 0px 0px 20px #000000;
     z-index: 5;
     padding-top: 12px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 1200px) {
-    .team-info {
-        width: 320px;
-    }
-
-    .team-name {
-        width: 320px;
-        font-size: 60px;
-        line-height: 65px;
-    }
-
-    .team-description-header {
-        width: 320px;
-        font-size: 12px;
-    }
-
-    .team-member-display {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 4;
-    }
-
-    .team-vertical-slider {
-        position: absolute;
-        right: 50px;
-        top: 115px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 81px;
-        height: 486px;
-        z-index: 5;
-    }
-
-    .team-description {
-        width: 320px;
-        right: 30px;
-    }
-
-    .team-section-bg {
-        overflow: hidden;
-    }
-}
-
-@media (max-width: 992px) {
-    .team-info {
-        top: 80px;
-        left: 40px;
-        width: 290px;
-    }
-
-    .team-name {
-        font-size: 52px;
-        line-height: 58px;
-        margin-bottom: 15px;
-    }
-
-    .team-vertical-slider {
-        right: 30px;
-        top: 100px;
-    }
-
-    .team-description {
-        width: 290px;
-        right: 25px;
-        bottom: 40px;
-    }
-
-    .x-account-link {
-        left: 30px;
-        bottom: 70px;
-    }
-
-    .team-section-bg {
-        overflow: hidden;
-    }
-}
+}   
 
 @media (max-width: 768px) {
     .team-content-wrapper {
