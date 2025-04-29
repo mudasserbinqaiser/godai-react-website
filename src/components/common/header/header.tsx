@@ -6,7 +6,7 @@ import { ScrollProgressContext } from '../../../context/ScrollProgressContext';
 const Header = () => {
   const { progress } = useContext(ScrollProgressContext);
 
-  const speedMultiplier = 1.78;  // Fills faster
+  const speedMultiplier = 1;  // Fills faster
   const adjustedFill = Math.min(progress * speedMultiplier * 100, 100);
 
   return (

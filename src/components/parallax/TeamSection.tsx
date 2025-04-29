@@ -44,8 +44,8 @@ const teamMembers = [
 
 const TEAM_PLACEHOLDER_TEXT = `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...`;
 
-const BUFFER = 0.3;
-const DELAY = 0.3;
+const BUFFER = 0.4;
+const DELAY = 0.35;
 const THUMBNAIL_HEIGHT = 106.52; // Height of each thumbnail
 const THUMBNAIL_GAP = 20; // Gap between thumbnails
 const MOBILE_THUMBNAIL_HEIGHT = 80; // Smaller height for mobile
@@ -77,14 +77,20 @@ const TeamSection: React.FC<{ progress: number }> = ({ progress }) => {
   const adjustedProgress = Math.max(0, Math.min(1, (progress - DELAY) / (1 - DELAY)));
 
   // Real-time horizontal shift (no snapping/jumping)
-  let teamLayerX = 0;
   let teamLayerY = 0;
   
-  if (adjustedProgress < BUFFER) {
-    teamLayerX = (1 - adjustedProgress / BUFFER) * window.innerWidth;
-  } else if (adjustedProgress > 1 - BUFFER) {
-    // teamLayerY = -((adjustedProgress - (1 - BUFFER)) / BUFFER) * window.innerHeight;
-  }
+  const calculateLayerX = (progress: number) => {
+    if (progress < BUFFER) {
+      // Smooth entry with quadratic easing
+      // t goes from 0 to 1 as progress goes from 0 to BUFFER
+      const t = progress / BUFFER;
+      // t * t creates a smoother acceleration at the start
+      return window.innerWidth * (1 - t * t);
+    }
+    return 0;
+  };
+
+  const teamLayerX = calculateLayerX(adjustedProgress);
 
   const zoom = 1 + adjustedProgress * 0.08;
 
@@ -176,7 +182,8 @@ const TeamSection: React.FC<{ progress: number }> = ({ progress }) => {
         opacity: adjustedProgress > 0 ? 1 : 0,
         pointerEvents: adjustedProgress > 0 ? "auto" : "none",
         zIndex: 12,
-        transition: "transform 0.1s linear, opacity 0.2s ease-out",
+        transition: "transform 1s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.4s ease-in-out", // Updated transition
+
       }}
     >
       {/* Video background */}

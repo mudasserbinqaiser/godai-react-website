@@ -51,7 +51,7 @@ const Home = () => {
   
   // Constants for the "settle zone" - where project layer stays fixed
   const PROJECT_SETTLE_START = 1.0;  // Project is fully visible at 1.0
-  const PROJECT_SETTLE_END = 1.25;   // Start transitioning to NFT after this threshold
+  const PROJECT_SETTLE_END = 1.5;   // Start transitioning to NFT after this threshold
   
   // Adjust progress for the settle zone
   const adjustedProgress = transitionProgress < PROJECT_SETTLE_START 
@@ -73,7 +73,7 @@ const Home = () => {
 
 const characterY = isMobile 
   ? 60 * adjustedProgress         // Smaller vertical movement
-  : 114 * adjustedProgress;
+  : 128 * adjustedProgress;
 
 const characterX = isMobile 
   ? -100 * adjustedProgress       // Minimal horizontal shift
@@ -115,7 +115,7 @@ const characterX = isMobile
 
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault();
-      const delta = e.deltaY / 400;  // Smooth and responsive
+      const delta = e.deltaY / 800;  // Smooth and responsive
 
       if (!ticking) {
         window.requestAnimationFrame(() => {
@@ -146,7 +146,7 @@ const characterX = isMobile
       touchLastRef.current = touchY;
       
       // Use smaller multiplier for more natural touch scrolling feel
-      const scrollMultiplier = 0.0025;
+      const scrollMultiplier = 0.001;
       setTransitionProgress(prev => clamp(prev + deltaY * scrollMultiplier, 0, MAX_PROGRESS));
     };
 
@@ -188,11 +188,11 @@ const characterX = isMobile
 };
 
 
-  const nftLayerProgress = calculateLayerProgress(PROJECT_SETTLE_END, 2.25);
-const gamingLayerProgress = calculateLayerProgress(1.7 , 2.7);
-const mangaLayerProgress = calculateLayerProgress(2.2, 3.1);
-const teamLayerProgress = calculateLayerProgress(2.65, 3.515);
-  const socialLayerProgress = calculateLayerProgress(3.4, 4.0);
+const nftLayerProgress = calculateLayerProgress(PROJECT_SETTLE_END, 2.25);
+const gamingLayerProgress = calculateLayerProgress(2.1 , 3.5);
+const mangaLayerProgress = calculateLayerProgress(2.9, 4.5);
+const teamLayerProgress = calculateLayerProgress(4, 5.515);
+const socialLayerProgress = calculateLayerProgress(5.5, 6);
 
 
 

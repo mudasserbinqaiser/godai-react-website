@@ -3,20 +3,32 @@ import "./NftSection.css";
 import "../parallax/ProjectSection.css";
 import NftCarousel from "./NftCarousel";
 
-const BUFFER = 0.3;
-const DELAY = 0.3;
+const BUFFER = 0.4;
+const DELAY = 0.35;
 
 const NftSection: React.FC<{ progress: number }> = ({ progress }) => {
   // Real-time scroll progress with DELAY
   const adjustedProgress = Math.max(0, Math.min(1, (progress - DELAY) / (1 - DELAY)));
 
-  // Real-time horizontal shift (no snapping/jumping)
-  let nftLayerX = 0;
-  if (adjustedProgress < BUFFER) {
-    nftLayerX = (1 - adjustedProgress / BUFFER) * window.innerWidth;
-  } else if (adjustedProgress > 1 - BUFFER) {
-    nftLayerX = -((adjustedProgress - (1 - BUFFER)) / BUFFER) * window.innerWidth;
-  }
+  const calculateLayerX = (progress: number) => {
+    if (progress < BUFFER) {
+      // Smooth entry with quadratic easing
+      // t goes from 0 to 1 as progress goes from 0 to BUFFER
+      const t = progress / BUFFER;
+      // t * t creates a smoother acceleration at the start
+      return window.innerWidth * (1 - t * t);
+    }
+    // else if (progress > 1 - BUFFER) {
+    //   // Smooth exit with quadratic easing
+    //   // t goes from 0 to 1 as progress goes from (1-BUFFER) to 1
+    //   const t = (progress - (1 - BUFFER)) / BUFFER;
+    //   // t * t creates a smoother acceleration at the start of the exit
+    //   return -(window.innerWidth * (t * t));
+    // }
+    return 0;
+  };
+
+  const nftLayerX = calculateLayerX(adjustedProgress);
 
   const zoom = 1 + adjustedProgress * 0.08;
 
@@ -35,7 +47,7 @@ const NftSection: React.FC<{ progress: number }> = ({ progress }) => {
         opacity: progress > 0 ? 1 : 0,
         pointerEvents: progress > 0 ? "auto" : "none",
         // Light transition for smoother feel but still responsive to scroll
-        transition: "transform 0.1s linear, opacity 0.2s ease-out",
+        transition: "transform 1s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.4s ease-in-out", // Updated transition
       }}
     >
       {/* Video background */}

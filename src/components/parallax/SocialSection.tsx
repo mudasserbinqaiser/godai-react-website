@@ -4,17 +4,25 @@ import "../parallax/ProjectSection.css";
 
 const SocialSection: React.FC<{ progress: number }> = ({ progress }) => {
   // For smooth entrance animation
-  const BUFFER = 0.3;
+  const BUFFER = 0.4;
 
   // Adjust progress for smoother transitions
   const adjustedProgress = Math.max(0, Math.min(1, progress / (1 - BUFFER)));
 
-  // Animation properties
-  let socialsLayerY = 0;
-  
-  if (adjustedProgress < BUFFER) {
-    socialsLayerY = (1 - adjustedProgress / BUFFER) * window.innerWidth;
-  }
+  // New smooth vertical movement calculation
+  const calculateLayerY = (progress: number) => {
+    if (progress < BUFFER) {
+      // Smooth entry from bottom with cubic easing
+      const t = progress / BUFFER;
+      // Using t * t * t for even smoother vertical motion
+      return window.innerHeight * (1 - t * t * t);
+    }
+    return 0;
+  };
+
+  // Calculate the vertical position
+  const socialsLayerY = calculateLayerY(adjustedProgress);
+
 
   return (
     <div
@@ -24,7 +32,7 @@ const SocialSection: React.FC<{ progress: number }> = ({ progress }) => {
         opacity: adjustedProgress > 0 ? 1 : 0,
         pointerEvents: adjustedProgress > 0 ? "auto" : "none",
         zIndex: 15,
-        transition: "transform 0.1s linear, opacity 0.2s ease-out",
+        transition: "transform 2s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.4s ease-in-out", // Updated transition
       }}
     >
       {/* Video background with radial gradient overlay */}

@@ -5,20 +5,33 @@ import "../parallax/NftSection.css";
 
 const MANGA_PLACEHOLDER_TEXT = `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...`;
 
-const BUFFER = 0.3;
-const DELAY = 0.3;
+const BUFFER = 0.4;
+const DELAY = 0.35;
 
 const MangaSection: React.FC<{ progress: number }> = ({ progress }) => {
   // Real-time scroll progress with DELAY
   const adjustedProgress = Math.max(0, Math.min(1, (progress - DELAY) / (1 - DELAY)));
 
-  // Real-time horizontal shift (no snapping/jumping)
-  let mangaLayerX = 0;
-  if (adjustedProgress < BUFFER) {
-    mangaLayerX = (1 - adjustedProgress / BUFFER) * window.innerWidth;
-  } else if (adjustedProgress > 1 - BUFFER) {
-    mangaLayerX = -((adjustedProgress - (1 - BUFFER)) / BUFFER) * window.innerWidth;
-  }
+  // Add the new calculation function
+  const calculateLayerX = (progress: number) => {
+    if (progress < BUFFER) {
+      // Smooth entry with quadratic easing
+      // t goes from 0 to 1 as progress goes from 0 to BUFFER
+      const t = progress / BUFFER;
+      // t * t creates a smoother acceleration at the start
+      return window.innerWidth * (1 - t * t);
+    }
+    // else if (progress > 1 - BUFFER) {
+    //   // Smooth exit with quadratic easing
+    //   // t goes from 0 to 1 as progress goes from (1-BUFFER) to 1
+    //   const t = (progress - (1 - BUFFER)) / BUFFER;
+    //   // t * t creates a smoother acceleration at the start of the exit
+    //   return -(window.innerWidth * (t * t));
+    // }
+    return 0;
+  };
+
+  const mangaLayerX = calculateLayerX(adjustedProgress);
 
   const zoom = 1 + adjustedProgress * 0.08;
 
@@ -31,7 +44,7 @@ const MangaSection: React.FC<{ progress: number }> = ({ progress }) => {
         pointerEvents: adjustedProgress > 0 ? "auto" : "none",
         zIndex: 11,
         // ✨ Remove heavy transition here to make scroll reactive
-        transition: "transform 0.1s linear, opacity 0.2s ease-out",
+        transition: "transform 1s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.4s ease-in-out", // Updated transition
       }}
     >
       {/* Video background */}

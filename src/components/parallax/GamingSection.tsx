@@ -14,8 +14,8 @@ const V_OFFSETS = [168, 68, -48, -158, -258];
 const X_OFFSETS = [120, 60, 0, 60, 120];
 const MOBILE_X_OFFSETS = [-160, -80, 0, 80, 160];
 const MOBILE_Y_OFFSETS = [100, 50, 0, 50, 100]; // Creating a V shape vertically
-const BUFFER = 0.3;
-const DELAY = 0.3;
+const BUFFER = 0.4;
+const DELAY = 0.35;
 
 const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
   const [centerIdx, setCenterIdx] = useState(2);
@@ -38,18 +38,25 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
   // Real-time scroll progress with DELAY
   const adjustedProgress = Math.max(0, Math.min(1, (progress - DELAY) / (1 - DELAY)));
 
-  // More sophisticated horizontal scroll logic:
-  // 1. Slow/gradual entry from right (first 15% of progress)
-  // 2. Direct linear exit to left (remaining progress) 
-  let gamingLayerX = 0;
-  
-  if (adjustedProgress < BUFFER) {
-    // Entry phase - smoother curve from right to center
-    gamingLayerX = (1 - adjustedProgress / BUFFER) * window.innerWidth;
-  } else if (adjustedProgress > 1 - BUFFER) {
-    // Exit phase - direct proportional to scroll (responsive)
-    gamingLayerX = -((adjustedProgress - (1 - BUFFER)) / BUFFER) * window.innerWidth;
-  }
+  const calculateLayerX = (progress: number) => {
+    if (progress < BUFFER) {
+      // Smooth entry with quadratic easing
+      // t goes from 0 to 1 as progress goes from 0 to BUFFER
+      const t = progress / BUFFER;
+      // t * t creates a smoother acceleration at the start
+      return window.innerWidth * (1 - t * t);
+    }
+    // else if (progress > 1 - BUFFER) {
+    //   // Smooth exit with quadratic easing
+    //   // t goes from 0 to 1 as progress goes from (1-BUFFER) to 1
+    //   const t = (progress - (1 - BUFFER)) / BUFFER;
+    //   // t * t creates a smoother acceleration at the start of the exit
+    //   return -(window.innerWidth * (t * t));
+    // }
+    return 0;
+  };
+
+  const gamingLayerX = calculateLayerX(adjustedProgress);
 
   const zoom = 1 + adjustedProgress * 0.08;
 
@@ -151,6 +158,7 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
         transform: `translateX(${gamingLayerX}px) scale(${zoom})`,
         opacity: progress > 0 ? 1 : 0,
         pointerEvents: progress > 0 ? "auto" : "none",
+        transition: "transform 1s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.4s ease-in-out", // Updated transition
       }}
     >
       {/* Video background always rendered */}
