@@ -226,14 +226,14 @@
 @media (max-width: 480px) {
     .manga-title {
         font-size: 2rem;
-        transform: translateY(520px) !important;
+        transform: translateY(450px) !important;
     }
 
     .manga-description {
         width: 90%;
         font-size: 12px;
         line-height: 16px;
-        bottom: 50px;
+        bottom: 140px;
         left: 20px !important;
     }
 
