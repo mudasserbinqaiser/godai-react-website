@@ -344,3 +344,121 @@
         font-size: 12px;
     }
 }
+
+/* Add these styles for the Back to Top button */
+.back-to-top-container {
+    position: absolute;
+    right: 40px;
+    bottom: 40px;
+    z-index: 20;
+    transition: opacity 0.3s ease;
+}
+
+.back-to-top-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(243, 237, 224, 0.5);
+    border-radius: 50%;
+    background: rgba(7, 23, 38, 0.4);
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #F3EDE0;
+}
+
+.back-to-top-button:hover {
+    transform: translateY(-5px);
+    background: rgba(7, 23, 38, 0.7);
+    box-shadow: 0 0 20px rgba(0, 183, 255, 0.3);
+    border-color: rgba(0, 183, 255, 0.5);
+}
+
+.back-to-top-icon {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 5px;
+    background-color: #F3EDE0;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 15l-6-6-6 6'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 15l-6-6-6 6'/%3E%3C/svg%3E");
+}
+
+.back-to-top-button span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+}
+
+/* Animation for the Back to Top button */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.back-to-top-button {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Responsive styles for the Back to Top button */
+@media (max-width: 768px) {
+    .back-to-top-container {
+        right: 20px;
+        bottom: 30px;
+    }
+    
+    .back-to-top-button {
+        width: 60px;
+        height: 60px;
+        padding: 10px;
+    }
+    
+    .back-to-top-icon {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .back-to-top-button span {
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .back-to-top-container {
+        right: 15px;
+        bottom: 20px;
+    }
+    
+    .back-to-top-button {
+        width: 50px;
+        height: 50px;
+        padding: 8px;
+    }
+    
+    .back-to-top-icon {
+        width: 14px;
+        height: 14px;
+        margin-bottom: 3px;
+    }
+    
+    .back-to-top-button span {
+        font-size: 7px;
+    }
+}

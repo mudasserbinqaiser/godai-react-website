@@ -13,19 +13,19 @@ const teamMembers = [
   {
     name: "Luluchiru",
     role: "Lead Artist",
-    image: "/assets/images/nft2.png",
+    image: "/assets/images/nft1.png",
     xLink: "https://x.com/luluchiru"
   },
   {
     name: "Clouds",
     role: "Community Lead",
-    image: "/assets/images/nft3.png",
+    image: "/assets/images/nft7.png",
     xLink: "https://x.com/altrdcl0ud"
   },
   {
     name: "Vlad",
     role: "Game Development",
-    image: "/assets/images/nft1.png",
+    image: "/assets/images/nft2.png",
     xLink: null
   },
   {
@@ -42,7 +42,7 @@ const teamMembers = [
   }
 ];
 
-const TEAM_PLACEHOLDER_TEXT = `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...`;
+const TEAM_PLACEHOLDER_TEXT = `Meet the council behind GODAI`;
 
 const BUFFER = 0.4;
 const DELAY = 0.35;

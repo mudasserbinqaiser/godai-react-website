@@ -24,6 +24,22 @@
     z-index: 1;
 }
 
+/* Project Title */
+.nft-title {
+    position: absolute;
+    font-family: 'Cyberjunkies', sans-serif;
+    width: 100%;
+    text-align: right;
+    top: 13%;
+    right: 7%;
+    font-weight: 400;
+    font-size: 2.8rem;
+    color: #FFFFFF;
+    text-shadow: 0 0 15px rgba(0, 183, 255, 0.3);
+    opacity: 0.9;
+    z-index: 10;
+}
+
 @media (max-width: 768px) {
     .nft-section-bg {
         overflow: hidden;
@@ -31,6 +47,13 @@
 }
 
 @media (max-width: 480px) {
+    .nft-title {
+        font-size: 2.2rem;
+        text-align: center;
+        left: 1%;
+        top: 14%;
+    }
+
     .nft-section-bg {
         overflow: hidden;
     }

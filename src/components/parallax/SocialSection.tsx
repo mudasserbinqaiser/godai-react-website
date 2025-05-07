@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./SocialSection.css";
 import "../parallax/ProjectSection.css";
 
@@ -17,16 +17,61 @@ const SocialSection: React.FC<{ progress: number }> = ({ progress }) => {
       const t = progress / BUFFER;
       return window.innerHeight * (1 - t * t * t);
     }
-    // else if (progress > 1 - BUFFER) {
-    //   // Smooth exit to top with cubic easing
-    //   const t = (progress - (1 - BUFFER)) / BUFFER;
-    //   return -(window.innerHeight * (t * t * t));
-    // }
     return 0;
   };
 
   // Calculate the vertical position
   const socialsLayerY = calculateLayerY(adjustedProgress);
+  
+  // Add the back-to-top button directly to the body for better mobile interaction
+  useEffect(() => {
+    // Create the button container
+    const backToTopContainer = document.createElement('div');
+    backToTopContainer.className = 'back-to-top-container';
+    backToTopContainer.style.position = 'fixed';
+    backToTopContainer.style.bottom = '40px';
+    backToTopContainer.style.right = '40px';
+    backToTopContainer.style.zIndex = '9999';
+    
+    // Create the button
+    const backToTopButton = document.createElement('button');
+    backToTopButton.className = 'back-to-top-button';
+    backToTopButton.ariaLabel = 'Back to top';
+    
+    // Button icon
+    const backToTopIcon = document.createElement('div');
+    backToTopIcon.className = 'back-to-top-icon';
+    
+    // Button text
+    const backToTopText = document.createElement('span');
+    backToTopText.textContent = '';
+    
+    // Append elements
+    backToTopButton.appendChild(backToTopIcon);
+    backToTopContainer.appendChild(backToTopButton);
+    
+    // Add click event listener
+    backToTopButton.addEventListener('click', () => {
+      // Reset the progress
+      window.dispatchEvent(new CustomEvent('godaiResetProgress'));
+      
+      // Fallback scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    // Show button only when this section is visible
+    if (adjustedProgress > 0.5) {
+      // Add to document
+      document.body.appendChild(backToTopContainer);
+    }
+    
+    // Cleanup function
+    return () => {
+      if (document.body.contains(backToTopContainer)) {
+        document.body.removeChild(backToTopContainer);
+      }
+    };
+  }, [adjustedProgress]);
 
   return (
     <div
@@ -36,7 +81,6 @@ const SocialSection: React.FC<{ progress: number }> = ({ progress }) => {
         opacity: adjustedProgress > 0 ? 1 : 0,
         pointerEvents: adjustedProgress > 0 ? "auto" : "none",
         zIndex: 15,
-        // Increased transition duration and updated easing curve for smoother movement
         transition: "transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1.000), opacity 0.6s ease-in-out",
       }}
     >
@@ -53,13 +97,11 @@ const SocialSection: React.FC<{ progress: number }> = ({ progress }) => {
         </video>
         <div className="socials-radial-gradient"></div>
         <div className="socials-radial-gradient"></div>
-
       </div>
 
       {/* Center Banner Image */}
       <div className="socials-banner-wrapper">
-
-          {/* Dark Center Blur */}
+        {/* Dark Center Blur */}
         <div className="socials-center-blur"></div>
 
         <img 

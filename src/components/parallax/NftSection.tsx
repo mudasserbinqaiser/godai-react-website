@@ -88,6 +88,18 @@ const NftSection: React.FC<{ progress: number }> = ({ progress }) => {
         <div className="vertical-line v5"></div>
       </div>
 
+      {/* NFT Section Title */}
+      <div 
+        className="nft-title"
+        style={{
+          opacity: adjustedProgress,
+          transform: `translateX(${(1 - adjustedProgress) * 50}px)`,
+          transition: 'opacity 0.5s ease-out, transform 0.5s ease-out'
+        }}
+      >
+        GENESIS SUMMONING
+      </div>
+
       {/* NFT Carousel */}
       <NftCarousel />
     </div>

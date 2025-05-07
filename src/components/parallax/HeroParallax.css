@@ -57,24 +57,52 @@ z-index: 11;
   z-index: 6;
 }
 
-.enter-godai-image {
-  width: auto;
-  height: auto;
-  max-width: 500px;
-  transform: scale(0.7);
-  transition: transform 0.3s ease;
+/* Simplify enter-godai-text styling to just have the glow, no animations */
+.enter-godai-text {
+  position: relative;
+  font-family: 'Cyberjunkies', sans-serif;
+  font-weight: 400;
+  font-size: 62px;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
   z-index: 91;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  margin-bottom: 40px;
+  
+  /* Just keep the glow effect without animations */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+               0 0 20px rgba(255, 255, 255, 0.3),
+               0 0 30px rgba(255, 255, 255, 0.2);
+  
+  /* Remove all animations */
+  animation: none;
+  transition: text-shadow 0.3s ease;
 }
 
-/* Make sure ParallaxBanner doesn't clip */
-.parallax-banner {
-  overflow: visible !important;
+/* Remove all the animation keyframes */
+
+/* Remove all pseudo-elements with animations */
+.enter-godai-text::before,
+.enter-godai-text::after {
+  display: none;
+}
+
+/* Update hover state to just intensify the glow */
+.enter-godai-text:hover {
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.7),
+               0 0 30px rgba(255, 255, 255, 0.5),
+               0 0 45px rgba(255, 255, 255, 0.3);
 }
 
 /* Media Queries */
 @media (max-width: 1200px) {
-  .enter-godai-image {
-    max-width: 250px;
+  .enter-godai-text {
+    font-size: 38px;
     z-index: 90;
   }
 }
@@ -84,9 +112,12 @@ z-index: 11;
     bottom: 15%;
   }
 
-  .enter-godai-image {
-    max-width: 200px;
-    transform: scale(0.6);
+  .enter-godai-text {
+    font-size: 32px;
+  }
+  
+  .enter-godai-text:hover {
+    transform: none;
   }
 
   .hero-characters-container {
@@ -117,8 +148,6 @@ z-index: 11;
     .enter-godai-container {
       overflow: hidden;
     }
-
-    
 }
 
 @media (max-width: 480px) {
@@ -128,9 +157,8 @@ z-index: 11;
     height: 400px;
   }
 
-  .enter-godai-image {
-    max-width: 400px;
-    /* transform: translateY(70px); */
+  .enter-godai-text {
+    font-size: 38px;
     z-index: 90;
   }
     .hero-characters-container {

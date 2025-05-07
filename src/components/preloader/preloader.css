@@ -21,7 +21,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #000;
+    background-color: #071726; /* Dark blue background */
     z-index: 9999;
     overflow: hidden;
 }

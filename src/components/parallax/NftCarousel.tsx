@@ -23,12 +23,13 @@ const nftTitles = [
 ];
 
 const nftDescriptions = [
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+  "Born of starlight and shadow, he walks between worlds. When he awakens, reality itself trembles before his cosmic power.",
+  "Silent as a breeze, fierce as a storm. She commands the sky—where wind goes, she follows, unseen until it's too late.",
+  "Keeper of the ocean's wisdom, his gaze holds the depth of ancient seas. He commands tides with quiet strength, guarding secrets only the waters remember.",
+  "Graceful yet relentless, she bends oceans to her will. Her tides reshape destinies, calm surfaces hiding untold depths.",
+  "The sea whispers his name; ancient depths rise to answer. Beneath his calm lies the silent power of endless oceans.",
+  "Master of winds and keeper of storms. He moves unseen, carving fate from clouds with blades of silent thunder.",
+  "Guardian of earth and keeper of roots, mountains yield to his will. In nature’s ancient shadow, he defends the sacred balance.",
 ];
 
 const fanAngles = [-45.17, -30.76, -15.45, 0, 15.45, 30.76, 45.17];
@@ -235,8 +236,8 @@ export default function NftCarousel() {
       </div>
 
       <div className="nft-carousel-description">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
-        </div>
+        {nftDescriptions[centerIdx]}
+      </div>
 
       {/* Slider controls */}
       <div className="nft-slider-controls">

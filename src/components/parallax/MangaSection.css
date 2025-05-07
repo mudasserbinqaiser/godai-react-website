@@ -23,10 +23,19 @@
 .manga-blur-gradient {
     position: absolute;
     width: 100%;
-    height: 139px;
+    height: 100%;
     left: 0;
     bottom: 0;
-    background: linear-gradient(180deg, rgba(7, 23, 38, 0) 0%, #071726 89.9%);
+    background: linear-gradient(to top,
+                rgba(7, 23, 38, 1) 0%,
+                /* Was 1 */
+                rgba(7, 23, 38, 0.6) 30%,
+                /* Was 0.95 */
+                rgba(7, 23, 38, 0.3) 60%,
+                /* Was 0.9 */
+                rgba(7, 23, 38, 0.2) 80%,
+                /* Was 0.85 */
+                rgba(7, 23, 38, 0.1) 100%);
     z-index: 1;
 }
 
@@ -54,6 +63,21 @@
     pointer-events: none;
 }
 
+/* Manga Title */
+.manga-title {
+    position: absolute;
+    width: 100%;
+    text-align: right;
+    bottom: 38%;
+    right: 5%;
+    font-family: 'Cyberjunkies', sans-serif;
+    font-weight: 400;
+    font-size: 3.5rem;
+    color: #FFFFFF;
+    text-shadow: 0 0 15px rgba(0, 183, 255, 0.3);
+    opacity: 0.9;
+    z-index: 10;
+}
 /* Decorative lines and vectors */
 .manga-lines .manga-line.left {
     position: absolute;
@@ -128,28 +152,57 @@
 .manga-description {
     position: absolute;
     width: 415px;
-    height: 80px;
-    bottom: 50px;
+    bottom: 80px;
     right: 50px;
     font-family: 'IBM Plex Mono', monospace;
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
-    line-height: 20px;
+    line-height: 22px;
     text-align: right;
     color: #FFFFFF;
     text-shadow: 0px 0px 20px #000000;
     z-index: 75;
-    padding: 12px 18px;
-        /* For debugging */
+    padding: 12px 31px;
+}
+
+.manga-description p {
+    margin-bottom: 1rem;
+}
+
+/* Add this new CSS class */
+.manga-description .manga-bold-text {
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.05rem;
+    margin-top: 1rem;
+    text-shadow: 0px 0px 25px rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 1200px) {
+    .manga-title {
+        font-size: 3rem;
+    }
 }
 
 @media (max-width: 768px) {
+    .manga-title {
+        font-size: 2.5rem;
+        text-align: center;
+        left: 0;
+        width: 100%;
+        top: 8%;
+    }
+    
+    
     .manga-description {
-        width: 300px;
-        font-size: 12px;
-        line-height: 16px;
-        top: 600px;
+        width: 80%;
+        font-size: 13px;
+        line-height: 18px;
+        left: 50%;
+        transform: translateX(-50%);
+        right: auto;
+        bottom: 60px;
         text-align: center;
     }
 
@@ -157,15 +210,35 @@
         height: 100%;
         background: linear-gradient(to top,
                 rgba(7, 23, 38, 1) 0%,
-                /* Was 1 */
                 rgba(7, 23, 38, 0.7) 30%,
-                /* Was 0.95 */
                 rgba(7, 23, 38, 0.6) 60%,
-                /* Was 0.9 */
                 rgba(7, 23, 38, 0.4) 80%,
-                /* Was 0.85 */
                 rgba(7, 23, 38, 0.1) 100%);
-        /* Was 0.8 */
         z-index: 90;
+    }
+
+    .manga-description .manga-bold-text {
+        font-size: 14px;
+        margin-top: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .manga-title {
+        font-size: 2rem;
+        transform: translateY(520px) !important;
+    }
+
+    .manga-description {
+        width: 90%;
+        font-size: 12px;
+        line-height: 16px;
+        bottom: 50px;
+        left: 20px !important;
+    }
+
+    .manga-description .manga-bold-text {
+        font-size: 13px;
+        margin-top: 1.2rem;
     }
 }
