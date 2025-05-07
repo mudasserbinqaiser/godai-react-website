@@ -46,6 +46,9 @@ const Home = () => {
   const touchStartRef = useRef(0);
   const touchLastRef = useRef(0);
   const isScrollingRef = useRef(false);
+  const [showEmailForm, setShowEmailForm] = useState(false);
+  const [email, setEmail] = useState('');
+  const [emailSubmitted, setEmailSubmitted] = useState(false);
 
   const MAX_PROGRESS = 6; // 0-1: vertical, 1-2: NFT, 2-3: gaming, 3-4: manga, 4-5: team, 5-6: socials
   
@@ -203,6 +206,56 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
   // Project avatar fade only (no scale/rotate)
   const avatarFade = projectElementOpacity;
 
+  // Replace the existing useEffect for showing the form with this:
+  useEffect(() => {
+    // Show the form immediately when the page loads if not skipped/submitted before
+    if (!localStorage.getItem('emailSkipped') && !localStorage.getItem('emailSubmitted')) {
+      setShowEmailForm(true);
+    }
+  }, []); // Empty dependency array makes this run once on mount
+
+  const handleSubmitEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+    localStorage.setItem('emailSubmitted', 'true');
+    setEmailSubmitted(true);
+    setShowEmailForm(false);
+  };
+
+  const handleSkipEmail = () => {
+    localStorage.setItem('emailSkipped', 'true');
+    setShowEmailForm(false);
+  };
+
+  useEffect(() => {
+    // Add a method to reset the scroll progress
+    (window as any).scrollProgressReset = () => {
+      setTransitionProgress(0);
+    };
+    
+    // Listen for the custom back to top event
+    const handleBackToTop = () => {
+      setTransitionProgress(0);
+    };
+    
+    document.addEventListener('godaiBackToTop', handleBackToTop);
+    
+    return () => {
+      document.removeEventListener('godaiBackToTop', handleBackToTop);
+      delete (window as any).scrollProgressReset;
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleResetProgress = () => {
+      setTransitionProgress(0);
+    };
+    
+    window.addEventListener('godaiResetProgress', handleResetProgress);
+    
+    return () => {
+      window.removeEventListener('godaiResetProgress', handleResetProgress);
+    };
+  }, []);
 
   return (
     <>
@@ -220,11 +273,9 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
           bottom: isMobile ? 'auto' : 0
         }}
       >
-        <img 
-          src="/assets/images/enter-godai.png" 
-          alt="Enter Godai" 
-          className="enter-godai-image" 
-        />
+        <div className="enter-godai-text">
+          ENTER GODAI
+        </div>
       </div>
 
       <div 
@@ -427,6 +478,18 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
                 speed: -7,
                 children: (
                   <>
+                    {/* Project Title - Added */}
+                    <div 
+                      className="project-title"
+                      style={{
+                        opacity: projectElementOpacity,
+                        transform: `translateY(${adjustedProgress * 5}px)`,
+                        transition: 'opacity 0.2s, transform 0.3s ease-out'
+                      }}
+                    >
+                      GODAI ORIGINS
+                    </div>
+                    
                     {/* Project Avatar with fade only */}
                     <div 
                       className="project-avatar"
@@ -470,9 +533,9 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
                         transition: 'opacity 0.2s'
                       }}
                     >
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                      when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                      <p>Long ago, Earth, Fire, Water, Air, and Aether held the world in balance. But balance is fragile and with time, the elements turned against each other.</p>
+                      <br />
+                      <p>Now, their unity shattered, an ancient conflict returns.</p>
                     </div>
                   </>
                 )
@@ -506,6 +569,29 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
           <SocialSection progress={socialLayerProgress} />
         )}
       </div>
+      {showEmailForm && (
+        <div className="email-overlay">
+          <div className="email-modal">
+            <h2>Get Early Access</h2>
+            <p>Sign up to be notified when early access becomes available</p>
+            <form onSubmit={handleSubmitEmail}>
+              <input
+                type="email"
+                placeholder="Your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <div className="email-actions">
+                <button type="submit">Submit</button>
+                <button type="button" className="skip-button" onClick={handleSkipEmail}>
+                  Skip
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   );
 };

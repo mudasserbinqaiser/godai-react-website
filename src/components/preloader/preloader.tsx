@@ -7,10 +7,6 @@ interface PreloaderProps {
 
 const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
     const [loading, setLoading] = useState(true);
-    const [showForm, setShowForm] = useState(false);
-    const [email, setEmail] = useState('');
-    const [submitted, setSubmitted] = useState(false);
-    const [validationError, setValidationError] = useState('');
     const [loadingPercentage, setLoadingPercentage] = useState(0);
     const [fadeOut, setFadeOut] = useState(false);
     const loadingInterval = useRef<number | null>(null);
@@ -20,8 +16,27 @@ const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
   useEffect(() => {
     // Create a list of all critical assets to load
     const imagesToPreload: string[] = [
-      // Add any critical images your site uses
-      // Example: '/assets/images/background.jpg'
+      '/assets/images/2.png',
+      '/assets/images/enter-godai.png',
+      '/assets/images/nft1.png',
+      '/assets/images/nft2.png',
+      '/assets/images/nft3.png',
+      '/assets/images/nft4.png',
+      '/assets/images/nft5.png',
+      '/assets/images/nft6.png',
+      '/assets/images/nft7.png',
+      '/assets/images/hero-page-characters.png',
+      '/assets/images/gaming.png',
+      '/assets/images/join.png',
+      '/assets/images/signup.png',
+      '/assets/images/socials_banner.png',
+      '/assets/images/team.png',
+      '/assets/videos/2.webm',
+      '/assets/videos/gaming.webm',
+      '/assets/videos/hero-background.webm',
+      '/assets/videos/manga.webm',
+      '/assets/videos/nft.webm',
+      '/assets/videos/socials.webm',
     ];
 
     const fontsToCheck = ['Cyberjunkies'];
@@ -80,123 +95,46 @@ const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
     const elapsed = Date.now() - startTime;
     let percentage: number;
 
-    if (assetsLoaded.current) {
-      percentage = Math.min(Math.floor((elapsed / minLoadingTime) * 100), 100);
-    } else if (elapsed > maxLoadingTime) {
-      percentage = 100;
-    } else {
-      percentage = Math.min(Math.floor((elapsed / maxLoadingTime) * 100), 95);
-    }
+      if (assetsLoaded.current) {
+        percentage = Math.min(Math.floor((elapsed / minLoadingTime) * 100), 100);
+      } else if (elapsed > maxLoadingTime) {
+        percentage = 100;
+      } else {
+        percentage = Math.min(Math.floor((elapsed / maxLoadingTime) * 100), 95);
+      }
 
-    setLoadingPercentage(percentage);
+      setLoadingPercentage(percentage);
 
-    if (percentage >= 100) {
-      if (loadingInterval.current) clearInterval(loadingInterval.current);
-      setLoading(false);
-      setTimeout(() => {
-        setShowForm(true);
-      }, 1500); // Slight delay before form shows up
-    }
-  }, 50);
-
-  return () => {
-    if (loadingInterval.current) clearInterval(loadingInterval.current);
-  };
-}, []);
-
-
-  // Transition after form submission and thank you message
-  useEffect(() => {
-    if (submitted) {
-      // Show the thank you message for 3 seconds, then fade out
-      const timer = setTimeout(() => {
+      if (percentage >= 100) {
+        if (loadingInterval.current) clearInterval(loadingInterval.current);
+        
+        // Start fade out animation
         setFadeOut(true);
         
-        // After fadeout animation, notify parent that loading is complete
+        // Notify parent that loading is complete after animation
         setTimeout(() => {
           onLoadingComplete();
         }, 1000);
-      }, 1000);
-      
-      return () => clearTimeout(timer);
-    }
-  }, [submitted, onLoadingComplete]);
+      }
+    }, 50);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Custom validation
-    if (!email) {
-      setValidationError('Please fill out this field.');
-      return;
-    }
-    
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setValidationError('Please enter a valid email address.');
-      return;
-    }
-    
-    // Clear any previous validation errors
-    setValidationError('');
-    
-    localStorage.setItem('userEmail', email);
-    setSubmitted(true);
-  };
+    return () => {
+      if (loadingInterval.current) clearInterval(loadingInterval.current);
+    };
+  }, [onLoadingComplete]);
 
   return (
-    <div className={`preloader ${!loading ? 'loaded' : ''} ${fadeOut ? 'fade-out' : ''}`}>
-      <div className="grid-overlay"></div>
+    <div className={`preloader ${fadeOut ? 'fade-out' : ''}`}>
       <div className="preloader-content">
         <h1 className="godai-text">Godai</h1>
         
         <div className="loading-progress">
           <div className="loading-bar" style={{ width: `${loadingPercentage}%` }}></div>
         </div>
+        
         <div className="loading-percentage">
-          {loading ? `INITIALIZING... ${loadingPercentage}%` : 'COMPLETE'}
+          {loading ? `${loadingPercentage}%` : ''}
         </div>
-        
-        {showForm && !submitted && (
-          <div className="email-form-container">
-            <form onSubmit={handleSubmit} className="email-form">
-              <h2>Get Early Access</h2>
-              <div className="form-group">
-                <input
-                  type="text" 
-                  inputMode="email"
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                    if (validationError) setValidationError('');
-                  }}
-                  placeholder="Enter your email"
-                  style={{ pointerEvents: 'auto' }}
-                  autoFocus
-                  aria-invalid={!!validationError}
-                />
-                {validationError && (
-                  <div className="validation-message">
-                    {validationError}
-                  </div>
-                )}
-                <button 
-                  type="submit"
-                  style={{ pointerEvents: 'auto' }}
-                >
-                  Submit
-                </button>
-              </div>
-            </form>
-          </div>
-        )}
-        
-        {submitted && (
-          <div className={`thank-you-message ${fadeOut ? 'fade-out' : ''}`}>
-            <h2>Thank You!</h2>
-            <p>We'll notify you when early access becomes available.</p>
-          </div>
-        )}
       </div>
     </div>
   );

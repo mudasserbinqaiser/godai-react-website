@@ -91,7 +91,7 @@
 
 .team-description-header {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 20px;
     color: #FFFFFF;
     margin: 0;
@@ -164,16 +164,16 @@
 /* Vertical slider */
 .team-vertical-slider {
     position: absolute;
-    top: 115px;
+    top: 100px;
     right: 77px;
-    width: 80px;
-    height: 486px;
+    width: 130px;
+    height: 750px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 0;
     z-index: 5;
-    transform: translateY(-40px);
+    transform: translateY(-30px);
 }
 
 .team-arrow {
@@ -193,15 +193,14 @@
 .team-thumbnails-container {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     width: 100%;
     position: relative;
-    /* Animation is handled inline for dynamic positioning */
 }
 
 .team-thumbnails-viewport {
-    height: 380px;
-    width: 81px;
+    height: 450px;
+    width: 120px;
     overflow: hidden;
     position: relative;
     margin: 10px 0;
@@ -223,12 +222,12 @@
 }
 
 .team-thumbnail {
-    width: 80.97px;
-    height: 106.52px;
+    width: 120px;
+    height: 160px;
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    border-radius: 3px;
+    border-radius: 4px;
     flex-shrink: 0;
     /* Animation is handled inline */
 }
@@ -253,8 +252,8 @@
 }
 
 .team-thumbnail.active {
-    border: 1px solid #D94B18;
-    box-shadow: 0 0 10px rgba(217, 75, 24, 0.6);
+    border: 2px solid #D94B18;
+    box-shadow: 0 0 15px rgba(217, 75, 24, 0.7);
 }
 
 /* Mobile dots for horizontal navigation */
@@ -288,7 +287,7 @@
 .x-account-link {
     position: absolute;
     bottom: 86px;
-    left: 48px;
+    left: 630px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -333,7 +332,7 @@
     font-family: 'IBM Plex Mono', monospace;
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 20px;
     text-align: right;
     color: #FFFFFF;
@@ -401,13 +400,17 @@
     }
 
     .x-account-link {
-        position: relative;
-        left: 0;
-        bottom: 0;
-        width: 200px;
-        margin: 30px auto 0;
-        order: 4;
-        justify-content: center;
+        position: relative !important;
+        width: auto !important;
+        display: flex !important;
+        justify-content: center !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin: 20px auto !important;
+        bottom: auto !important;
+        padding: 20px !important;
+        z-index: 100 !important;
+        touch-action: manipulation;
     }
 
     .x-line {
@@ -415,8 +418,22 @@
     }
 
     .x-button {
-        width: 50px;
-        height: 50px;
+        position: relative !important;
+        min-width: 60px !important;
+        min-height: 60px !important;
+        z-index: 101 !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: transparent !important;
+    }
+
+    .x-button::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        z-index: -1;
     }
 
     .team-description {
@@ -470,18 +487,9 @@
         height: 10px;
     }
 
-    .x-account-link {
-        width: 160px;
-        margin: 20px auto 0;
-    }
-
-    .x-line {
-        width: 70px;
-    }
-
     .x-button {
-        width: 45px;
-        height: 45px;
+        min-width: 50px !important;
+        min-height: 50px !important;
     }
 
     .team-description {

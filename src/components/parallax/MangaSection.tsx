@@ -3,7 +3,9 @@ import "./MangaSection.css";
 import "../parallax/ProjectSection.css";
 import "../parallax/NftSection.css";
 
-const MANGA_PLACEHOLDER_TEXT = `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...`;
+// Split the content into main paragraph and bold final line
+const MANGA_MAIN_TEXT = "Long before the first battle, the stories were written. These are the forgotten legends of warriors, spirits, and the path that led to war.";
+const MANGA_BOLD_TEXT = "Every truth has a beginning. Will you read between the lines?";
 
 const BUFFER = 0.4;
 const DELAY = 0.35;
@@ -67,28 +69,47 @@ const MangaSection: React.FC<{ progress: number }> = ({ progress }) => {
         }}
       />
 
+      {/* Title and Subtitle */}
+      <div 
+        className="manga-title"
+        style={{
+          opacity: adjustedProgress,
+          transform: `translateX(${(1 - adjustedProgress) * -50}px)`,
+          transition: 'opacity 0.5s ease-out, transform 0.5s ease-out'
+        }}
+      >
+        THE CHRONICLES
+      </div>
       {/* Decorative elements */}
       <div className="manga-blur-gradient" style={{ zIndex: 1 }}></div>
       <div className="manga-art-placeholder" />
       <div className="project-lines">
         <div className="left-side">
-        <div className="vector-8"></div>
-        <div className="vector-9"></div>
+          <div className="vector-8"></div>
+          <div className="vector-9"></div>
         </div>
         <div className="right-side">
-        <div className="vector-8"></div>
-        <div className="vector-9"></div>
+          <div className="vector-8"></div>
+          <div className="vector-9"></div>
         </div>
         <div className="vertical-line v1" style={{ transform: `translateY(${adjustedProgress * 5}px)` }}></div>
         <div className="vertical-line v2" style={{ transform: `translateY(${adjustedProgress * 10}px)` }}></div>
         <div className="vertical-line v3" style={{ transform: `translateY(${adjustedProgress * 15}px)` }}></div>
         <div className="vertical-line v4" style={{ transform: `translateY(${adjustedProgress * 10}px)` }}></div>
         <div className="vertical-line v5" style={{ transform: `translateY(${adjustedProgress * 5}px)` }}></div>
-    </div>
+      </div>
 
-      {/* Description */}
-      <div className="manga-description">
-        {MANGA_PLACEHOLDER_TEXT}
+      {/* Description with main text and bold final line */}
+      <div 
+        className="manga-description"
+        style={{
+          opacity: adjustedProgress,
+          transform: `translateY(${(1 - adjustedProgress) * 30}px)`,
+          transition: 'opacity 0.7s ease-out, transform 0.7s ease-out'
+        }}
+      >
+        <p>{MANGA_MAIN_TEXT}</p>
+        <p className="manga-bold-text">{MANGA_BOLD_TEXT}</p>
       </div>
     </div>
   );

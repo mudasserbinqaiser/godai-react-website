@@ -145,3 +145,122 @@
         overflow: hidden;
     }
 }
+
+.email-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(7, 23, 38, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+}
+
+.email-modal {
+  background-color: #071726;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+  padding: 35px 40px;
+  border-radius: 6px;
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.email-modal h2 {
+  color: #fff;
+  font-family: 'Cyberjunkies', sans-serif;
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  margin-top: 0;
+}
+
+.email-modal p {
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.email-modal input {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 25px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border-radius: 4px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.email-modal input:focus {
+  outline: none;
+  border-color: rgba(217, 75, 24, 0.5);
+  box-shadow: 0 0 0 2px rgba(217, 75, 24, 0.2);
+}
+
+.email-modal input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.email-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.email-modal button {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.email-modal button[type="submit"] {
+  background-color: #D94B18;
+  color: #fff;
+}
+
+.email-modal button[type="submit"]:hover {
+  background-color: #f05a24;
+  box-shadow: 0 0 15px rgba(217, 75, 24, 0.4);
+}
+
+.email-modal .skip-button {
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.email-modal .skip-button:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.8);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+  .email-modal {
+    padding: 25px 20px;
+    max-width: 380px;
+  }
+  
+  .email-modal h2 {
+    font-size: 24px;
+  }
+}
