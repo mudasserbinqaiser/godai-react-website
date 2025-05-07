@@ -189,6 +189,48 @@
     pointer-events: auto;
 }
 
+/* Project Title */
+.gaming-title {
+    position: absolute;
+    font-family: 'Cyberjunkies', sans-serif;
+    width: 100%;
+    text-align: right;
+    top: 25%;
+    left: 65%;
+    font-weight: 200;
+    font-size: 2.5rem;
+    color: #FFFFFF;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+        0 0 20px rgba(255, 255, 255, 0.3),
+        0 0 30px rgba(255, 255, 255, 0.2);
+    opacity: 0.9;
+    z-index: 10;
+}
+
+/* Subtitle */
+.gaming-subtitle {
+position: absolute;
+    width: 300px;
+    height: 60px;
+    left: 91%;
+    top: 72%;
+    font-family: 'IBM Plex Mono', monospace;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 20px;
+    /* or 143% */
+    text-align: right;
+
+    color: #D94B18;
+    background: none;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 .nav-arrow:hover {
     background: rgba(217, 75, 24, 0.7);
 }
@@ -219,6 +261,7 @@
         justify-content: center;
         overflow: hidden;
         margin-bottom: 30px;
+        top: -15%;
         /* Add space below the slider */
     }
 
@@ -253,7 +296,7 @@
     .gaming-dots {
         position: relative;
         left: 0;
-        top: 0;
+        top: -20%;
         transform: none;
         flex-direction: row;
         margin-top: 40px;
@@ -314,10 +357,11 @@
     }
 
     .gaming-description {
-        font-size: 11px;
+        font-size: 13px;
         line-height: 16px;
         max-width: 280px;
         margin-top: 15px;
+        top: -10%;
     }
 
     .gaming-dot {
@@ -329,5 +373,19 @@
         width: 30px;
         height: 30px;
         font-size: 14px;
+    }
+
+    .gaming-title {
+        font-size: 2.2rem;
+        left: -39%;
+        top: 47%;
+    }
+
+    .gaming-subtitle {
+        max-width: 280px;
+        font-size: 13px;
+        left: 15%;
+        top: 72%;
+        text-align: center;
     }
 }

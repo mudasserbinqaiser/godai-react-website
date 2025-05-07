@@ -189,10 +189,10 @@ export default function NftCarousel() {
                 transition: "transform 0.7s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.3s, border 0.3s",
                 position: "absolute",
                 top: top,
-                left: "50%",
+                left: "51.9%",
                 marginLeft: -90,
-                width: 180,
-                height: 250,
+                width: 140,
+                height: 210,
                 background: "#101c2b",
                 borderRadius: 18,
                 overflow: "hidden",
@@ -236,7 +236,12 @@ export default function NftCarousel() {
       </div>
 
       <div className="nft-carousel-description">
-        {nftDescriptions[centerIdx]}
+        When the world began to fracture, 3333 ancient warriors were summoned. Each 1/1 hand drawn warrior is born from a single element. They are not relics of the past, they are the key to what comes next.
+      </div>
+      <div className="nft-carousel-subtitle">
+        The summoning has begun
+        <br />
+        Which element will you choose?
       </div>
 
       {/* Slider controls */}
