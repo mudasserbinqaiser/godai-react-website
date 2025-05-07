@@ -6,7 +6,7 @@ interface PreloaderProps {
 }
 
 const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
-    const [loading, setLoading] = useState(true);
+    const [loading] = useState(true);
     const [loadingPercentage, setLoadingPercentage] = useState(0);
     const [fadeOut, setFadeOut] = useState(false);
     const loadingInterval = useRef<number | null>(null);

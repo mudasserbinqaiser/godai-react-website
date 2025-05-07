@@ -48,7 +48,6 @@ const Home = () => {
   const isScrollingRef = useRef(false);
   const [showEmailForm, setShowEmailForm] = useState(false);
   const [email, setEmail] = useState('');
-  const [emailSubmitted, setEmailSubmitted] = useState(false);
 
   const MAX_PROGRESS = 6; // 0-1: vertical, 1-2: NFT, 2-3: gaming, 3-4: manga, 4-5: team, 5-6: socials
   
@@ -217,7 +216,6 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
   const handleSubmitEmail = (e: React.FormEvent) => {
     e.preventDefault();
     localStorage.setItem('emailSubmitted', 'true');
-    setEmailSubmitted(true);
     setShowEmailForm(false);
   };
 
