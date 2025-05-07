@@ -120,11 +120,13 @@
 .nft-card-back-desc {
     font-family: 'IBM Plex Mono', monospace;
     padding: 0px 16px;
-    font-size: 10px;
+    width: 85%;
+    font-size: 9px;
     line-height: 18px;
     color: #FFFFFF;
     text-shadow: 0px 0px 20px #000000;
 }
+
 .nft-blur-gradient {
   position: absolute;
   left: 50%;
@@ -156,17 +158,38 @@
     width: 404px;
     height: 60px;
     left: calc(50% - 404px/2);
-    top: 508px;
-
+    top: 470px;
     font-family: 'IBM Plex Mono', monospace;
     font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
+    font-weight: 200;
+    font-size: 13px;
     line-height: 20px;
     /* or 143% */
     text-align: center;
 
     color: #FFFFFF;
+    background: none;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nft-carousel-subtitle {
+    position: absolute;
+    width: 404px;
+    height: 60px;
+    left: calc(50% - 404px/2);
+    top: 545px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 20px;
+    /* or 143% */
+    text-align: center;
+
+    color: #D94B18;
     background: none;
     z-index: 2;
     display: flex;
@@ -276,7 +299,14 @@
     }
 
     .nft-carousel-description {
-        top: 620px;
+        top: 570px;
+        left: calc(50% - 300px/2);
+        width: 300px;
+        font-size: 12px;
+    }
+
+    .nft-carousel-subtitle {
+        top: 650px;
         left: calc(50% - 300px/2);
         width: 300px;
     }

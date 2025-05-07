@@ -332,7 +332,7 @@
     font-family: 'IBM Plex Mono', monospace;
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 13px;
     line-height: 20px;
     text-align: right;
     color: #FFFFFF;
@@ -510,11 +510,11 @@
         margin-top: 30px;
     }
 
-    .team-name {
+    /* .team-name {
         font-size: 32px;
         line-height: 36px;
         margin-bottom: 10px;
-    }
+    } */
 
     .team-member-display {
         margin: 10px auto;

@@ -42,7 +42,7 @@ const teamMembers = [
   }
 ];
 
-const TEAM_PLACEHOLDER_TEXT = `Meet the council behind GODAI`;
+// const TEAM_PLACEHOLDER_TEXT = `Meet the council behind GODAI`;
 
 const BUFFER = 0.4;
 const DELAY = 0.35;
@@ -314,7 +314,7 @@ const TeamSection: React.FC<{ progress: number }> = ({ progress }) => {
 
         {/* Description */}
         <div className="team-description">
-          {TEAM_PLACEHOLDER_TEXT}
+          {/* {TEAM_PLACEHOLDER_TEXT} */}
         </div>
       </div>
 
