@@ -324,9 +324,22 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
               ))}
             </div>
             
+            {/* Project Title */}
+            <div className="gaming-title">
+              ARENA
+            </div>
+
             {/* Description for center card */}
             <div className="gaming-description">
-              {gamingItems[centerIdx].description}
+              This is The Arena — where Elementals collide, and the war for balance unfolds.
+              <br />
+              <br />
+              Here, strategy is your weapon, and spirit is your shield. Deploy your warriors, command the lanes, and use the ancient power of your element.
+            </div>
+
+            {/* Subtitle */}
+            <div className="gaming-subtitle">
+              Will you restore the balance… or tip the scales?
             </div>
           </div>
         </>
