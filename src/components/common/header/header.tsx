@@ -46,6 +46,7 @@ const Header = () => {
           />
         </svg>
       </div>
+      Hello
     </nav>
   );
 };
