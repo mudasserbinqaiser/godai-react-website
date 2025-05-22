@@ -7,19 +7,24 @@
 
 .hero-characters-container {
   position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: flex-end;
   pointer-events: none;
-  /* overflow: visible !important; */
-z-index: 11;
+  z-index: 1;
+  overflow: hidden;
 }
 
 .hero-characters-image {
   position: relative;
   height: auto;
   object-fit: contain;
-  pointer-events: none;
+  transform-origin: center bottom;
+  max-height: 100%;
 }
 
 .hero-orange-border {
