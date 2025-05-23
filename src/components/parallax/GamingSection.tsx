@@ -219,6 +219,7 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
                     className={`gaming-card${isCenter ? " center" : ""}`}
                     style={{
                       zIndex: z,
+                      display: "none",
                       opacity: opacity,
                       transform: isMobile 
                         ? `translate(-50%, -50%) translateX(${x}px) translateY(${y}px) scale(${scale})`

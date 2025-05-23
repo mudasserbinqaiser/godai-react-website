@@ -68,19 +68,6 @@ const Home = () => {
     setProgress(transitionProgress / MAX_PROGRESS);
   }, [transitionProgress, MAX_PROGRESS, setProgress]);
 
-  // Character specific transforms
-  const characterScale = isMobile 
-  ? 1 - 0.3 * adjustedProgress    // Less aggressive scaling on mobile
-  : 1 - 0.6 * adjustedProgress;
-
-const characterY = isMobile 
-  ? 0 * adjustedProgress         // Smaller vertical movement
-  : 128 * adjustedProgress;
-
-const characterX = isMobile 
-  ? -0 * adjustedProgress       // Minimal horizontal shift
-  : -445 * adjustedProgress;
-
   // Responsive card dimensions
   const CARD_WIDTH = isMobile ? 0 : 1050; // px
   const CARD_HEIGHT = isMobile ? 200 : 550; // px
@@ -255,6 +242,30 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
     };
   }, []);
 
+  useEffect(() => {
+    // Expose the current transition progress to the window object
+    // so the header component can access it
+    (window as any).currentTransitionProgress = transitionProgress;
+    
+    // Dispatch a custom event when progress changes
+    const event = new CustomEvent('godaiProgressUpdate');
+    window.dispatchEvent(event);
+  }, [transitionProgress]);
+
+  // Add this useEffect to handle navigation events from the header
+  useEffect(() => {
+    const handleNavigate = (event: CustomEvent) => {
+      const { targetProgress } = event.detail;
+      setTransitionProgress(targetProgress);
+    };
+    
+    window.addEventListener('godaiNavigate', handleNavigate as EventListener);
+    
+    return () => {
+      window.removeEventListener('godaiNavigate', handleNavigate as EventListener);
+    };
+  }, []);
+
   return (
     <>
       <style>{mobileStyles}</style>
@@ -289,53 +300,19 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
         height: '100vh', 
         overflow:'hidden'
       }}>
-        {/* Separate Character Layer */}
-        <div 
-          className="hero-characters-container"
-          style={{
-            position: 'fixed',
-            width: '100%',
-            height: '100%',
-            top: 0,
-            left: 0,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'flex-end',
-            zIndex: 4,
-            pointerEvents: 'none',
-            opacity: isMobile ? 1 - adjustedProgress : 1,
-            transform: `translate(${characterX}px, ${characterY}px) scale(${characterScale})`,
-            transition: 'transform 0.2s ease-out'
-          }}
-        >
-          <img
-            src="/assets/images/hero-page-characters.png"
-            alt="Godai characters"
-            className="hero-characters-image"
-            style={{
-              position: 'relative',
-              width: '58%',
-              height: 'auto',
-              transform: 'translateY(15%)',
-              objectFit: 'contain',
-              transformOrigin: 'center bottom'
-            }}
-          />
-        </div>
-
         {/* Hero Layer */}
         <div
           className="hero-layer"
           style={{
             position: 'absolute',
-            left: isMobile ? '50%' : left,           // Center on mobile
+            left: isMobile ? '50%' : left,
             top: isMobile ? '50%' : top, 
             width,
             height,
             zIndex: 3,
             pointerEvents: 'none',
             transform: isMobile 
-              ? `translate(-50%, -50%) scale(${1 - 0.4 * adjustedProgress})`  // Simple centered zoom for mobile
+              ? `translate(-50%, -50%) scale(${1 - 0.4 * adjustedProgress})`
               : `scale(${1 - 0.6 * adjustedProgress})`,
             opacity: 1, 
             transition: 'width 0.2s linear, height 0.2s linear, left 0.2s linear, top 0.2s linear, transform 0.05s linear',
@@ -361,6 +338,15 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
               transition: 'opacity 0.2s linear'
             }}
           />
+
+          {/* Add the character image here */}
+          <div className="hero-characters-container">
+            <img
+              src="/assets/images/hero-page-characters.png"
+              alt="Godai characters"
+              className="hero-characters-image"
+            />
+          </div>
 
           {/* Card background and image: always visible */}
           <ParallaxBanner
