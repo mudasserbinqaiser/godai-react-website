@@ -242,6 +242,30 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
     };
   }, []);
 
+  useEffect(() => {
+    // Expose the current transition progress to the window object
+    // so the header component can access it
+    (window as any).currentTransitionProgress = transitionProgress;
+    
+    // Dispatch a custom event when progress changes
+    const event = new CustomEvent('godaiProgressUpdate');
+    window.dispatchEvent(event);
+  }, [transitionProgress]);
+
+  // Add this useEffect to handle navigation events from the header
+  useEffect(() => {
+    const handleNavigate = (event: CustomEvent) => {
+      const { targetProgress } = event.detail;
+      setTransitionProgress(targetProgress);
+    };
+    
+    window.addEventListener('godaiNavigate', handleNavigate as EventListener);
+    
+    return () => {
+      window.removeEventListener('godaiNavigate', handleNavigate as EventListener);
+    };
+  }, []);
+
   return (
     <>
       <style>{mobileStyles}</style>

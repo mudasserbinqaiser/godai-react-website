@@ -1,108 +1,157 @@
-/* Navigation */
+/* Header Container */
 .navigation {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 12px 24px;
+    position: absolute;
     width: 100%;
-    position: fixed;
-    margin-top: 15px;
-    left: 0;
+    max-width: 1464px;
+    height: 100px;
+    left: calc(50% - 1464px/2);
+    top: -4px;
     z-index: 100;
 }
 
-.nav-links {
+/* Navigation Bar */
+.nav-container {
     display: flex;
-    gap: 50px;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
+    padding: 25px;
+    gap: 800px;
+    position: absolute;
+    width: 471px;
+    height: 68px;
+    left: calc(50% - 500px/2 + 0.5px);
+    top: 15px;
+    border-radius: 500px;
 }
 
+/* Navigation Links Container */
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 50px;
+    width: 421px;
+    height: 18px;
+    border-radius: 500px;
+}
+
+/* Navigation Links */
 .nav-links a {
     font-family: 'IBM Plex Mono', monospace;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 14px;
     line-height: 18px;
     text-transform: uppercase;
-    color: var(--color-cream);
+    color: #FFFFFF;
     text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: var(--color-rust);
-}
-
-/* Progress bar */
-.progress-container {
     position: relative;
-    width: 100%;
-    max-width: 1234px;
-    height: 77px;
-    margin-top: -53px;
-    margin-left: -26px;
+    padding-bottom: 4px;
 }
 
-.progress-fill {
-    transition: clip-path 0.3s ease-out;
+/* Active/Selected Link */
+.nav-links a.active {
+    color: #D94B18; /* Light Orange */
 }
 
-/* Default SVG behavior */
-.progress-svg {
+/* Underline for active tab */
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
     width: 100%;
+    height: 2px;
+    background-color: #D94B18;
+    bottom: -4px;
+    left: 0;
+    transform: scaleX(1);
+}
+
+/* Navigation Background */
+.nav-background {
+    position: absolute;
+    width: 857px;
+    height: 58px;
+    left: 282px;
+    top: 20px;
+    border: 1px solid rgba(243, 237, 224, 0.5);
+    border-radius: 500px;
+    z-index: -1;
 }
 
 /* Tablet View */
 @media (max-width: 768px) {
-    .navigation {
-        padding-top: 12px;
-        padding-left: 8px;
+    .nav-container {
+        width: 400px;
+        gap: 40px;
+        left: 50%;
     }
-
+    
     .nav-links {
-        gap: 15px !important;
+        gap: 30px;
+        width: 350px;
     }
-
+    
     .nav-links a {
         font-size: 12px;
         line-height: 16px;
     }
-
-    .progress-container {
-        height: 50px;
+    
+    .nav-background {
+        width: 700px;
+        left: 50%;
     }
 }
 
 /* Mobile View */
 @media (max-width: 480px) {
+    .navigation {
+        left: -50px;
+    }
+    .nav-container {
+        width: 300px;
+        gap: 20px;
+        left: 25%;
+        top: 10px;
+        padding: 15px;
+    }
+    
     .nav-links {
-        gap: 10px;
+        gap: 15px;
+        width: 280px;
     }
-
+    
     .nav-links a {
-        font-size: 9px;
+        font-size: 8px;
+        width: 44px;
     }
-
-    .progress-container {
-        height: 40px;
+    .nav-links a.active:after {
+        width: 100%;
+        bottom: -1px;
+        font-weight: 800;
     }
-
-    /* Increase SVG width on mobile */
-    .progress-svg {
-        width: 130%;
-        margin-left: -15%;
-        
+    
+    .nav-background {
+        width: 96%;
+        left: 15%;
+        height: 45px;
     }
 }
 
 /* Extra Small Devices */
 @media (max-width: 320px) {
-    .nav-links {
-        gap: 8px;
+    .nav-container {
+        width: 250px;
+        left: 50%;
     }
-
+    
+    .nav-links {
+        gap: 10px;
+        width: 230px;
+    }
+    
     .nav-links a {
-        font-size: 10px;
+        font-size: 9px;
     }
 }
