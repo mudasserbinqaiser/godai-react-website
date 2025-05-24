@@ -49,14 +49,10 @@ const MangaSection: React.FC<{ progress: number }> = ({ progress }) => {
         transition: "transform 1s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.4s ease-in-out", // Updated transition
       }}
     >
-      {/* Video background */}
-      <video
+      {/* Image background */}
+      <img
         className="manga-bg-video"
-        src="/assets/videos/manga.webm"
-        autoPlay
-        loop
-        muted
-        playsInline
+        src="/assets/images/manga_bg_img.svg"
         style={{
           position: "absolute",
           top: 0,
