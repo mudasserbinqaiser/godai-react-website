@@ -21,36 +21,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #071726; /* Dark blue background */
+    background-color: #000000;
+    /* Pure black background */
     z-index: 9999;
     overflow: hidden;
-}
-
-.preloader::before {
-    content: '';
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg,
-            var(--color-rust) 0%,
-            var(--color-dark-blue) 25%,
-            var(--color-navy) 50%,
-            var(--color-dark-blue) 75%,
-            var(--color-rust) 100%);
-    animation: bgPulse 8s linear infinite;
-    opacity: 0.05;
-}
-
-.preloader::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center,
-            rgba(7, 23, 38, 0.5) 0%,
-            rgba(0, 0, 0, 0.9) 70%);
 }
 
 .preloader.loaded {
@@ -69,16 +43,6 @@
     }
 }
 
-@keyframes bgPulse {
-    0% {
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-
-    100% {
-        transform: translate(-50%, -50%) rotate(360deg);
-    }
-}
-
 .preloader-content {
     position: relative;
     z-index: 2;
@@ -91,18 +55,18 @@
 .loading-progress {
     position: absolute;
     width: 100%;
-    height: 1px;
-    bottom: -30px;
+    height: 2px;
+    bottom: -60px;
     left: 0;
-    background: rgba(243, 237, 224, 0.1);
+    background: rgba(255, 255, 255, 0.1);
     overflow: hidden;
 }
 
 .loading-bar {
     height: 100%;
     background: linear-gradient(90deg,
-            var(--color-rust) 0%,
-            var(--color-cream) 100%);
+            #FFFFFF 0%,
+            #F3EDE0 100%);
     width: 0%;
     animation: loadingProgress 5s ease;
     animation-fill-mode: forwards;
@@ -121,9 +85,9 @@
 .loading-percentage {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 1rem;
-    color: var(--color-cream);
+    color: #FFFFFF;
     position: absolute;
-    bottom: -60px;
+    bottom: -90px;
     width: 100%;
     text-align: center;
     opacity: 0.8;
@@ -132,25 +96,24 @@
 
 .godai-text {
     position: relative;
-    width: 427px;
+    width: 800px;
     font-family: 'Cyberjunkies', sans-serif;
     font-style: normal;
-    font-weight: 400;
-    font-size: 80px;
-    line-height: 86px;
+    font-weight: 700;
+    font-size: 200px;
+    line-height: 180px;
     text-align: center;
     text-transform: uppercase;
-    color: #F3EDE0;
-    border: 6px solid rgba(243, 237, 224, 0.24);
+    color: #000000;
+    /* Black text initially */
     margin: 0 auto;
-    padding: 10px;
-    box-shadow: 0 0 20px rgba(243, 237, 224, 0.2);
-    text-shadow: 0 0 10px rgba(243, 237, 224, 0.5);
-    animation: glitchText 5s infinite;
-    position: relative;
+    padding: 20px;
     overflow: hidden;
+    -webkit-text-stroke: 2px #000000;
+    letter-spacing: 20px;
 }
 
+/* Smooth wave sweep animation */
 .godai-text::before {
     content: 'GODAI';
     position: absolute;
@@ -158,152 +121,231 @@
     left: 0;
     width: 100%;
     height: 100%;
-    color: rgba(217, 75, 24, 0.7);
-    filter: blur(1.5px);
-    animation: glitchBefore 2s infinite alternate-reverse;
-    z-index: -1;
+    font-family: 'Cyberjunkies', sans-serif;
+    font-weight: 700;
+    font-size: 200px;
+    line-height: 180px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    -webkit-text-stroke: 2px #FFFFFF;
     display: flex;
     align-items: center;
     justify-content: center;
+    letter-spacing: 20px;
+    mask: linear-gradient(90deg, 
+        transparent 0%, 
+        transparent calc(var(--wave-x, -100px) - 60px), 
+        rgba(255, 255, 255, 0.2) calc(var(--wave-x, -100px) - 40px), 
+        rgba(255, 255, 255, 0.6) calc(var(--wave-x, -100px) - 20px), 
+        rgba(255, 255, 255, 1) var(--wave-x, -100px), 
+        rgba(255, 255, 255, 0.6) calc(var(--wave-x, -100px) + 20px), 
+        rgba(255, 255, 255, 0.2) calc(var(--wave-x, -100px) + 40px), 
+        transparent calc(var(--wave-x, -100px) + 60px), 
+        transparent 100%);
+    -webkit-mask: linear-gradient(90deg, 
+        transparent 0%, 
+        transparent calc(var(--wave-x, -100px) - 60px), 
+        rgba(255, 255, 255, 0.2) calc(var(--wave-x, -100px) - 40px), 
+        rgba(255, 255, 255, 0.6) calc(var(--wave-x, -100px) - 20px), 
+        rgba(255, 255, 255, 1) var(--wave-x, -100px), 
+        rgba(255, 255, 255, 0.6) calc(var(--wave-x, -100px) + 20px), 
+        rgba(255, 255, 255, 0.2) calc(var(--wave-x, -100px) + 40px), 
+        transparent calc(var(--wave-x, -100px) + 60px), 
+        transparent 100%);
+    animation: smoothWaveReveal 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+    z-index: 2;
 }
 
+/* Enhanced wave background with curved paths */
 .godai-text::after {
-    content: 'GODAI';
+    content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    color: rgba(30, 34, 61, 0.7);
-    filter: blur(1.5px);
-    animation: glitchAfter 3s infinite alternate-reverse;
-    z-index: -1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.grid-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: 50px 50px;
-    background-image:
-        linear-gradient(rgba(243, 237, 224, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(243, 237, 224, 0.05) 1px, transparent 1px);
+    top: -40px;
+    left: -40px;
+    width: calc(100% + 80px);
+    height: calc(100% + 80px);
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        transparent calc(var(--wave-x, -100px) - 80px), 
+        rgba(255, 255, 255, 0.1) calc(var(--wave-x, -100px) - 50px), 
+        rgba(255, 255, 255, 0.3) calc(var(--wave-x, -100px) - 25px), 
+        rgba(255, 255, 255, 0.5) var(--wave-x, -100px), 
+        rgba(255, 255, 255, 0.3) calc(var(--wave-x, -100px) + 25px), 
+        rgba(255, 255, 255, 0.1) calc(var(--wave-x, -100px) + 50px), 
+        transparent calc(var(--wave-x, -100px) + 80px), 
+        transparent 100%);
+    clip-path: polygon(
+        calc(var(--wave-x, -100px) - 200px) 0%, 
+        calc(var(--wave-x, -100px) + 200px) 0%, 
+        calc(var(--wave-x, -100px) + 150px) 100%, 
+        calc(var(--wave-x, -100px) - 150px) 100%
+    );
+    animation: smoothWaveBackground 4s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
     z-index: 1;
-    pointer-events: none;
-    animation: gridMove 20s linear infinite;
+    filter: blur(2px);
 }
 
-@keyframes gridMove {
+@keyframes smoothWaveReveal {
+    0% {--wave-x: -100px;}
+    1% {--wave-x: -92px;}
+    2% {--wave-x: -84px;}
+    3% {--wave-x: -76px;}
+    4% {--wave-x: -68px;}
+    5% {--wave-x: -60px;}
+    6% {--wave-x: -52px;}
+    7% {--wave-x: -44px;}
+    8% {--wave-x: -36px;}
+    9% {--wave-x: -28px;}
+    10% {--wave-x: -20px;}
+    11% {--wave-x: -12px;}
+    12% {--wave-x: -4px;}
+    13% {--wave-x: 4px;}
+    14% {--wave-x: 12px;}
+    15% {--wave-x: 20px;}
+    16% {--wave-x: 28px;}
+    17% {--wave-x: 36px;}
+    18% {--wave-x: 44px;}
+    19% {--wave-x: 52px;}
+    20% {--wave-x: 60px;}
+    21% {--wave-x: 68px;}
+    22% {--wave-x: 76px;}
+    23% {--wave-x: 84px;}
+    24% {--wave-x: 92px;}
+    25% {--wave-x: 100px;}
+    26% {--wave-x: 108px;}
+    27% {--wave-x: 116px;}
+    28% {--wave-x: 124px;}
+    29% {--wave-x: 132px;}
+    30% {--wave-x: 140px;}
+    31% {--wave-x: 148px;}
+    32% {--wave-x: 156px;}
+    33% {--wave-x: 164px;}
+    34% {--wave-x: 172px;}
+    35% {--wave-x: 180px;}
+    36% {--wave-x: 188px;}
+    37% {--wave-x: 196px;}
+    38% {--wave-x: 204px;}
+    39% {--wave-x: 212px;}
+    40% {--wave-x: 220px;}
+    41% {--wave-x: 228px;}
+    42% {--wave-x: 236px;}
+    43% {--wave-x: 244px;}
+    44% {--wave-x: 252px;}
+    45% {--wave-x: 260px;}
+    46% {--wave-x: 268px;}
+    47% {--wave-x: 276px;}
+    48% {--wave-x: 284px;}
+    49% {--wave-x: 292px;}
+    50% {--wave-x: 300px;}
+    51% {--wave-x: 308px;}
+    52% {--wave-x: 316px;}
+    53% {--wave-x: 324px;}
+    54% {--wave-x: 332px;}
+    55% {--wave-x: 340px;}
+    56% {--wave-x: 348px;}
+    57% {--wave-x: 356px;}
+    58% {--wave-x: 364px;}
+    59% {--wave-x: 372px;}
+    60% {--wave-x: 380px;}
+    61% {--wave-x: 388px;}
+    62% {--wave-x: 396px;}
+    63% {--wave-x: 404px;}
+    64% {--wave-x: 412px;}
+    65% {--wave-x: 420px;}
+    66% {--wave-x: 428px;}
+    67% {--wave-x: 436px;}
+    68% {--wave-x: 444px;}
+    69% {--wave-x: 452px;}
+    70% {--wave-x: 460px;}
+    71% {--wave-x: 468px;}
+    72% {--wave-x: 476px;}
+    73% {--wave-x: 484px;}
+    74% {--wave-x: 492px;}
+    75% {--wave-x: 500px;}
+    76% {--wave-x: 508px;}
+    77% {--wave-x: 516px;}
+    78% {--wave-x: 524px;}
+    79% {--wave-x: 532px;}
+    80% {--wave-x: 540px;}
+    81% {--wave-x: 548px;}
+    82% {--wave-x: 556px;}
+    83% {--wave-x: 564px;}
+    84% {--wave-x: 572px;}
+    85% {--wave-x: 580px;}
+    86% {--wave-x: 588px;}
+    87% {--wave-x: 596px;}
+    88% {--wave-x: 604px;}
+    89% {--wave-x: 612px;}
+    90% {--wave-x: 620px;}
+    91% {--wave-x: 628px;}
+    92% {--wave-x: 636px;}
+    93% {--wave-x: 644px;}
+    94% {--wave-x: 652px;}    
+    95% {--wave-x: 660px;}
+    96% {--wave-x: 668px;}
+    97% {--wave-x: 676px;}
+    99% {--wave-x: 684px;}
+    100% {--wave-x: 692px;}
+}
+
+@keyframes smoothWaveBackground {
     0% {
-        background-position: 0 0;
+        --wave-x: -200px;
+        clip-path: path('M -300 0 C -250 25, -200 -15, -150 10 C -100 35, -50 -25, 0 5 L 100 5 C 50 -25, 0 35, -50 10 C -100 -15, -150 25, -200 0 Z');
+        transform: translateY(0px) scaleY(1);
     }
-
-    100% {
-        background-position: 50px 50px;
+    
+    12% {
+        --wave-x: -100px;
+        clip-path: path('M -200 0 C -150 30, -100 -20, -50 15 C 0 40, 50 -30, 100 8 L 200 8 C 150 -30, 100 40, 50 15 C 0 -20, -50 30, -100 0 Z');
+        transform: translateY(-5px) scaleY(1.1);
     }
-}
-
-@keyframes glitchText {
-
-    0%,
-    100% {
-        clip-path: inset(0 0 0 0);
-    }
-
-    5% {
-        clip-path: inset(0 0 45% 0);
-    }
-
-    10% {
-        clip-path: inset(45% 0 40% 0);
-    }
-
-    15% {
-        clip-path: inset(40% 0 0 0);
-    }
-
-    20% {
-        clip-path: inset(0 40% 0 0);
-    }
-
+    
     25% {
-        clip-path: inset(0 0 0 40%);
+        --wave-x: 50px;
+        clip-path: path('M -50 0 C 0 35, 50 -25, 100 18 C 150 45, 200 -35, 250 12 L 350 12 C 300 -35, 250 45, 200 18 C 150 -25, 100 35, 50 0 Z');
+        transform: translateY(-8px) scaleY(1.15);
     }
-
-    30% {
-        clip-path: inset(0 0 0 0);
+    
+    37% {
+        --wave-x: 200px;
+        clip-path: path('M 100 0 C 150 28, 200 -18, 250 12 C 300 38, 350 -28, 400 8 L 500 8 C 450 -28, 400 38, 350 12 C 300 -18, 250 28, 200 0 Z');
+        transform: translateY(-5px) scaleY(1.1);
     }
-
-    70% {
-        clip-path: inset(0 0 0 0);
-    }
-
-    75% {
-        clip-path: inset(5% 0 0 0);
-    }
-
-    80% {
-        clip-path: inset(0 5% 0 0);
-    }
-
-    85% {
-        clip-path: inset(0 0 5% 0);
-    }
-
-    90% {
-        clip-path: inset(0 0 0 5%);
-    }
-
-    95% {
-        clip-path: inset(0 0 0 0);
-    }
-}
-
-@keyframes glitchBefore {
-
-    0%,
-    100% {
-        transform: translate(0);
-    }
-
-    25% {
-        transform: translate(-5px, 2px);
-    }
-
+    
     50% {
-        transform: translate(5px, -2px);
+        --wave-x: 350px;
+        clip-path: path('M 250 0 C 300 32, 350 -22, 400 16 C 450 42, 500 -32, 550 10 L 650 10 C 600 -32, 550 42, 500 16 C 450 -22, 400 32, 350 0 Z');
+        transform: translateY(-10px) scaleY(1.2);
     }
-
+    
+    62% {
+        --wave-x: 500px;
+        clip-path: path('M 400 0 C 450 26, 500 -16, 550 14 C 600 36, 650 -26, 700 6 L 800 6 C 750 -26, 700 36, 650 14 C 600 -16, 550 26, 500 0 Z');
+        transform: translateY(-8px) scaleY(1.15);
+    }
+    
     75% {
-        transform: translate(-2px, -3px);
+        --wave-x: 650px;
+        clip-path: path('M 550 0 C 600 30, 650 -20, 700 12 C 750 40, 800 -30, 850 8 L 950 8 C 900 -30, 850 40, 800 12 C 750 -20, 700 30, 650 0 Z');
+        transform: translateY(-5px) scaleY(1.1);
     }
-}
-
-@keyframes glitchAfter {
-
-    0%,
+    
+    87% {
+        --wave-x: 800px;
+        clip-path: path('M 700 0 C 750 24, 800 -14, 850 10 C 900 34, 950 -24, 1000 4 L 1100 4 C 1050 -24, 1000 34, 950 10 C 900 -14, 850 24, 800 0 Z');
+        transform: translateY(-3px) scaleY(1.05);
+    }
+    
     100% {
-        transform: translate(0);
-    }
-
-    25% {
-        transform: translate(5px, -2px);
-    }
-
-    50% {
-        transform: translate(-5px, 2px);
-    }
-
-    75% {
-        transform: translate(2px, 3px);
+        --wave-x: 950px;
+        clip-path: path('M 850 0 C 900 20, 950 -10, 1000 8 C 1050 28, 1100 -20, 1150 2 L 1250 2 C 1200 -20, 1150 28, 1100 8 C 1050 -10, 1000 20, 950 0 Z');
+        transform: translateY(0px) scaleY(1);
     }
 }
 
+/* Keep all the existing form styles unchanged */
 .email-form-container {
     margin-top: 7rem;
     opacity: 0;
@@ -428,13 +470,10 @@
 }
 
 /* Custom validation styling */
-/* Fix incomplete rule */
 input:invalid {
     box-shadow: none;
-    /* Remove default browser styling */
 }
 
-/* Style for validation messages */
 .form-group .validation-message {
     position: relative;
     color: var(--color-rust);
@@ -454,23 +493,6 @@ input:invalid {
     color: var(--color-rust);
 }
 
-/* Input styling when invalid */
-.form-group input[aria-invalid="true"] {
-    border: 1px solid var(--color-rust) !important;
-    box-shadow: 0 0 8px rgba(217, 75, 24, 0.3);
-}
-
-@keyframes errorPulse {
-    0% {
-        box-shadow: 0 0 15px rgba(217, 75, 24, 0.3);
-    }
-
-    100% {
-        box-shadow: 0 0 20px rgba(217, 75, 24, 0.6);
-    }
-}
-
-/* Input styling when invalid */
 .form-group input[aria-invalid="true"] {
     border: 1px solid var(--color-rust) !important;
     box-shadow: 0 0 8px rgba(217, 75, 24, 0.3);
@@ -532,8 +554,6 @@ input:invalid {
     }
 }
 
-/* Add these styles to your existing preloader.css file */
-
 .preloader.fade-out {
     animation: fadeOutPreloader 1s forwards;
     pointer-events: none;
@@ -569,8 +589,51 @@ input:invalid {
 /* Media Queries for responsiveness */
 @media (max-width: 768px) {
     .godai-text {
-        font-size: 4rem;
+        font-size: 120px;
+        line-height: 100px;
         width: 85%;
+        letter-spacing: 15px;
+    }
+
+    .godai-text::before {
+        font-size: 120px;
+        line-height: 100px;
+        letter-spacing: 15px;
+        animation: smoothWaveReveal 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+        mask: linear-gradient(90deg, 
+            transparent 0%, 
+            transparent calc(var(--wave-x, -100px) - 40px), 
+            rgba(255, 255, 255, 0.2) calc(var(--wave-x, -100px) - 25px), 
+            rgba(255, 255, 255, 0.6) calc(var(--wave-x, -100px) - 15px), 
+            rgba(255, 255, 255, 1) var(--wave-x, -100px), 
+            rgba(255, 255, 255, 0.6) calc(var(--wave-x, -100px) + 15px), 
+            rgba(255, 255, 255, 0.2) calc(var(--wave-x, -100px) + 25px), 
+            transparent calc(var(--wave-x, -100px) + 40px), 
+            transparent 100%);
+        -webkit-mask: linear-gradient(90deg, 
+            transparent 0%, 
+            transparent calc(var(--wave-x, -100px) - 40px), 
+            rgba(255, 255, 255, 0.2) calc(var(--wave-x, -100px) - 25px), 
+            rgba(255, 255, 255, 0.6) calc(var(--wave-x, -100px) - 15px), 
+            rgba(255, 255, 255, 1) var(--wave-x, -100px), 
+            rgba(255, 255, 255, 0.6) calc(var(--wave-x, -100px) + 15px), 
+            rgba(255, 255, 255, 0.2) calc(var(--wave-x, -100px) + 25px), 
+            transparent calc(var(--wave-x, -100px) + 40px), 
+            transparent 100%);
+    }
+
+    .godai-text::after {
+        animation: smoothWaveBackground 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+        background: linear-gradient(90deg, 
+            transparent 0%, 
+            transparent calc(var(--wave-x, -100px) - 60px), 
+            rgba(255, 255, 255, 0.1) calc(var(--wave-x, -100px) - 35px), 
+            rgba(255, 255, 255, 0.3) calc(var(--wave-x, -100px) - 20px), 
+            rgba(255, 255, 255, 0.5) var(--wave-x, -100px), 
+            rgba(255, 255, 255, 0.3) calc(var(--wave-x, -100px) + 20px), 
+            rgba(255, 255, 255, 0.1) calc(var(--wave-x, -100px) + 35px), 
+            transparent calc(var(--wave-x, -100px) + 60px), 
+            transparent 100%);
     }
 
     .form-group {
@@ -585,8 +648,51 @@ input:invalid {
 
 @media (max-width: 480px) {
     .godai-text {
-        font-size: 3rem;
+        font-size: 80px;
+        line-height: 70px;
         width: 90%;
+        letter-spacing: 10px;
+    }
+
+    .godai-text::before {
+        font-size: 80px;
+        line-height: 70px;
+        letter-spacing: 10px;
+        animation: smoothWaveReveal 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+        mask: linear-gradient(90deg, 
+            transparent 0%, 
+            transparent calc(var(--wave-x, -100px) - 30px), 
+            rgba(255, 255, 255, 0.2) calc(var(--wave-x, -100px) - 20px), 
+            rgba(255, 255, 255, 0.6) calc(var(--wave-x, -100px) - 10px), 
+            rgba(255, 255, 255, 1) var(--wave-x, -100px), 
+            rgba(255, 255, 255, 0.6) calc(var(--wave-x, -100px) + 10px), 
+            rgba(255, 255, 255, 0.2) calc(var(--wave-x, -100px) + 20px), 
+            transparent calc(var(--wave-x, -100px) + 30px), 
+            transparent 100%);
+        -webkit-mask: linear-gradient(90deg, 
+            transparent 0%, 
+            transparent calc(var(--wave-x, -100px) - 30px), 
+            rgba(255, 255, 255, 0.2) calc(var(--wave-x, -100px) - 20px), 
+            rgba(255, 255, 255, 0.6) calc(var(--wave-x, -100px) - 10px), 
+            rgba(255, 255, 255, 1) var(--wave-x, -100px), 
+            rgba(255, 255, 255, 0.6) calc(var(--wave-x, -100px) + 10px), 
+            rgba(255, 255, 255, 0.2) calc(var(--wave-x, -100px) + 20px), 
+            transparent calc(var(--wave-x, -100px) + 30px), 
+            transparent 100%);
+    }
+
+    .godai-text::after {
+        animation: smoothWaveBackground 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+        background: linear-gradient(90deg, 
+            transparent 0%, 
+            transparent calc(var(--wave-x, -100px) - 40px), 
+            rgba(255, 255, 255, 0.1) calc(var(--wave-x, -100px) - 25px), 
+            rgba(255, 255, 255, 0.3) calc(var(--wave-x, -100px) - 15px), 
+            rgba(255, 255, 255, 0.5) var(--wave-x, -100px), 
+            rgba(255, 255, 255, 0.3) calc(var(--wave-x, -100px) + 15px), 
+            rgba(255, 255, 255, 0.1) calc(var(--wave-x, -100px) + 25px), 
+            transparent calc(var(--wave-x, -100px) + 40px), 
+            transparent 100%);
     }
 
     .loading-progress {
