@@ -59,15 +59,15 @@
 
 /* Active/Selected Link */
 /* .nav-links a.active {
-    color: #D94B18;
-    border-bottom: 2px solid #D94B18;
+    color: #FF991C;
+    border-bottom: 2px solid #FF991C;
 } */
 
 /* Active/Selected Link */
 .nav-links a.active {
     color: #FFFFFF;
     position: relative;
-    background-color: rgba(217, 75, 24, 0.3);
+    background-color: rgba(255, 153, 28, 0.3);
     /* Orange with low opacity */
     border-radius: 20px;
     padding: 6px 12px;

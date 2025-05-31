@@ -4,15 +4,15 @@
     height: 100vh;
     left: 0;
     top: 0;
-    background: #071726;
+    background: transparent;
     overflow: hidden;
     z-index: 13;
 }
 
 .manga-bg-video {
     position: absolute;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     left: 0;
     top: 0;
     object-fit: cover;
@@ -171,7 +171,7 @@
 /* Add this new CSS class */
 .manga-description .manga-bold-text {
     font-size: 13px;
-    color: #D94B18;
+    color: #FF991C;
     font-weight: 800;
 }
 
@@ -271,26 +271,36 @@
 /* Extra Large Screens (like 32 inch monitors) */
 @media (min-width: 2560px) {
     .manga-section-bg {
-        max-width: 2000px;
+        max-width: 100%;
+        width: 100%;
         margin: 0 auto;
         position: relative;
     }
+    
+    .manga-bg-video {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+    }
 
     .manga-title {
-        right: 15%;
-        font-size: 3.5rem;
+        right: 7%;
+        font-size: 4rem;
+
     }
 
     .manga-description {
-        width: 650px;
-        right: 15%;
-        font-size: 16px;
-        line-height: 26px;
+        right: 6%;
+        width: 800px;
+        font-size: 28px;
+        line-height: 42px;
+        font-weight: 400;
         bottom: 80px;
     }
 
     .manga-description .manga-bold-text {
-        font-size: 18px;
+        font-size: 24px;
+        line-height: 34px;
     }
 
     .manga-art-placeholder {

@@ -220,7 +220,7 @@ const TeamSection: React.FC<{ progress: number }> = ({ progress }) => {
                 <rect fill="white" x="-1" y="-0.2" width="316" height="413"/>
                 <path d="M311 20.06V378.92L277.11 408.61H4.01V4.76H296.85L311 20.06Z"/>
               </mask>
-              <path d="M311 20.06H315V378.92H311L277.11 408.61H4.01V4.76H296.85L311 20.06Z" fill="none" stroke="#D94B18" strokeWidth="7" mask="url(#path-1-outside)" />
+              <path d="M311 20.06H315V378.92H311L277.11 408.61H4.01V4.76H296.85L311 20.06Z" fill="none" stroke="#FF991C" strokeWidth="7" mask="url(#path-1-outside)" />
               
               {/* Place the image inside the frame */}
               <foreignObject x="8" y="8" width="299" height="397">
@@ -248,7 +248,7 @@ const TeamSection: React.FC<{ progress: number }> = ({ progress }) => {
             aria-label="Previous team member"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path d="M18 15L12 9L6 15" stroke="#D94B18" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M18 15L12 9L6 15" stroke="#FF991C" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
           
@@ -290,7 +290,7 @@ const TeamSection: React.FC<{ progress: number }> = ({ progress }) => {
             aria-label="Next team member"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path d="M6 9L12 15L18 9" stroke="#D94B18" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M6 9L12 15L18 9" stroke="#FF991C" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
         </div>

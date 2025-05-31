@@ -281,7 +281,6 @@
   .project-description {
     font-size: 15px;
     line-height: 18px;
-    transform: translateY(100px) !important;
   }
 
   .vertical-line {
@@ -336,7 +335,7 @@
 }
 
 /* Large Desktop Screens */
-@media (min-width: 1920px) {
+/* @media (min-width: 1920px) {
     .project-title {
         right: 10%;
         font-size: 3.2rem;
@@ -351,7 +350,7 @@
         transform: scale(1.2);
         left: 30%;
     }
-}
+} */
 
 /* Extra Large Screens (like 32 inch monitors) */
 @media (min-width: 2560px) {
@@ -362,15 +361,17 @@
     }
     
     .project-title {
-        right: 15%;
-        font-size: 3.8rem;
+        right: 4%;
+        top: 30%;
+        font-size: 5rem;
     }
     
     .project-description {
-        width: 25%;
-        right: 15%;
-        font-size: 16px;
-        line-height: 24px;
+        width: 30%;
+        right: 4%;
+        top: 37%;
+        font-size: 32px;
+        line-height: 42px;
     }
     
     .project-avatar {
