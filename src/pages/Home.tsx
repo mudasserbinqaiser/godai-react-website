@@ -152,7 +152,7 @@ const Home = () => {
       touchLastRef.current = touchY;
       
       // Use smaller multiplier for more natural touch scrolling feel
-      const scrollMultiplier = 0.003;
+      const scrollMultiplier = 0.005;
       setTransitionProgress(prev => clamp(prev + deltaY * scrollMultiplier, 0, MAX_PROGRESS));
     };
 
