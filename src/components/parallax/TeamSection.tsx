@@ -194,7 +194,7 @@ const TeamSection: React.FC<{ progress: number }> = ({ progress }) => {
         muted
         playsInline
       >
-        <source src="/assets/videos/nft.webm" type="video/webm" />
+        <source src="/assets/videos/nft.mp4" type="video/mp4" />
       </video>
 
       {/* Decorative elements */}

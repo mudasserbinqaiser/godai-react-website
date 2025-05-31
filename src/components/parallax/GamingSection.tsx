@@ -164,7 +164,7 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
       {/* Video background always rendered */}
       <video
         className="gaming-bg-video"
-        src="/assets/videos/gaming.webm"
+        src="/assets/videos/gaming.mp4"
         autoPlay
         loop
         muted

@@ -364,7 +364,7 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
                       playsInline
                       className="background-video"
                     >
-                      <source src="/assets/videos/hero-background.webm" type="video/webm" />
+                      <source src="/assets/videos/hero-background.mp4" type="video/mp4" />
                     </video>
                   </div>
                 )
@@ -429,7 +429,7 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
                       className="background-video"
                       style={{ opacity: 1 }}
                     >
-                      <source src="/assets/videos/2.webm" type="video/webm" />
+                      <source src="/assets/videos/2.mp4" type="video/mp4" />
                     </video>
                   </div>
                 )

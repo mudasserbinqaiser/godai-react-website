@@ -93,7 +93,7 @@ const SocialSection: React.FC<{ progress: number }> = ({ progress }) => {
           muted
           playsInline
         >
-          <source src="/assets/videos/socials.webm" type="video/webm" />
+          <source src="/assets/videos/socials.mp4" type="video/mp4" />
         </video>
         <div className="socials-radial-gradient"></div>
         <div className="socials-radial-gradient"></div>

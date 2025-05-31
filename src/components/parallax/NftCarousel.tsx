@@ -142,7 +142,7 @@ export default function NftCarousel() {
           pointerEvents: "none",
         }}
       >
-        <source src="/assets/videos/nft.webm" type="video/webm" />
+        <source src="/assets/videos/nft.mp4" type="video/mp4" />
         {/* Optionally add a fallback mp4 */}
         {/* <source src="/assets/videos/nft.mp4" type="video/mp4" /> */}
       </video>
