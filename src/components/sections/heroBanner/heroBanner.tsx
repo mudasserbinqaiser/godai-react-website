@@ -47,7 +47,7 @@ const HeroBanner = () => {
             className="background-video"
             style={{ opacity: firstVideoOpacity }}
           >
-            <source src="/assets/videos/hero-background.webm" type="video/webm" />
+            <source src="/assets/videos/hero-background.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           

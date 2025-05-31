@@ -31,12 +31,12 @@ const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
       '/assets/images/signup.png',
       '/assets/images/socials_banner.png',
       '/assets/images/team.png',
-      '/assets/videos/2.webm',
-      '/assets/videos/gaming.webm',
-      '/assets/videos/hero-background.webm',
-      '/assets/videos/manga.webm',
-      '/assets/videos/nft.webm',
-      '/assets/videos/socials.webm',
+      '/assets/videos/2.mp4',
+      '/assets/videos/gaming.mp4',
+      '/assets/videos/hero-background.mp4',
+      '/assets/videos/manga.mp4',
+      '/assets/videos/nft.mp4',
+      '/assets/videos/socials.mp4',
     ];
 
     const fontsToCheck = ['Cyberjunkies'];

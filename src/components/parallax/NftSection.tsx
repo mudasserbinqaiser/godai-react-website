@@ -53,7 +53,7 @@ const NftSection: React.FC<{ progress: number }> = ({ progress }) => {
       {/* Video background */}
       <video
         className="nft-bg-video"
-        src="/assets/videos/nft.webm"
+        src="/assets/videos/nft.mp4"
         autoPlay
         loop
         muted
