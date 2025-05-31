@@ -24,7 +24,7 @@
   height: auto;
   object-fit: contain;
   transform-origin: center bottom;
-  max-height: 100%;
+  max-height: 85% !important;
 }
 
 .hero-orange-border {
@@ -73,7 +73,6 @@
   text-transform: uppercase;
   color: white;
   z-index: 91;
-  cursor: pointer;
   padding: 0;
   border: none;
   background-color: transparent;
@@ -197,5 +196,53 @@
 
     .enter-godai-container {
       overflow: hidden;
+    }
+}
+
+/* Large Desktop Screens */
+@media (min-width: 1920px) {
+    .hero-characters-container {
+        transform: scale(1.2);
+    }
+    
+    .enter-godai-container {
+        bottom: 5%;
+    }
+    
+    .enter-godai-text {
+        font-size: 75px;
+    }
+}
+
+/* Extra Large Screens (like 32 inch monitors) */
+@media (min-width: 2560px) {
+    .hero-characters-container {
+        width: 100%;
+        transform: scale(1.6);
+        bottom: -5%; /* Adjust position to compensate for larger scale */
+    } 
+
+    .hero-characters-image {
+        max-height: 140%;
+        transform: translateY(-350px);
+    }
+    
+    .enter-godai-container {
+        bottom: 8%;
+    }
+    
+    .enter-godai-text {
+        font-size: 140px;
+    }
+    
+    .hero-content {
+        max-width: 2000px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .blur-gradient-bottom-characters {
+        height: 45%;
     }
 }

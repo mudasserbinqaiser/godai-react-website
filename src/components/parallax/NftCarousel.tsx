@@ -12,15 +12,15 @@ const nftImages = [
   "/assets/images/nft7.png",
 ];
 
-const nftTitles = [
-  "TITLE",
-  "TITLE",
-  "TITLE",
-  "TITLE",
-  "TITLE",
-  "TITLE",
-  "TITLE",
-];
+// const nftTitles = [
+//   "TITLE",
+//   "TITLE",
+//   "TITLE",
+//   "TITLE",
+//   "TITLE",
+//   "TITLE",
+//   "TITLE",
+// ];
 
 const nftDescriptions = [
   "Born of starlight and shadow, he walks between worlds. When he awakens, reality itself trembles before his cosmic power.",
@@ -29,7 +29,7 @@ const nftDescriptions = [
   "Graceful yet relentless, she bends oceans to her will. Her tides reshape destinies, calm surfaces hiding untold depths.",
   "The sea whispers his name; ancient depths rise to answer. Beneath his calm lies the silent power of endless oceans.",
   "Master of winds and keeper of storms. He moves unseen, carving fate from clouds with blades of silent thunder.",
-  "Guardian of earth and keeper of roots, mountains yield to his will. In nature’s ancient shadow, he defends the sacred balance.",
+  "Guardian of earth and keeper of roots, mountains yield to his will. In nature's ancient shadow, he defends the sacred balance.",
 ];
 
 const fanAngles = [-45.17, -30.76, -15.45, 0, 15.45, 30.76, 45.17];
@@ -101,67 +101,37 @@ export default function NftCarousel() {
   };
 
   const startAutoAdvance = () => {
-  if (intervalRef.current) clearInterval(intervalRef.current);
-  intervalRef.current = window.setInterval(() => {
-    setCenterIdx((idx) => (idx + 1) % nftImages.length);
-    setFlipped(false);
-  }, 2500);
-};
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = window.setInterval(() => {
+      setCenterIdx((idx) => (idx + 1) % nftImages.length);
+      setFlipped(false);
+    }, 2500);
+  };
 
   const handlePrev = (e: React.MouseEvent) => {
     e.stopPropagation();
     setFlipped(false);
     setCenterIdx((idx) => (idx - 1 + nftImages.length) % nftImages.length);
     startAutoAdvance();
-};
+  };
 
-    const handleNext = (e: React.MouseEvent) => {
-        e.stopPropagation();
-        setFlipped(false);
-        setCenterIdx((idx) => (idx + 1) % nftImages.length);
-        startAutoAdvance();
-    };
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setFlipped(false);
+    setCenterIdx((idx) => (idx + 1) % nftImages.length);
+    startAutoAdvance();
+  };
 
   return (
     <div className="nft-carousel-bg">
-         {/* Video background */}
-      <video
-        className="nft-bg-video"
-        autoPlay
-        loop
-        muted
-        playsInline
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100vw",
-          height: "100vh",
-          objectFit: "cover",
-          zIndex: 0,
-          pointerEvents: "none",
-        }}
-      >
-        <source src="/assets/videos/nft.mp4" type="video/mp4" />
-        {/* Optionally add a fallback mp4 */}
-        {/* <source src="/assets/videos/nft.mp4" type="video/mp4" /> */}
-      </video>
-        <div className="nft-blur-gradient"></div>
-    <div className="project-lines" >
-        <div className="left-side">
-        <div className="vector-8"></div>
-        <div className="vector-9"></div>
-        </div>
-        <div className="right-side">
-        <div className="vector-8"></div>
-        <div className="vector-9"></div>
-        </div>
+      {/* <div className="nft-blur-gradient"></div> */}
+      {/* <div className="project-lines">
         <div className="vertical-line v1"></div>
         <div className="vertical-line v2"></div>
         <div className="vertical-line v3"></div>
         <div className="vertical-line v4"></div>
         <div className="vertical-line v5"></div>
-    </div>
+      </div> */}
       <div
         className="nft-carousel"
         onMouseEnter={pauseSlider}
@@ -183,9 +153,9 @@ export default function NftCarousel() {
                   rotate(${angle}deg)
                 `,
                 boxShadow: isCenter
-                  ? "0 0 32px 0 #D94B18, 0 0 0 4px #D94B18"
+                  ? "0 0 32px 0 #FF991C, 0 0 0 4px #FF991C"
                   : "0 4px 32px 0 rgba(0,0,0,0.3)",
-                border: isCenter ? "0.2rm solid #D94B18" : "none",
+                border: isCenter ? "0.2rm solid #FF991C" : "none",
                 transition: "transform 0.7s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.3s, border 0.3s",
                 position: "absolute",
                 top: top,
@@ -219,15 +189,15 @@ export default function NftCarousel() {
                   />
                 </div>
                 <div className="nft-card-back">
-                {/* Glow effect */}
-                <div className="nft-card-glow" />
-                {/* Main background and border */}
-                <div className="nft-card-back-main">
+                  {/* Glow effect */}
+                  <div className="nft-card-glow" />
+                  {/* Main background and border */}
+                  <div className="nft-card-back-main">
                     <div className="nft-card-back-content">
-                    <div className="nft-card-back-title">{nftTitles[i]}</div>
-                    <div className="nft-card-back-desc">{nftDescriptions[i]}</div>
+                      {/* <div className="nft-card-back-title">{nftTitles[i]}</div> */}
+                      <div className="nft-card-back-desc">{nftDescriptions[i]}</div>
                     </div>
-                </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -254,7 +224,7 @@ export default function NftCarousel() {
         >
           {/* Left arrow SVG */}
           <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
-            <path d="M12 2L4 12L12 22" stroke="#D94B18" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M12 2L4 12L12 22" stroke="#FF991C" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </div>
         <div className="nft-dots">
@@ -273,7 +243,7 @@ export default function NftCarousel() {
         >
           {/* Right arrow SVG */}
           <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
-            <path d="M4 2L12 12L4 22" stroke="#D94B18" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M4 2L12 12L4 22" stroke="#FF991C" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </div>
       </div>

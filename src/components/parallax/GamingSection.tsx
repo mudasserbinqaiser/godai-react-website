@@ -153,15 +153,15 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
         height: "100vh",
         top: 0,
         left: 0,
-        background: "#071726",
+        background: "transparent",
         zIndex: 11,
         transform: `translateX(${gamingLayerX}px) scale(${zoom})`,
         opacity: progress > 0 ? 1 : 0,
         pointerEvents: progress > 0 ? "auto" : "none",
-        transition: "transform 1s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.4s ease-in-out", // Updated transition
+        transition: "transform 1s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.4s ease-in-out",
       }}
     >
-      {/* Video background always rendered */}
+      {/* Video background always rendered with improved sizing */}
       <video
         className="gaming-bg-video"
         src="/assets/videos/gaming.mp4"
@@ -173,8 +173,8 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
           position: "absolute",
           top: 0,
           left: 0,
-          width: "100vw",
-          height: "100vh",
+          width: "100%",
+          height: "100%",
           objectFit: "cover",
           zIndex: 0,
           pointerEvents: "none",
@@ -186,14 +186,14 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
           <div className="gaming-blur-gradient" style={{ zIndex: 1 }}></div>
           {!isMobile && (
             <div className="project-lines" style={{ zIndex: 2 }}>
-              <div className="left-side">
+              {/* <div className="left-side">
                 <div className="vector-8"></div>
                 <div className="vector-9"></div>
-              </div>
-              <div className="right-side">
+              </div> */}
+              {/* <div className="right-side">
                 <div className="vector-8"></div>
                 <div className="vector-9"></div>
-              </div>
+              </div> */}
               <div className="vertical-line v1"></div>
               <div className="vertical-line v2"></div>
               <div className="vertical-line v3"></div>
@@ -248,7 +248,7 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
                           <g filter="url(#filter0_dddddd_1_460)">
                             <path
                               d="M68.9619 17.085C70.562 16.3052 72.438 16.3052 74.0381 17.085L74.377 17.2637L74.3809 17.2666L123.617 45.6387V45.6396L123.943 45.8418C125.534 46.9054 126.5 48.6983 126.5 50.627V107.373C126.5 109.43 125.4 111.332 123.617 112.36V112.361L74.3809 140.733L74.377 140.736C72.5965 141.755 70.4035 141.755 68.623 140.736L68.6191 140.733L19.3828 112.361V112.36C17.5997 111.332 16.5001 109.43 16.5 107.373V50.627C16.5001 48.5698 17.5997 46.6677 19.3828 45.6396V45.6387L68.6191 17.2666L68.623 17.2637L68.9619 17.085Z"
-                              stroke="#D94B18"
+                              stroke="#FF991C"
                               strokeWidth="3"
                             />
                           </g>

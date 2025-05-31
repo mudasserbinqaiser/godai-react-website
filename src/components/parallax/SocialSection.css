@@ -462,3 +462,56 @@
         font-size: 7px;
     }
 }
+
+/* Large Desktop Screens */
+/* @media (min-width: 1440px) {
+    .socials-banner-wrapper {
+        transform: translate(-49%, -50%);
+    }
+    
+    .social-buttons-container {
+        width: 35%;
+    }
+    
+    .signup-button-container {
+        width: 12%;
+        transform: translate(-30%, 160%);
+    }
+} */
+
+/* Extra Large Screens (like 32 inch monitors) */
+@media (min-width: 2560px) {
+        
+    .social-buttons-container {
+        width: 30%;
+        transform: translate(3%, 30%);
+    }
+    
+    .signup-button-container {
+        width: 20%;
+        transform: translate(-25%, 200%);
+    }
+    
+    .social-button {
+        width: 70px;
+        height: 70px;
+    }
+
+    .back-to-top-button {
+        width: 100px;
+        height: 100px;
+    }
+
+        .back-to-top-icon {
+            width: 40px;
+            /* Increased from 20px */
+            height: 40px;
+            /* Increased from 20px */
+            margin-bottom: 8px;
+        }
+    
+        /* Add font size for the text if needed */
+        .back-to-top-button span {
+            font-size: 14px;
+        }
+}

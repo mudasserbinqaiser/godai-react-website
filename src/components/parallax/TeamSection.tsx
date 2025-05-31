@@ -19,19 +19,19 @@ const teamMembers = [
   {
     name: "Clouds",
     role: "Community Lead",
-    image: "/assets/images/nft7.png",
+    image: "/assets/images/nft0.png",
     xLink: "https://x.com/altrdcl0ud"
   },
   {
     name: "Vlad",
     role: "Game Development",
-    image: "/assets/images/nft2.png",
+    image: "/assets/images/nft7.png",
     xLink: null
   },
   {
     name: "Snowyi",
-    role: "Market",
-    image: "/assets/images/nft4.png",
+    role: "Marketing Lead",
+    image: "/assets/images/nft3.png",
     xLink: "https://x.com/_snowyi"
   },
   {
@@ -183,7 +183,6 @@ const TeamSection: React.FC<{ progress: number }> = ({ progress }) => {
         pointerEvents: adjustedProgress > 0 ? "auto" : "none",
         zIndex: 12,
         transition: "transform 1s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.4s ease-in-out", // Updated transition
-
       }}
     >
       {/* Video background */}
@@ -196,6 +195,11 @@ const TeamSection: React.FC<{ progress: number }> = ({ progress }) => {
       >
         <source src="/assets/videos/nft.mp4" type="video/mp4" />
       </video>
+
+      {/* Add the title to the left side of the screen */}
+      <div className="team-title">
+        MEET THE TEAM BEHIND GODAI
+      </div>
 
       {/* Decorative elements */}
       <div className="team-blur-gradient"></div>
@@ -216,7 +220,7 @@ const TeamSection: React.FC<{ progress: number }> = ({ progress }) => {
                 <rect fill="white" x="-1" y="-0.2" width="316" height="413"/>
                 <path d="M311 20.06V378.92L277.11 408.61H4.01V4.76H296.85L311 20.06Z"/>
               </mask>
-              <path d="M311 20.06H315V378.92H311L277.11 408.61H4.01V4.76H296.85L311 20.06Z" fill="none" stroke="#D94B18" strokeWidth="7" mask="url(#path-1-outside)" />
+              <path d="M311 20.06H315V378.92H311L277.11 408.61H4.01V4.76H296.85L311 20.06Z" fill="none" stroke="#FF991C" strokeWidth="7" mask="url(#path-1-outside)" />
               
               {/* Place the image inside the frame */}
               <foreignObject x="8" y="8" width="299" height="397">
@@ -244,7 +248,7 @@ const TeamSection: React.FC<{ progress: number }> = ({ progress }) => {
             aria-label="Previous team member"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path d="M18 15L12 9L6 15" stroke="#D94B18" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M18 15L12 9L6 15" stroke="#FF991C" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
           
@@ -286,7 +290,7 @@ const TeamSection: React.FC<{ progress: number }> = ({ progress }) => {
             aria-label="Next team member"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path d="M6 9L12 15L18 9" stroke="#D94B18" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M6 9L12 15L18 9" stroke="#FF991C" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
         </div>
@@ -320,14 +324,14 @@ const TeamSection: React.FC<{ progress: number }> = ({ progress }) => {
 
       {/* Decorative lines */}
       <div className="project-lines">
-        <div className="left-side">
+        {/* <div className="left-side">
           <div className="vector-8"></div>
           <div className="vector-9"></div>
-        </div>
-        <div className="right-side">
+        </div> */}
+        {/* <div className="right-side">
           <div className="vector-8"></div>
           <div className="vector-9"></div>
-        </div>
+        </div> */}
         <div className="vertical-line v1"></div>
         <div className="vertical-line v2"></div>
         <div className="vertical-line v3"></div>

@@ -62,8 +62,8 @@ const NftSection: React.FC<{ progress: number }> = ({ progress }) => {
           position: "absolute",
           top: 0,
           left: 0,
-          width: "100vw",
-          height: "100vh",
+          width: "100%",
+          height: "100%",
           objectFit: "cover",
           zIndex: 0,
           pointerEvents: "none",
@@ -73,14 +73,14 @@ const NftSection: React.FC<{ progress: number }> = ({ progress }) => {
       {/* Blur gradient and lines */}
       <div className="nft-blur-gradient" style={{ zIndex: 1 }}></div>
       <div className="project-lines" style={{ zIndex: 2 }}>
-        <div className="left-side">
+        {/* <div className="left-side">
           <div className="vector-8"></div>
           <div className="vector-9"></div>
-        </div>
-        <div className="right-side">
+        </div> */}
+        {/* <div className="right-side">
           <div className="vector-8"></div>
           <div className="vector-9"></div>
-        </div>
+        </div> */}
         <div className="vertical-line v1"></div>
         <div className="vertical-line v2"></div>
         <div className="vertical-line v3"></div>

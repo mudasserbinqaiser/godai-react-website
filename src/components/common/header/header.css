@@ -58,9 +58,33 @@
 }
 
 /* Active/Selected Link */
+/* .nav-links a.active {
+    color: #FF991C;
+    border-bottom: 2px solid #FF991C;
+} */
+
+/* Active/Selected Link */
 .nav-links a.active {
-    color: #D94B18; /* Light Orange */
-    border-bottom: 2px solid #D94B18;
+    color: #FFFFFF;
+    position: relative;
+    background-color: rgba(255, 153, 28, 0.3);
+    /* Orange with low opacity */
+    border-radius: 20px;
+    padding: 6px 12px;
+    margin: -6px -12px;
+    /* Offset the padding to maintain spacing */
+}
+
+/* Add the curved line below the active item, like in the image */
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: 2px;
+    border-radius: 50% 50% 0 0;
 }
 
 /* Navigation Background */
@@ -127,5 +151,55 @@
     .nav-links a {
         font-size: 7px;
         line-height: 10px;
+    }
+}
+
+/* Large Desktop Screens */
+@media (min-width: 1920px) {
+    .navigation {
+        max-width: 1800px;
+    }
+    
+    .nav-links {
+        min-width: 900px;
+        gap: 30px;
+    }
+    
+    .nav-links a {
+        font-size: 14px;
+    }
+}
+
+/* Extra Large Screens (like 32 inch monitors) */
+@media (min-width: 2560px) {
+    .navigation {
+        max-width: 2600px;
+        height: 160px;
+    }
+    
+    .nav-container {
+        height: 100px;
+        top: 40px;
+    }
+    
+    .nav-links {
+        min-width: 1800px;
+        gap: 120px !important;
+        padding: 40px;
+        border-radius: 800px;
+        border-width: 2px;
+    }
+    
+    .nav-links a {
+        font-size: 26px;
+        line-height: 28px;
+        letter-spacing: 2px;
+        padding: 5px 0;
+    }
+    
+    .nav-links a.active {
+        padding: 12px 24px;
+        margin: -12px -24px;
+        border-radius: 35px;
     }
 }

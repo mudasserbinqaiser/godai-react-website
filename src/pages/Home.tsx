@@ -74,12 +74,29 @@ const Home = () => {
   const FINAL_LEFT_POSITION = isMobile ? -80 : -200; // px from left
   const FINAL_BOTTOM_POSITION = isMobile ? -45 : -120;
 
+  // Add a function to calculate scale based on screen size
+  const calculateScaleForScreenSize = () => {
+    const screenWidth = window.innerWidth;
+    
+    if (screenWidth >= 3840) { // 4K displays
+      return 1.8;
+    } else if (screenWidth >= 2560) { // 32-inch monitors (2560x1440)
+      return 1.3;
+    } else if (screenWidth >= 1920) { // 24-inch monitors (1920x1080)
+      return 0.8;
+    } else {
+      return 0.6; // Default for smaller screens
+    }
+  };
+
   // Update the position calculations
   const minWidth = CARD_WIDTH;
   const minHeight = CARD_HEIGHT;
   const maxWidth = window.innerWidth;
   const maxHeight = window.innerHeight;
 
+  // Calculate dimensions with respect to screen size
+  // const screenSizeMultiplier = window.innerWidth >= 2560 ? 1.4 : 1;
   const width = minWidth + (maxWidth - minWidth) * (1 - adjustedProgress);
   const height = minHeight + (maxHeight - minHeight) * (1 - adjustedProgress);
 
@@ -312,7 +329,9 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
             zIndex: 3,
             pointerEvents: 'none',
             transform: isMobile 
-              ? `translate(-50%, -50%) scale(${1 - 0.4 * adjustedProgress})`
+            ? `translate(-50%, -50%) scale(${1 - 0.4 * adjustedProgress})`
+            : window.innerWidth >= 2560
+              ? `translate(${adjustedProgress * 19}%, ${adjustedProgress * -15}%) scale(${1 - 0.3 * adjustedProgress})`
               : `scale(${1 - 0.6 * adjustedProgress})`,
             opacity: 1, 
             transition: 'width 0.2s linear, height 0.2s linear, left 0.2s linear, top 0.2s linear, transform 0.05s linear',
@@ -328,7 +347,7 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
               top: 0,
               width: '100%',
               height: '100%',
-              border: '7px solid #D94B18',
+              border: '7px solid #FF991C',
               borderRadius: 0,
               pointerEvents: 'none',
               boxSizing: 'border-box',
@@ -340,11 +359,23 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
           />
 
           {/* Add the character image here */}
-          <div className="hero-characters-container">
+          <div className="hero-characters-container" style={{
+            transform: window.innerWidth >= 2560 
+              ? `scale(${1.4 - adjustedProgress * 0.3}) translateY(${-20 + adjustedProgress * 25}%)`
+              : 'none',
+            transition: 'transform 0.2s linear'
+          }}>
             <img
               src="/assets/images/hero-page-characters.png"
               alt="Godai characters"
               className="hero-characters-image"
+              style={{
+                maxHeight: window.innerWidth >= 2560 ? '120%' : '100%',
+                transform: window.innerWidth >= 2560 
+                  ? `translateY(${adjustedProgress * -12}%) scale(${1 - adjustedProgress * -0.05})`
+                  : 'none',
+                transition: 'transform 0.2s linear'
+              }}
             />
           </div>
 
@@ -376,14 +407,14 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
                   <div className="hero-content">
                     {/* Hero Decorative Lines */}
                     <div className="project-lines" style={{ opacity: 1 - adjustedProgress }}>
-                      <div className="left-side">
+                      {/* <div className="left-side">
                         <div className="vector-8"></div>
                         <div className="vector-9"></div>
-                      </div>
-                      <div className="right-side">
+                      </div> */}
+                      {/* <div className="right-side">
                         <div className="vector-8"></div>
                         <div className="vector-9"></div>
-                      </div>
+                      </div> */}
                       <div className="vertical-line v1"></div>
                       <div className="vertical-line v2"></div>
                       <div className="vertical-line v3"></div>
@@ -441,14 +472,14 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
                     <div className="project-outline" style={{ opacity: projectElementOpacity, transition: 'opacity 0.2s' }}></div>
                     <div className="project-blur-gradient" style={{ opacity: projectElementOpacity, transition: 'opacity 0.2s' }}></div>
                     <div className="project-lines" style={{ opacity: projectElementOpacity, transition: 'opacity 0.2s' }}>
-                      <div className="left-side">
+                      {/* <div className="left-side">
                         <div className="vector-8"></div>
                         <div className="vector-9"></div>
-                      </div>
-                      <div className="right-side">
+                      </div> */}
+                      {/* <div className="right-side">
                         <div className="vector-8"></div>
                         <div className="vector-9"></div>
-                      </div>
+                      </div> */}
                       <div className="vertical-line v1" style={{ transform: `translateY(${adjustedProgress * 5}px)` }}></div>
                       <div className="vertical-line v2" style={{ transform: `translateY(${adjustedProgress * 10}px)` }}></div>
                       <div className="vertical-line v3" style={{ transform: `translateY(${adjustedProgress * 15}px)` }}></div>
@@ -486,7 +517,7 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
                           ? ( (1 - adjustedProgress) * 40 ) 
                           : ( (1 - adjustedProgress) * -50 ) }%)
                           rotateY(${180 * (1 - adjustedProgress)}deg)
-                          scale(${0.4 + (adjustedProgress * (isMobile ? 0.8 : 0.6))})
+                          scale(${0.4 + (adjustedProgress * (isMobile ? 0.8 : calculateScaleForScreenSize()))})
                         `,
                         transformOrigin: 'center bottom',
                         zIndex: 5,
@@ -519,7 +550,7 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
                     >
                       <p>Long ago, Earth, Fire, Water, Air, and Aether held the world in balance. But balance is fragile and with time, the elements turned against each other.</p>
                       <br />
-                      <p>Now, their unity shattered, an ancient conflict returns.</p>
+                      <p className="bold">Now, their unity shattered, an ancient conflict returns.</p>
                     </div>
                   </>
                 )

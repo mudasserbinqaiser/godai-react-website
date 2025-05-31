@@ -60,10 +60,69 @@
     }
 }
 
+/* iPhone 14 Pro Max and iPhone 15 Pro Max (430px viewport width) */
+@media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
+    .nft-title {
+        font-size: 1.8rem;
+        text-align: center;
+        right: 0;
+        left: 0;
+        top: 57%;
+    }
+
+    .nft-section-bg {
+        overflow: hidden;
+    }
+
+}
+
+/* iPhone 14 Pro (393px viewport width) */
+@media only screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) {
+    .nft-title {
+        font-size: 1.7rem;
+        text-align: center;
+        right: 0;
+        left: 0;
+        top: 50%;
+    }
+
+    .nft-section-bg {
+        overflow: hidden;
+    }
+}
+
 @media (max-width: 320px) {
     .nft-section-bg {
         overflow: hidden;
     }
+}
+
+/* Large Desktop Screens */
+/* @media (min-width: 1920px) {
+    .nft-title {
+        font-size: 2.5rem;
+    }
+} */
+
+/* Extra Large Screens (like 32 inch monitors) */
+@media (min-width: 2560px) {
+    .nft-section-bg {
+        /* max-width: 2000px; */
+        margin: 0 auto;
+        position: relative;
+    }
+    
+    .nft-bg-video {
+        width: 100%;
+    }
+    
+    .nft-title {
+        font-size: 4rem;
+        top: 57%;
+        left: -40%;
+    }
+
+
 }
 
 
