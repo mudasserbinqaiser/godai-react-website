@@ -395,7 +395,7 @@ top: 55%;
 }
 
 /* iPhone 14 Pro Max and iPhone 15 Pro Max (430px viewport width) */
-@media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
+@media only screen and (device-width: 430px) {
     .gaming-title {
         top: 32%;
         transform: translateY(0) !important;
@@ -408,7 +408,7 @@ top: 55%;
 }
 
 /* iPhone 14 Pro (393px viewport width) */
-@media only screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) {
+@media only screen and (device-width: 393px){
     .project-title {
         top: 32%;
         transform: translateY(0) !important;
