@@ -139,8 +139,8 @@
   position: absolute;
   font-family: 'Cyberjunkies', sans-serif;  width: 100%;
   text-align: right;
-  top: 15%;
-  right: 2%;
+  top: 25%;
+  right: 3%;
   font-weight: 200;
   font-size: 2.7rem;
   color: #FFFFFF;
@@ -156,16 +156,20 @@
 .project-description {
   position: absolute;
   width: 25%;
-  right: 2.5%;
-  top: 22%;
+  right: 3%;
+  top: 32%;
   font-family: 'IBM Plex Mono', monospace;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 14px;
   line-height: 20px;
   text-align: right;
   color: #FFFFFF;
   transition: transform 0.3s ease-out;
+}
+
+.project-description .bold {
+  font-weight: 1000;
 }
 
 .project-outline {
@@ -311,4 +315,74 @@
   .background-video {
     overflow: hidden;
   }
+}
+
+/* iPhone 14 Pro Max and iPhone 15 Pro Max (430px viewport width) */
+@media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
+  .project-title {
+    font-size: 2.2rem;
+    top: 25%;
+    transform: translateY(0) !important;
+  }
+}
+
+/* iPhone 14 Pro (393px viewport width) */
+@media only screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) {
+  .project-title {
+      font-size: 2.2rem;
+      top: 25%;
+      transform: translateY(0) !important;
+    }
+}
+
+/* Large Desktop Screens */
+@media (min-width: 1920px) {
+    .project-title {
+        right: 10%;
+        font-size: 3.2rem;
+    }
+    
+    .project-description {
+        width: 30%;
+        right: 10%;
+    }
+    
+    .project-avatar {
+        transform: scale(1.2);
+        left: 30%;
+    }
+}
+
+/* Extra Large Screens (like 32 inch monitors) */
+@media (min-width: 2560px) {
+    .project-section {
+        max-width: 2000px;
+        margin: 0 auto;
+        position: relative;
+    }
+    
+    .project-title {
+        right: 15%;
+        font-size: 3.8rem;
+    }
+    
+    .project-description {
+        width: 25%;
+        right: 15%;
+        font-size: 16px;
+        line-height: 24px;
+    }
+    
+    .project-avatar {
+        transform: scale(1.4);
+        left: 35%;
+    }
+    
+    .left-side {
+        left: 15%;
+    }
+    
+    .right-side {
+        right: 15%;
+    }
 }

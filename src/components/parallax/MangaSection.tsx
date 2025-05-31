@@ -80,14 +80,14 @@ const MangaSection: React.FC<{ progress: number }> = ({ progress }) => {
       <div className="manga-blur-gradient" style={{ zIndex: 1 }}></div>
       <div className="manga-art-placeholder" />
       <div className="project-lines">
-        <div className="left-side">
+        {/* <div className="left-side">
           <div className="vector-8"></div>
           <div className="vector-9"></div>
-        </div>
-        <div className="right-side">
+        </div> */}
+        {/* <div className="right-side">
           <div className="vector-8"></div>
           <div className="vector-9"></div>
-        </div>
+        </div> */}
         <div className="vertical-line v1" style={{ transform: `translateY(${adjustedProgress * 5}px)` }}></div>
         <div className="vertical-line v2" style={{ transform: `translateY(${adjustedProgress * 10}px)` }}></div>
         <div className="vertical-line v3" style={{ transform: `translateY(${adjustedProgress * 15}px)` }}></div>

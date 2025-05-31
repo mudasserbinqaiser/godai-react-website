@@ -376,14 +376,14 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
                   <div className="hero-content">
                     {/* Hero Decorative Lines */}
                     <div className="project-lines" style={{ opacity: 1 - adjustedProgress }}>
-                      <div className="left-side">
+                      {/* <div className="left-side">
                         <div className="vector-8"></div>
                         <div className="vector-9"></div>
-                      </div>
-                      <div className="right-side">
+                      </div> */}
+                      {/* <div className="right-side">
                         <div className="vector-8"></div>
                         <div className="vector-9"></div>
-                      </div>
+                      </div> */}
                       <div className="vertical-line v1"></div>
                       <div className="vertical-line v2"></div>
                       <div className="vertical-line v3"></div>
@@ -441,14 +441,14 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
                     <div className="project-outline" style={{ opacity: projectElementOpacity, transition: 'opacity 0.2s' }}></div>
                     <div className="project-blur-gradient" style={{ opacity: projectElementOpacity, transition: 'opacity 0.2s' }}></div>
                     <div className="project-lines" style={{ opacity: projectElementOpacity, transition: 'opacity 0.2s' }}>
-                      <div className="left-side">
+                      {/* <div className="left-side">
                         <div className="vector-8"></div>
                         <div className="vector-9"></div>
-                      </div>
-                      <div className="right-side">
+                      </div> */}
+                      {/* <div className="right-side">
                         <div className="vector-8"></div>
                         <div className="vector-9"></div>
-                      </div>
+                      </div> */}
                       <div className="vertical-line v1" style={{ transform: `translateY(${adjustedProgress * 5}px)` }}></div>
                       <div className="vertical-line v2" style={{ transform: `translateY(${adjustedProgress * 10}px)` }}></div>
                       <div className="vertical-line v3" style={{ transform: `translateY(${adjustedProgress * 15}px)` }}></div>
@@ -486,7 +486,7 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
                           ? ( (1 - adjustedProgress) * 40 ) 
                           : ( (1 - adjustedProgress) * -50 ) }%)
                           rotateY(${180 * (1 - adjustedProgress)}deg)
-                          scale(${0.4 + (adjustedProgress * (isMobile ? 0.8 : 0.6))})
+                          scale(${0.4 + (adjustedProgress * (isMobile ? 0.8 : (window.innerWidth >= 2560 ? 1.2 : 0.6)))})
                         `,
                         transformOrigin: 'center bottom',
                         zIndex: 5,
@@ -519,7 +519,7 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
                     >
                       <p>Long ago, Earth, Fire, Water, Air, and Aether held the world in balance. But balance is fragile and with time, the elements turned against each other.</p>
                       <br />
-                      <p>Now, their unity shattered, an ancient conflict returns.</p>
+                      <p className="bold">Now, their unity shattered, an ancient conflict returns.</p>
                     </div>
                   </>
                 )

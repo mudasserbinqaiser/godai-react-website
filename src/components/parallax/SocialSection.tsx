@@ -123,11 +123,11 @@ const SocialSection: React.FC<{ progress: number }> = ({ progress }) => {
             <div className="social-button-icon icon-1"></div>
           </a>
           
-          <a href="https://x.com/godai" target="_blank" rel="noopener noreferrer" className="social-button">
+          <a href="https://x.com/GodaiAbstract" target="_blank" rel="noopener noreferrer" className="social-button">
             <div className="social-button-icon icon-2"></div>
           </a>
           
-          <a href="https://t.me/godai" target="_blank" rel="noopener noreferrer" className="social-button">
+          <a href="https://t.me/+FVW7uPLnObs3M2U8" target="_blank" rel="noopener noreferrer" className="social-button">
             <div className="social-button-icon icon-3"></div>
           </a>
         </div>
@@ -154,12 +154,12 @@ const SocialSection: React.FC<{ progress: number }> = ({ progress }) => {
             <span>Discord</span>
           </a>
           
-          <a href="https://x.com/godai" target="_blank" rel="noopener noreferrer" className="social-link">
+          <a href="https://x.com/GodaiAbstract" target="_blank" rel="noopener noreferrer" className="social-link">
             <div className="social-icon x-twitter"></div>
             <span>X / Twitter</span>
           </a>
           
-          <a href="https://t.me/godai" target="_blank" rel="noopener noreferrer" className="social-link">
+          <a href="https://t.me/+FVW7uPLnObs3M2U8" target="_blank" rel="noopener noreferrer" className="social-link">
             <div className="social-icon telegram"></div>
             <span>Telegram</span>
           </a>
@@ -173,14 +173,14 @@ const SocialSection: React.FC<{ progress: number }> = ({ progress }) => {
 
       {/* Decorative lines */}
       <div className="project-lines">
-        <div className="left-side">
+        {/* <div className="left-side">
           <div className="vector-8"></div>
           <div className="vector-9"></div>
-        </div>
-        <div className="right-side">
+        </div> */}
+        {/* <div className="right-side">
           <div className="vector-8"></div>
           <div className="vector-9"></div>
-        </div>
+        </div> */}
         <div className="vertical-line v1"></div>
         <div className="vertical-line v2"></div>
         <div className="vertical-line v3"></div>

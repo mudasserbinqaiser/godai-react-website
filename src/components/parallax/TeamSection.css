@@ -329,6 +329,23 @@
     cursor: not-allowed;
 }
 
+.team-title {
+    position: absolute;
+    width: 20%;
+    text-align: left;
+    top: 17%;
+    left: 7%;
+    font-family: 'Cyberjunkies', sans-serif;
+    font-weight: 200;
+    font-size: 2.5rem;
+    color: #FFFFFF;
+    opacity: 0.9;
+    z-index: 10;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+        0 0 20px rgba(255, 255, 255, 0.3),
+        0 0 30px rgba(255, 255, 255, 0.2);
+}
+
 /* Description */
 .team-description {
     position: absolute;
@@ -471,12 +488,12 @@
     } */
 
     .x-button {
-        top: 675% !important;
+        top: 790% !important;
         left: -33% !important;
     }
 
     .team-info {
-        top: 20%;
+        top: 29%;
     }
 
     .team-name {
@@ -491,7 +508,7 @@
     .team-member-display {
         width: 200px;
         margin: 15px auto;
-        top: -25%;
+        top: -15%;
     }
 
     .svg-wrapper {
@@ -524,6 +541,14 @@
     .team-section-bg {
         overflow: hidden;
     }
+
+    .team-title {
+        width: 80%;
+        text-align: center;
+        top: 17%;
+        left: 10%;
+        font-size: 2.5rem;
+    }
 }
 
 @media (max-height: 700px) {
@@ -547,5 +572,132 @@
 
     .team-section-bg {
         overflow: hidden;
+    }
+
+        .x-button {
+            top: 790% !important;
+            left: -33% !important;
+        }
+}
+
+/* iPhone 14 Pro Max and iPhone 15 Pro Max (430px viewport width) */
+@media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
+    .team-info {
+        top: 25%;
+        transform: translateY(0) !important;
+    }
+
+    .team-title {
+        width: 80%;
+        text-align: center;
+        top: 17%;
+        left: 10%;
+        font-size: 2.5rem;
+    }
+
+    .team-member-display {
+        width: 200px;
+        margin: 15px auto;
+        top: -15%;
+    }
+
+    .x-button {
+        top: 790% !important;
+        left: -33% !important;
+    }
+}
+
+/* iPhone 14 Pro (393px viewport width) */
+@media only screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) {
+
+    .team-info {
+            top: 25%;
+            transform: translateY(0) !important;
+    }
+
+    .team-title {
+        width: 80%;
+        text-align: center;
+        top: 17%;
+        left: 10%;
+        font-size: 2.5rem;
+    }
+
+    .team-member-display {
+        width: 200px;
+        margin: 15px auto;
+        top: -15%;
+    }
+
+    .x-button {
+        top: 790% !important;
+        left: -33% !important;
+    }
+}
+
+/* Large Desktop Screens */
+@media (min-width: 1440px) {
+
+    .team-info {
+        left: 0.2%;
+    }
+
+    .team-member-display {
+        transform: translate(-40%, -55%);
+    }
+    
+    .team-vertical-slider {
+        right: 10%;
+    }
+    
+    .team-title {
+        left: 8%;
+        font-size: 3rem;
+        width: 30%;
+        top: 21%;
+    }
+    
+    .team-description {
+        right: 10%;
+        width: 500px;
+    }
+    
+    .x-account-link {
+        left: 34%;
+    }
+
+    .team-vertical-slider {
+        right: 4.5%;
+        top: 20%;
+    }
+}
+
+/* Extra Large Screens (like 32 inch monitors) */
+@media (min-width: 2560px) {
+    .team-content-wrapper {
+        max-width: 2000px;
+        margin: 0 auto;
+    }
+    
+    .team-member-display {
+        transform: translate(-50%, -55%) scale(1.4);
+    }
+    
+    .team-vertical-slider {
+        right: 15%;
+    }
+    
+    .team-title {
+        left: 15%;
+        font-size: 3.5rem;
+    }
+    
+    .team-description {
+        right: 15%;
+        width: 600px;
+    }
+    
+    .x-account-link {
+        left: 40%;
     }
 }

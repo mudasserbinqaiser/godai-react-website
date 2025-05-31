@@ -12,15 +12,15 @@ const nftImages = [
   "/assets/images/nft7.png",
 ];
 
-const nftTitles = [
-  "TITLE",
-  "TITLE",
-  "TITLE",
-  "TITLE",
-  "TITLE",
-  "TITLE",
-  "TITLE",
-];
+// const nftTitles = [
+//   "TITLE",
+//   "TITLE",
+//   "TITLE",
+//   "TITLE",
+//   "TITLE",
+//   "TITLE",
+//   "TITLE",
+// ];
 
 const nftDescriptions = [
   "Born of starlight and shadow, he walks between worlds. When he awakens, reality itself trembles before his cosmic power.",
@@ -148,14 +148,14 @@ export default function NftCarousel() {
       </video>
         <div className="nft-blur-gradient"></div>
     <div className="project-lines" >
-        <div className="left-side">
+        {/* <div className="left-side">
         <div className="vector-8"></div>
         <div className="vector-9"></div>
-        </div>
-        <div className="right-side">
+        </div> */}
+        {/* <div className="right-side">
         <div className="vector-8"></div>
         <div className="vector-9"></div>
-        </div>
+        </div> */}
         <div className="vertical-line v1"></div>
         <div className="vertical-line v2"></div>
         <div className="vertical-line v3"></div>
@@ -224,7 +224,7 @@ export default function NftCarousel() {
                 {/* Main background and border */}
                 <div className="nft-card-back-main">
                     <div className="nft-card-back-content">
-                    <div className="nft-card-back-title">{nftTitles[i]}</div>
+                    {/* <div className="nft-card-back-title">{nftTitles[i]}</div> */}
                     <div className="nft-card-back-desc">{nftDescriptions[i]}</div>
                     </div>
                 </div>

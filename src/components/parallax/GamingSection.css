@@ -141,10 +141,11 @@
 }
 
 .gaming-description {
+    position: absolute;
     width: 407px;
     height: 80px;
-    left: 986px;
-    top: 383px;
+    right: -65%;
+    top: 55px;
     font-family: 'IBM Plex Mono', monospace;
     font-style: normal;
     font-weight: 600;
@@ -155,7 +156,7 @@
     text-shadow: 0px 0px 20px #000000;
     z-index: 5;
     box-sizing: border-box;
-    transform: translateX(65%);
+    transform: none;
 }
 
 /* Mobile navigation arrows */
@@ -213,8 +214,8 @@
 position: absolute;
     width: 300px;
     height: 60px;
-    left: 91%;
-    top: 72%;
+    left: 90%;
+top: 55%;
     font-family: 'IBM Plex Mono', monospace;
     font-style: normal;
     font-weight: 800;
@@ -388,5 +389,91 @@ position: absolute;
         left: 15%;
         top: 62%;
         text-align: center;
+    }
+}
+
+/* iPhone 14 Pro Max and iPhone 15 Pro Max (430px viewport width) */
+@media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
+    .gaming-title {
+        top: 32%;
+        transform: translateY(0) !important;
+    }
+
+    .gaming-subtitle {
+        top: 56%;
+        transform: translateY(0) !important;
+    }
+}
+
+/* iPhone 14 Pro (393px viewport width) */
+@media only screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) {
+    .project-title {
+        top: 32%;
+        transform: translateY(0) !important;
+    }
+
+    .gaming-subtitle {
+        top: 72%;
+        transform: translateY(0) !important;
+    }
+
+    .gaming-subtitle {
+        top: 56%;
+        transform: translateY(0) !important;
+    }
+}
+
+/* Large Desktop Screens */
+/* @media (min-width: 1440px) {
+    .gaming-carousel {
+        right: 25%;
+        transform: translateY(-50%) scale(1.2);
+    }
+    
+    .gaming-title {
+        left: 50%;
+        font-size: 3.5rem;
+    }
+    
+    .gaming-subtitle {
+        left: 63%;
+        top: 50%;
+        width: 350px;
+    }
+    
+    .gaming-description {
+        right: -50%;
+        width: 500px;
+    }
+} */
+
+/* Extra Large Screens (like 32 inch monitors) */
+@media (min-width: 2560px) {
+    .gaming-carousel-bg {
+        max-width: 2000px;
+        margin: 0 auto;
+        position: relative;
+    }
+    
+    .gaming-carousel {
+        right: 30%;
+        transform: translateY(-50%) scale(1.4);
+    }
+    
+    .gaming-title {
+        left: 75%;
+        font-size: 4rem;
+    }
+    
+    .gaming-subtitle {
+        left: 88%;
+        width: 400px;
+    }
+    
+    .gaming-description {
+        right: -50%;
+        width: 600px;
+        font-size: 16px;
+        line-height: 24px;
     }
 }

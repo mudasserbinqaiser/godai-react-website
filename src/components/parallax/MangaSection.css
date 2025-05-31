@@ -68,8 +68,8 @@
     position: absolute;
     width: 100%;
     text-align: right;
-    bottom: 36%;
-    right: 5%;
+    bottom: 23%;
+    right: 6.1%;
     font-family: 'Cyberjunkies', sans-serif;
     font-weight: 200;
     font-size: 2.5rem;
@@ -154,8 +154,8 @@
 .manga-description {
     position: absolute;
     width: 450px;
-    bottom: 80px;
-    right: 50px;
+    bottom: 40px;
+    right: 63px;
     font-family: 'IBM Plex Mono', monospace;
     font-style: normal;
     font-weight: 600;
@@ -168,14 +168,9 @@
     padding: 12px 31px;
 }
 
-.manga-description p {
-    margin-bottom: 1rem;
-}
-
 /* Add this new CSS class */
 .manga-description .manga-bold-text {
     font-size: 13px;
-    margin-top: 1rem;
     color: #D94B18;
     font-weight: 800;
 }
@@ -241,5 +236,68 @@
     .manga-description .manga-bold-text {
         font-size: 13px;
         margin-top: 1.2rem;
+    }
+}
+
+/* iPhone 14 Pro Max and iPhone 15 Pro Max (430px viewport width) */
+@media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
+    .manga-description {
+        top: 61%;
+        transform: translateY(0) !important;
+    }
+}
+
+/* iPhone 14 Pro (393px viewport width) */
+@media only screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) {
+
+    .manga-description {
+        top: 61%;
+        transform: translateY(0) !important;
+    }
+}
+
+/* Large Desktop Screens */
+/* @media (min-width: 1440px) {
+
+    .manga-description {
+        width: 550px;
+        right: 4%;
+        bottom: 7%;
+        font-size: 15px;
+        line-height: 24px;
+    }
+} */
+
+/* Extra Large Screens (like 32 inch monitors) */
+@media (min-width: 2560px) {
+    .manga-section-bg {
+        max-width: 2000px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .manga-title {
+        right: 15%;
+        font-size: 3.5rem;
+    }
+
+    .manga-description {
+        width: 650px;
+        right: 15%;
+        font-size: 16px;
+        line-height: 26px;
+        bottom: 80px;
+    }
+
+    .manga-description .manga-bold-text {
+        font-size: 18px;
+    }
+
+    .manga-art-placeholder {
+        transform: scale(1.2);
+    }
+
+    .manga-outline {
+        transform: scale(1.2);
     }
 }

@@ -186,14 +186,14 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
           <div className="gaming-blur-gradient" style={{ zIndex: 1 }}></div>
           {!isMobile && (
             <div className="project-lines" style={{ zIndex: 2 }}>
-              <div className="left-side">
+              {/* <div className="left-side">
                 <div className="vector-8"></div>
                 <div className="vector-9"></div>
-              </div>
-              <div className="right-side">
+              </div> */}
+              {/* <div className="right-side">
                 <div className="vector-8"></div>
                 <div className="vector-9"></div>
-              </div>
+              </div> */}
               <div className="vertical-line v1"></div>
               <div className="vertical-line v2"></div>
               <div className="vertical-line v3"></div>
