@@ -407,6 +407,19 @@ top: 55%;
     }
 }
 
+@media (max-width: 426px) {
+    /* .gaming-title {
+        top: 32%;
+        transform: translateY(0) !important;
+    } */
+     
+    .gaming-subtitle {
+        top: 72%;
+        transform: translateY(0) !important;
+    }
+    
+}
+
 /* iPhone 14 Pro (393px viewport width) */
 @media only screen and (device-width: 393px){
     .project-title {
@@ -422,6 +435,65 @@ top: 55%;
     .gaming-subtitle {
         top: 56%;
         transform: translateY(0) !important;
+    }
+}
+
+/* Small mobile screens */
+@media (max-width: 391px) {
+    .gaming-carousel {
+        padding-top: 0;
+        justify-content: center;
+    }
+
+    .mobile-gaming-slider {
+        height: 280px;
+    }
+
+    .gaming-carousel-bg {
+        overflow: hidden;
+    }
+
+    .gaming-card-svg-wrapper {
+        width: 60px;
+        height: 60px;
+    }
+
+    .gaming-card-title {
+        font-size: 10px;
+    }
+
+    .gaming-description {
+        font-size: 13px;
+        line-height: 16px;
+        max-width: 280px;
+        right: 0%;
+        margin-top: 15px;
+        top: -20%;
+    }
+
+    .gaming-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .nav-arrow {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    .gaming-title {
+        font-size: 2.8rem;
+        left: -35%;
+        top: 30%;
+    }
+
+    .gaming-subtitle {
+        max-width: 280px;
+        font-size: 13px;
+        left: 15%;
+        top: 62%;
+        text-align: center;
     }
 }
 

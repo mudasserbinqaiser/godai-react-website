@@ -493,6 +493,35 @@
     }
 }
 
+@media (max-height: 700px) {
+    .team-info {
+        margin-top: 30px;
+    }
+
+    /* .team-name {
+        font-size: 32px;
+        line-height: 36px;
+        margin-bottom: 10px;
+    } */
+
+    .team-member-display {
+        margin: 10px auto;
+    }
+
+    .team-description {
+        margin: 10px auto 20px;
+    }
+
+    .team-section-bg {
+        overflow: hidden;
+    }
+
+        .x-button {
+            top: 790% !important;
+            left: -33% !important;
+        }
+}
+
 @media (max-width: 480px) {
     /* .x-account-link {
         top: 48% !important;
@@ -569,35 +598,6 @@
     }
 }
 
-@media (max-height: 700px) {
-    .team-info {
-        margin-top: 30px;
-    }
-
-    /* .team-name {
-        font-size: 32px;
-        line-height: 36px;
-        margin-bottom: 10px;
-    } */
-
-    .team-member-display {
-        margin: 10px auto;
-    }
-
-    .team-description {
-        margin: 10px auto 20px;
-    }
-
-    .team-section-bg {
-        overflow: hidden;
-    }
-
-        .x-button {
-            top: 790% !important;
-            left: -33% !important;
-        }
-}
-
 /* iPhone 14 Pro Max and iPhone 15 Pro Max (430px viewport width) */
 @media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
     .team-info {
@@ -631,6 +631,31 @@
     }
 }
 
+@media (max-width: 426px) {
+   .team-info {
+    top: 36%;
+   }
+
+   .team-mobile-dots {
+    display: none;
+   }
+
+   .x-button {
+    transform: scale(0.7);
+    top: 720% !important;
+   }
+
+   .team-member-display {
+    transform: scale(0.8);
+    top: -17%;
+   }
+
+   .team-subtitle{
+    top: 25%;
+    left: 24%;
+   }
+}
+
 /* iPhone 14 Pro (393px viewport width) */
 @media only screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) {
 
@@ -662,6 +687,82 @@
     .x-button {
         top: 790% !important;
         left: -33% !important;
+    }
+}
+
+@media (max-width: 391px) {
+    /* .x-account-link {
+        top: 48% !important;
+        left: -16% !important;
+    } */
+
+    .x-button {
+        top: 790% !important;
+        left: -33% !important;
+    }
+
+    .team-info {
+        top: 29%;
+    }
+
+    .team-name {
+        font-size: 36px;
+        line-height: 40px;
+    }
+
+    .team-description-header {
+        font-size: 10px;
+    }
+
+    .team-member-display {
+        width: 200px;
+        margin: 15px auto;
+        top: -15%;
+    }
+
+    .svg-wrapper {
+        width: 200px;
+        height: 275px;
+    }
+
+    .team-mobile-dots {
+        bottom: 50px;
+    }
+
+    .team-mobile-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .x-button {
+        min-width: 50px !important;
+        min-height: 50px !important;
+    }
+
+    .team-description {
+        font-size: 12px;
+        line-height: 16px;
+        max-width: 260px;
+        margin: 15px auto 25px;
+        bottom: -20px;
+    }
+
+    .team-section-bg {
+        overflow: hidden;
+    }
+
+    .team-title {
+        width: 80%;
+        text-align: center;
+        top: 17%;
+        left: 10%;
+        font-size: 2.5rem;
+    }
+
+    .team-subtitle {
+        font-size: 14px;
+        top: 24%;
+        left: 22%;
     }
 }
 

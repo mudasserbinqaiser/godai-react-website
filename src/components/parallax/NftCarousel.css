@@ -476,7 +476,7 @@
         height: 200px !important;
         margin-left: -63px !important;
     }
-    
+
     .nft-card-back-main {
         width: 130px !important;
         height: 200px !important;
@@ -488,17 +488,55 @@
         width: 300px;
         font-size: 12px;
     }
+
     .nft-carousel-subtitle {
         top: 680px;
     }
+
     .nft-card-back-desc {
         font-size: 10px !important;
         line-height: 16px !important;
     }
-    
+
     .nft-card-back-content {
         width: 140px !important;
     }
+}
+
+@media (max-width: 426px) {
+    .nft-card {
+            width: 100px !important;
+            height: 150px !important;
+            margin-left: -51px !important;
+            top: 25% !important;
+        }
+    
+    .nft-card-back-main {
+        width: 130px !important;
+        height: 200px !important;
+    }
+    
+    .nft-carousel-description {
+        top: 442px;
+        left: calc(50% - 300px/2);
+        width: 300px;
+        font-size: 12px;
+    }
+    
+    .nft-carousel-subtitle {
+        top: 518px;
+    }
+
+    .nft-card-back-desc {
+        font-size: 6px !important;
+        line-height: 16px !important;
+    }
+
+    .nft-card-back-content {
+        width: 120px !important;
+    }
+
+        
 }
 
 /* iPhone 14 Pro (393px viewport width) */
@@ -508,7 +546,7 @@
         height: 190px !important;
         margin-left: -60px !important;
     }
-    
+
     .nft-card-back-main {
         width: 120px !important;
         height: 190px !important;
@@ -518,14 +556,87 @@
         font-size: 9px !important;
         line-height: 14px !important;
     }
-    
+
     .nft-card-back-content {
         width: 120px !important;
         gap: 12px !important;
     }
-    
+
     .nft-card-back-title {
         font-size: 18px !important;
+    }
+}
+
+@media (max-width: 391px) {
+
+    /* Make cards significantly larger */
+    .nft-card {
+        width: 140px !important;
+        height: 210px !important;
+        left: 50% !important;
+        margin-left: -70px !important;
+    }
+
+    /* Adjust back card to match size */
+    .nft-card-back-main {
+        width: 140px !important;
+        height: 210px !important;
+    }
+
+    /* Adjust card glow size */
+    .nft-card-glow {
+        width: 150px !important;
+        height: 220px !important;
+    }
+
+    .nft-dots {
+        display: flex !important;
+    }
+
+    .nft-slider-controls {
+        gap: 50px !important;
+        bottom: 40px !important;
+        z-index: 1000 !important;
+        position: fixed !important;
+    }
+
+    .nft-carousel-description {
+        top: 570px;
+        left: calc(50% - 300px/2);
+        width: 300px;
+        font-size: 12px;
+    }
+
+    .nft-carousel-subtitle {
+        top: 650px;
+        left: calc(50% - 300px/2);
+        width: 300px;
+    }
+
+    .nft-carousel-bg {
+        overflow: visible !important;
+    }
+
+    .nft-carousel {
+        overflow: visible !important;
+    }
+
+    /* Card back text adjustments for larger cards */
+    .nft-card-back-desc {
+        font-size: 10px !important;
+        line-height: 16px !important;
+        width: 90% !important;
+        padding: 0px 10px !important;
+    }
+
+    .nft-card-back-title {
+        font-size: 20px !important;
+        padding: 6px 12px !important;
+    }
+
+    .nft-card-back-content {
+        width: 120px !important;
+        gap: 14px !important;
     }
 }
 
