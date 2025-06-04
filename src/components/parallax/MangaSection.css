@@ -68,7 +68,7 @@
     position: absolute;
     width: 100%;
     text-align: right;
-    bottom: 23%;
+    bottom: 26.5%;
     right: 6.1%;
     font-family: 'Cyberjunkies', sans-serif;
     font-weight: 200;
@@ -285,6 +285,7 @@
 
     .manga-title {
         right: 7%;
+        bottom: 21%;
         font-size: 4rem;
 
     }

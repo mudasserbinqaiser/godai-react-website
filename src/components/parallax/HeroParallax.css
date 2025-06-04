@@ -199,6 +199,62 @@
     }
 }
 
+@media (max-width: 426px) {
+  .enter-godai-text {
+    bottom: 8%;
+  }
+
+  .hero-characters-image {
+    right: 1%;
+  }
+}
+
+@media (max-width: 391px) {
+  .enter-godai-container {
+    z-index: 90;
+    position: fixed;
+    height: 400px;
+  }
+
+  .enter-godai-text {
+    font-size: 38px;
+    z-index: 90;
+  }
+
+  .hero-characters-container {
+    width: 130% !important;
+  }
+
+  .hero-characters-image {
+    width: 5000px !important;
+    transform: translate(-60px, -40px) !important;
+  }
+
+  .blur-gradient-bottom-characters {
+    height: 30%;
+  }
+
+  .hero-section-bg {
+    overflow: hidden;
+  }
+
+  .hero-characters-container {
+    overflow: hidden;
+  }
+
+  .hero-orange-border {
+    overflow: hidden;
+  }
+
+  .blur-gradient-bottom-characters {
+    overflow: hidden;
+  }
+
+  .enter-godai-container {
+    overflow: hidden;
+  }
+}
+
 /* Large Desktop Screens */
 @media (min-width: 1920px) {
     .hero-characters-container {
