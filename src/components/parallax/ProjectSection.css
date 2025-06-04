@@ -316,6 +316,46 @@
   }
 }
 
+/* iPhone 14 Pro Max and iPhone 15 Pro Max (430px viewport width) */
+@media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
+  .project-title {
+    font-size: 2.2rem;
+    top: 25%;
+    transform: translateY(0) !important;
+  }
+
+  .project-avatar img {
+    width: 500px !important;
+    transform: translateX(-30px) !important;
+  }
+}
+
+@media (max-width: 426px) {
+  .project-title {
+    right: 27%;
+  }
+
+  .project-description {
+    top: 33% ;
+    font-size: 12px ;
+    line-height: 18px ;
+  }
+
+  .project-avatar img {
+    width: 500px ;
+    transform: translateX(45px) ;
+  }
+}
+
+/* iPhone 14 Pro (393px viewport width) */
+@media only screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) {
+  .project-title {
+    font-size: 2.2rem;
+    top: 25%;
+    transform: translateY(0) !important;
+  }
+}
+
 @media (max-width: 391px) {
   .project-title {
     font-size: 2rem;
@@ -365,46 +405,6 @@
     width: 500px !important;
     transform: translateX(-5px) !important;
   }
-}
-
-@media (max-width: 426px) {
-  .project-title {
-    right: 27%;
-  }
-
-  .project-description {
-    top: 33% ;
-    font-size: 12px ;
-    line-height: 18px ;
-  }
-
-  .project-avatar img {
-    width: 500px ;
-    transform: translateX(45px) ;
-  }
-}
-
-/* iPhone 14 Pro Max and iPhone 15 Pro Max (430px viewport width) */
-@media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
-  .project-title {
-    font-size: 2.2rem;
-    top: 25%;
-    transform: translateY(0) !important;
-  }
-
-  .project-avatar img {
-    width: 500px !important;
-    transform: translateX(-30px) !important;
-  }
-}
-
-/* iPhone 14 Pro (393px viewport width) */
-@media only screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) {
-  .project-title {
-      font-size: 2.2rem;
-      top: 25%;
-      transform: translateY(0) !important;
-    }
 }
 
 /* Large Desktop Screens */
