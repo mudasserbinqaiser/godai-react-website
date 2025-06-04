@@ -346,6 +346,18 @@
         0 0 30px rgba(255, 255, 255, 0.2);
 }
 
+.team-subtitle {
+    position: absolute;
+    text-align: left;
+    top: 30%;
+    left: 8.1%;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
+    font-size: 16px;
+    color: #FFFFFF;
+    text-shadow: 0px 0px 20px #000000;
+}
+
 /* Description */
 .team-description {
     position: absolute;
@@ -549,6 +561,12 @@
         left: 10%;
         font-size: 2.5rem;
     }
+
+    .team-subtitle {
+        font-size: 14px;
+        top: 24%;
+        left: 22%;
+    }
 }
 
 @media (max-height: 700px) {
@@ -595,6 +613,12 @@
         font-size: 2.5rem;
     }
 
+    .team-subtitle {
+        font-size: 14px;
+        top: 24%;
+        left: 23%;
+    }
+
     .team-member-display {
         width: 200px;
         margin: 15px auto;
@@ -621,6 +645,12 @@
         top: 17%;
         left: 10%;
         font-size: 2.5rem;
+    }
+
+    .team-subtitle {
+        font-size: 14px;
+        top: 24%;
+        left: 23%;
     }
 
     .team-member-display {
@@ -656,6 +686,12 @@
         width: 30%;
         top: 21%;
     }
+
+    /* .team-subtitle {
+        font-size: 16px;
+        top: 17%;
+        left: 10%;
+    } */
     
     .team-description {
         right: 10%;
@@ -690,9 +726,15 @@
     
         .team-title {
             left: 8%;
-            font-size: 4rem;
+            font-size: 7rem;
             width: 20%;
             top: 25%;
+        }
+
+        .team-subtitle {
+            font-size: 32px;
+            top: 34%;
+            left: 8%;
         }
     
         .team-description {
