@@ -198,7 +198,10 @@ const TeamSection: React.FC<{ progress: number }> = ({ progress }) => {
 
       {/* Add the title to the left side of the screen */}
       <div className="team-title">
-        MEET THE TEAM BEHIND GODAI
+        Council
+      </div>
+      <div className="team-subtitle">
+        Meet the team behind Godai
       </div>
 
       {/* Decorative elements */}
