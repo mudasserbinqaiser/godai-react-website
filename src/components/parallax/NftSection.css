@@ -99,6 +99,23 @@
     }
 }
 
+@media (max-width: 391px) {
+    .nft-title {
+        top: 59%;
+        left: 0.5%;
+    }
+}
+
+@media (max-width: 376px) {
+    .nft-title {
+        font-size: 1.7rem;
+        text-align: center;
+        right: 0;
+        left: 0;
+        top: 55%;
+    }
+}
+
 @media (max-width: 320px) {
     .nft-section-bg {
         overflow: hidden;

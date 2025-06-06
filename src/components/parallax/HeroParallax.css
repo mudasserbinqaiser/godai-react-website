@@ -209,6 +209,14 @@
   }
 }
 
+@media (max-width: 415px) {
+  .enter-godai-text {
+    bottom: -5%;
+  }
+}
+
+
+
 @media (max-width: 391px) {
   .enter-godai-container {
     z-index: 90;
@@ -253,6 +261,17 @@
   .enter-godai-container {
     overflow: hidden;
   }
+}
+
+@media (max-width: 376px) {
+  .enter-godai-text {
+    bottom: 6%;
+  }
+
+  /* .hero-characters-image {
+    bottom: 10%;
+    right: -0.5%;
+  } */
 }
 
 /* Large Desktop Screens */

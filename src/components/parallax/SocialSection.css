@@ -463,6 +463,26 @@
     }
 }
 
+@media (max-width: 376px) {
+    .socials-banner-wrapper {
+        transform: scale(0.9);
+        left: 65px;
+        top: 35%;
+    }
+
+    .social-buttons-container {
+        top: -47%;
+        left: 25%;
+        transform: scale(0.9);
+    }
+
+    .signup-button-container {
+        transform: scale(0.9);
+        top: -37%;
+        left: 30%;
+    }
+}
+
 /* Large Desktop Screens */
 /* @media (min-width: 1440px) {
     .socials-banner-wrapper {
