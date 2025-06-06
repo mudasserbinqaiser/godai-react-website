@@ -433,17 +433,22 @@
 @media (max-width: 415px) {
 
     .nft-carousel-description {
-            top: 570px;
+            top: 530px;
             left: calc(50% - 300px/2);
             width: 300px;
             font-size: 12px;
         }
     
     .nft-carousel-subtitle {
-        top: 650px;
+        top: 620px;
         left: calc(50% - 300px/2);
         width: 300px;
     }
+
+    .nft-carousel{
+        top: -15%;
+    }
+
 }
 
 /* iPhone 14 Pro (393px viewport width) */
