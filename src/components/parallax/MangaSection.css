@@ -254,6 +254,12 @@
     }
 }
 
+@media (max-width: 415px) {
+    .manga-title {
+        top: 64%;
+    }
+}
+
 /* iPhone 14 Pro (393px viewport width) */
 @media only screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) {
 
@@ -266,7 +272,7 @@
 @media (max-width: 391px) {
     .manga-title {
         font-size: 2rem;
-        transform: translateY(110px) !important;
+        top: 61.5%;
     }
 
     .manga-description {
@@ -275,6 +281,17 @@
         line-height: 16px;
         bottom: 140px;
         left: 20px !important;
+    }
+
+    .manga-description .manga-bold-text {
+        font-size: 13px;
+        margin-top: 1.2rem;
+    }
+}
+
+@media (max-width: 376px) {
+    .manga-title {
+        top: 51.5%;
     }
 
     .manga-description .manga-bold-text {

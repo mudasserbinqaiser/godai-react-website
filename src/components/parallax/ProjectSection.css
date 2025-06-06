@@ -316,73 +316,7 @@
   }
 }
 
-@media (max-width: 391px) {
-  .project-title {
-    font-size: 2rem;
-    transform: translateY(160px) !important;
-    right: 25% !important;
-    top: 10%;
-  }
 
-  .project-description {
-    font-size: 15px;
-    line-height: 18px;
-  }
-
-  .vertical-line {
-    opacity: 0.3;
-  }
-
-  .project-blur-gradient {
-    height: 100%;
-    background: linear-gradient(to top,
-        rgba(7, 23, 38, 1) 0%,
-        /* Was 1 */
-        rgba(7, 23, 38, 1) 30%,
-        /* Was 0.95 */
-        rgba(7, 23, 38, 0.8) 60%,
-        /* Was 0.9 */
-        rgba(7, 23, 38, 0.7) 80%,
-        /* Was 0.85 */
-        rgba(7, 23, 38, 0.6) 100%);
-    /* Was 0.8 */
-    z-index: 90;
-  }
-
-  .project-section {
-    overflow: hidden;
-  }
-
-  .video-container {
-    overflow: hidden;
-  }
-
-  .background-video {
-    overflow: hidden;
-  }
-
-  .project-avatar img {
-    width: 500px !important;
-    transform: translateX(-5px) !important;
-  }
-}
-
-@media (max-width: 426px) {
-  .project-title {
-    right: 27%;
-  }
-
-  .project-description {
-    top: 33% ;
-    font-size: 12px ;
-    line-height: 18px ;
-  }
-
-  .project-avatar img {
-    width: 500px ;
-    transform: translateX(45px) ;
-  }
-}
 
 /* iPhone 14 Pro Max and iPhone 15 Pro Max (430px viewport width) */
 @media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
@@ -412,6 +346,19 @@
   .project-avatar img {
     width: 500px ;
     transform: translateX(45px) ;
+  }
+}
+
+@media (max-width: 415px) {
+  .project-description {
+    top: 30% ;
+    font-size: 16px ;
+    line-height: 18px ;
+  }
+
+  .project-avatar img {
+    width: 500px ;
+    transform: translateX(-5px) ;
   }
 }
 
@@ -474,6 +421,19 @@
     transform: translateX(-5px) !important;
   }
 }
+
+@media (max-width: 376px) {
+  .project-title {
+    top: 5%;
+  }
+
+  .project-description {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+
 
 /* Large Desktop Screens */
 /* @media (min-width: 1920px) {

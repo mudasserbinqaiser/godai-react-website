@@ -503,13 +503,15 @@
 
     .nft-dots {
         display: flex !important;
+        position: absolute !important;
+        bottom: 20% !important;
     }
 
     .nft-slider-controls {
         gap: 50px !important;
         bottom: 40px !important;
         z-index: 1000 !important;
-        position: fixed !important;
+        position: absolute !important;
     }
 
     .nft-carousel-description {
@@ -549,6 +551,100 @@
     .nft-card-back-content {
         width: 120px !important;
         gap: 14px !important;
+    }
+}
+
+@media (max-width: 376px) {
+
+/* Make cards significantly larger */
+    .nft-card {
+        width: 130px !important;
+        height: 170px !important;
+        left: 50% !important;
+        margin-left: -70px !important;
+    }
+
+    /* Adjust back card to match size */
+    .nft-card-back-main {
+        width: 150px !important;
+        height: 210px !important;
+    }
+
+    /* Adjust card glow size */
+    .nft-card-glow {
+        width: 150px !important;
+        height: 220px !important;
+    }
+
+    .nft-dots {
+        bottom: 30px !important;
+        position: absolute !important;
+        display: flex !important;
+        transform: scale(0.8);
+    }
+
+    .nft-slider-controls {
+        gap: 50px !important;
+        bottom: 100% !important;
+        z-index: 1000 !important;
+        position: absolute !important;
+    }
+
+    .nft-carousel-description {
+        top: 430px;
+        left: calc(50% - 300px/2);
+        width: 300px;
+        font-size: 12px;
+    }
+
+    .nft-carousel-subtitle {
+        top: 510px;
+        left: calc(50% - 300px/2);
+        width: 300px;
+        font-size: 12px;
+    }
+
+    .nft-carousel-bg {
+        overflow: visible !important;
+    }
+
+    .nft-carousel {
+        overflow: visible !important;
+    }
+
+    /* Card back text adjustments for larger cards */
+    .nft-card-back-desc {
+        font-size: 9px !important;
+        line-height: 16px !important;
+        width: 100% !important;
+        padding: 0px 10px !important;
+    }
+
+    .nft-card-back-title {
+        font-size: 20px !important;
+        padding: 6px 12px !important;
+    }
+
+    .nft-card-back-content {
+        width: 130px !important;
+        gap: 14px !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .nft-dots {
+        bottom: -30px !important;
+        position: absolute !important;
+    }
+
+    .nft-carousel-description {
+        top: 480px;
+    }
+
+    .nft-carousel-subtitle {
+        top: 560px;
+        max-width: 300px;
+        width: 300px;
     }
 }
 

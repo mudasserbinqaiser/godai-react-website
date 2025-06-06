@@ -656,6 +656,12 @@
    }
 }
 
+@media (max-width: 415px) {
+    .team-info {
+        top: 22%;
+    }
+}
+
 /* iPhone 14 Pro (393px viewport width) */
 @media only screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) {
 
@@ -763,6 +769,18 @@
         font-size: 14px;
         top: 24%;
         left: 22%;
+    }
+}
+
+@media (max-width: 376px) {
+    .team-info {
+        top: 39%;
+    }
+}
+
+@media (max-width: 361px) {
+    .team-info {
+        top: 32.5%;
     }
 }
 
