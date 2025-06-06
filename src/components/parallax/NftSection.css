@@ -76,6 +76,14 @@
 
 }
 
+@media (max-width: 415px) {
+    .nft-title {
+        text-align: center;
+        left: -0.5%;
+        top: 55%;
+    }
+}
+
 /* iPhone 14 Pro (393px viewport width) */
 @media only screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) {
     .nft-title {
