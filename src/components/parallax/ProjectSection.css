@@ -336,13 +336,13 @@
 
   /* Safari-specific overrides */
   .project-title{
-    top: 10vw !important;
+    top: 20vw !important;
   }
   .project-description {
     position: relative !important;
     text-align: center !important;
     width: 90vw !important;
-    /* left: 5vw !important; */
+    left: 5vw !important;
     right: auto !important;
   }
 }
