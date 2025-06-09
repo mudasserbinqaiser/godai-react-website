@@ -335,7 +335,9 @@
 @supports (-webkit-touch-callout: none) {
 
   /* Safari-specific overrides */
-  .project-title,
+  .project-title{
+    top: 10vw !important;
+  }
   .project-description {
     position: relative !important;
     text-align: center !important;
