@@ -332,6 +332,19 @@
   }
 }
 
+@supports (-webkit-touch-callout: none) {
+
+  /* Safari-specific override */
+  .project-title,
+  .project-description {
+    position: relative !important;
+    text-align: center !important;
+    width: 90vw !important;
+    left: 5vw !important;
+    right: auto !important;
+  }
+}
+
 @media (max-width: 426px) {
   .project-title {
     right: 27%;
