@@ -334,7 +334,7 @@
 
 @supports (-webkit-touch-callout: none) {
 
-  /* Safari-specific override */
+  /* Safari-specific overrides */
   .project-title,
   .project-description {
     position: relative !important;
