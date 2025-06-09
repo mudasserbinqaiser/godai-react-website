@@ -637,7 +637,8 @@
    }
 
    .team-mobile-dots {
-    display: none;
+    display: flex;
+    bottom: 30px;
    }
 
    .x-button {
@@ -659,6 +660,11 @@
 @media (max-width: 415px) {
     .team-info {
         top: 22%;
+    }
+
+    .team-mobile-dots {
+        bottom: 50px;
+        display: flex;
     }
 }
 
@@ -733,6 +739,7 @@
 
     .team-mobile-dots {
         bottom: 50px;
+        display: flex;
     }
 
     .team-mobile-dot {
@@ -775,6 +782,16 @@
 @media (max-width: 376px) {
     .team-info {
         top: 39%;
+    }
+
+    .team-mobile-dots {
+        bottom: 30px;
+        display: flex;
+    }
+
+    .team-mobile-dot {
+        width: 10px;
+        height: 10px;
     }
 }
 

@@ -333,15 +333,89 @@
 }
 
 @supports (-webkit-touch-callout: none) {
-
   /* Safari-specific override */
-  .project-title,
+  .project-title {
+    position: relative !important;
+    text-align: center !important;
+    width: 90vw !important;
+    left: 5vw !important;
+    right: auto !important;
+    transform: none !important;
+    margin: 20% auto 0 !important;
+  }
+  
   .project-description {
     position: relative !important;
     text-align: center !important;
     width: 90vw !important;
     left: 5vw !important;
     right: auto !important;
+    margin: 5% auto !important;
+  }
+  
+  .project-blur-gradient {
+    height: 100% !important;
+    background: linear-gradient(to top,
+      rgba(7, 23, 38, 1) 0%,
+      rgba(7, 23, 38, 0.9) 20%,
+      rgba(7, 23, 38, 0.8) 40%,
+      rgba(7, 23, 38, 0.7) 60%,
+      rgba(7, 23, 38, 0.6) 80%,
+      rgba(7, 23, 38, 0.4) 100%) !important;
+    z-index: 5 !important;
+  }
+  
+  .project-avatar {
+    position: relative !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    transform: none !important;
+  }
+  
+  .project-avatar img {
+    width: 100% !important;
+    max-width: 500px !important;
+    transform: none !important;
+    margin: 0 auto !important;
+  }
+  
+  .project-section {
+    height: 100% !important;
+    min-height: 100vh !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  
+  /* Fix vertical lines for Safari */
+  .vertical-line {
+    opacity: 0.2 !important;
+  }
+}
+
+/* Add specific iPhone model fixes */
+@supports (-webkit-touch-callout: none) and (device-width: 390px) {
+  .project-title {
+    margin-top: 15% !important;
+    font-size: 1.8rem !important;
+  }
+  
+  .project-description {
+    font-size: 14px !important;
+    line-height: 18px !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) and (device-width: 375px) {
+  .project-title {
+    margin-top: 12% !important;
+    font-size: 1.7rem !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) and (device-width: 428px) {
+  .project-title {
+    margin-top: 18% !important;
+    font-size: 2rem !important;
   }
 }
 
