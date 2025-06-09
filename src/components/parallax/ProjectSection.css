@@ -333,96 +333,15 @@
 }
 
 @supports (-webkit-touch-callout: none) {
-  /* Safari-specific override */
-  .project-title {
-    position: relative !important;
-    text-align: center !important;
-    width: 90vw !important;
-    /* left: 5vw !important; */
-    right: auto !important;
-    transform: none !important;
-    margin: 25vh auto 0 !important;
-    padding-top: env(safe-area-inset-top, 10px) !important;
-  }
-  
+
+  /* Safari-specific overrides */
+  .project-title,
   .project-description {
     position: relative !important;
     text-align: center !important;
     width: 90vw !important;
     /* left: 5vw !important; */
     right: auto !important;
-    margin: 3vh auto !important;
-  }
-  
-  .project-avatar {
-    position: absolute !important;
-    width: 100% !important;
-    height: 100% !important;
-    left: 0 !important;
-    top: 0 !important;
-    z-index: 1 !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-  }
-  
-  .project-avatar img {
-    width: auto !important;
-    height: 100% !important;
-    max-height: 80vh !important;
-    object-fit: contain !important;
-    transform: none !important;
-    opacity: 0.8 !important;
-  }
-  
-  .project-blur-gradient {
-    height: 100% !important;
-    background: linear-gradient(to top,
-      rgba(7, 23, 38, 1) 0%,
-      rgba(7, 23, 38, 0.95) 20%,
-      rgba(7, 23, 38, 0.9) 40%,
-      rgba(7, 23, 38, 0.8) 60%,
-      rgba(7, 23, 38, 0.7) 80%,
-      rgba(7, 23, 38, 0.6) 100%) !important;
-    z-index: 2 !important;
-  }
-  
-  .project-section {
-    height: 100% !important;
-    min-height: 100vh !important;
-    -webkit-overflow-scrolling: touch !important;
-    position: relative !important;
-  }
-  
-  .project-title, .project-description {
-    z-index: 3 !important;
-    position: relative !important;
-  }
-  
-  .vertical-line {
-    opacity: 0.2 !important;
-  }
-}
-
-/* Add specific iPhone model fixes */
-@supports (-webkit-touch-callout: none) and (device-width: 390px) {
-  .project-title {
-    margin-top: 20vh !important;
-    font-size: 1.8rem !important;
-  }
-}
-
-@supports (-webkit-touch-callout: none) and (device-width: 375px) {
-  .project-title {
-    margin-top: 18vh !important;
-    font-size: 1.7rem !important;
-  }
-}
-
-@supports (-webkit-touch-callout: none) and (device-width: 428px) {
-  .project-title {
-    margin-top: 22vh !important;
-    font-size: 2rem !important;
   }
 }
 
