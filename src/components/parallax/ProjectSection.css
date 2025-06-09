@@ -338,18 +338,18 @@
     position: relative !important;
     text-align: center !important;
     width: 90vw !important;
-    left: 5vw !important;
+    /* left: 5vw !important; */
     right: auto !important;
     transform: none !important;
     margin: 25vh auto 0 !important;
-    padding-top: env(safe-area-inset-top, 20px) !important;
+    padding-top: env(safe-area-inset-top, 10px) !important;
   }
   
   .project-description {
     position: relative !important;
     text-align: center !important;
     width: 90vw !important;
-    left: 5vw !important;
+    /* left: 5vw !important; */
     right: auto !important;
     margin: 3vh auto !important;
   }
