@@ -10,6 +10,8 @@ import MangaSection from '../components/parallax/MangaSection';
 import TeamSection from '../components/parallax/TeamSection';
 import SocialSection from '../components/parallax/SocialSection';
 import { ScrollProgressContext } from '../context/ScrollProgressContext';
+import { useResponsiveViewport } from '../hooks/useResponsiveViewport';
+import { isIOS } from '../utils/SafeAreaUtils';
 
 
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
@@ -48,6 +50,8 @@ const Home = () => {
   const isScrollingRef = useRef(false);
   const [showEmailForm, setShowEmailForm] = useState(false);
   const [email, setEmail] = useState('');
+    // Use the responsive viewport hook to fix iOS 100vh issue
+  useResponsiveViewport();
 
   const MAX_PROGRESS = 6; // 0-1: vertical, 1-2: NFT, 2-3: gaming, 3-4: manga, 4-5: team, 5-6: socials
   
@@ -221,11 +225,25 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
     e.preventDefault();
     localStorage.setItem('emailSubmitted', 'true');
     setShowEmailForm(false);
-  };
-
-  const handleSkipEmail = () => {
+  };  const handleSkipEmail = (e: React.MouseEvent | React.TouchEvent) => {
+    // Prevent any default behavior
+    e.preventDefault();
+    e.stopPropagation();
+    
+    // For iOS, we need to be more aggressive in preventing default actions
+    if ('touches' in e) {
+      // This is a touch event
+      console.log('Touch event detected for skip');
+    }
+    
+    // Set local storage and hide form
     localStorage.setItem('emailSkipped', 'true');
     setShowEmailForm(false);
+    
+    // Add a small delay to ensure the click is registered
+    setTimeout(() => {
+      console.log('Email form skipped');
+    }, 100);
   };
 
   useEffect(() => {
@@ -586,7 +604,7 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
       </div>
       {showEmailForm && (
         <div className="email-overlay">
-          <div className="email-modal">
+          <div className={`email-modal ${isIOS() ? 'ios-device' : ''}`}>
             <h2>Get Early Access</h2>
             <p>Sign up to be notified when early access becomes available</p>
             <form onSubmit={handleSubmitEmail}>
@@ -598,8 +616,21 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
                 required
               />
               <div className="email-actions">
-                <button type="submit">Submit</button>
-                <button type="button" className="skip-button" onClick={handleSkipEmail}>
+                <button type="submit">Submit</button>                <button 
+                  type="button" 
+                  className="skip-button" 
+                  onClick={handleSkipEmail}
+                  onTouchStart={(e) => {
+                    // Prevent default to avoid any browser behavior
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }}
+                  onTouchEnd={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleSkipEmail(e);
+                  }}
+                >
                   Skip
                 </button>
               </div>

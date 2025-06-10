@@ -1,0 +1,232 @@
+/* 
+ * iOS Responsive Fixes
+ * This file contains CSS fixes for iOS viewport issues and safe area handling
+ */
+
+/* Fix for 100vh on iOS mobile browsers */
+.ios-fullheight {
+  height: 100vh; /* Fallback */
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+/* Properly handle safe area insets on notched iOS devices */
+.ios-safe-top {
+  padding-top: env(safe-area-inset-top, 0);
+}
+
+.ios-safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.ios-safe-left {
+  padding-left: env(safe-area-inset-left, 0);
+}
+
+.ios-safe-right {
+  padding-right: env(safe-area-inset-right, 0);
+}
+
+.ios-safe-all {
+  padding-top: env(safe-area-inset-top, 0);
+  padding-right: env(safe-area-inset-right, 0);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  padding-left: env(safe-area-inset-left, 0);
+}
+
+/* Fix for main sections that use 100vh */
+@supports (-webkit-touch-callout: none) {
+  /* iOS specific selector */
+  .section,
+  .parallax-banner,
+  .hero-section,
+  .project-layer,
+  .nft-section-bg,
+  .gaming-section-bg,
+  .manga-section-bg,
+  .team-section-bg,
+  .socials-section-bg {
+    height: calc(var(--vh, 1vh) * 100) !important;
+  }
+  
+  /* Fix for content positioning - adjust based on your layout */
+  .project-title {
+    top: calc(25% + env(safe-area-inset-top, 0px)) !important;
+  }
+  
+  .project-description {
+    top: calc(32% + env(safe-area-inset-top, 0px)) !important;
+  }
+  
+  .nft-title,
+  .gaming-title,
+  .manga-title,
+  .team-title,
+  .socials-title {
+    top: calc(var(--original-top, 60%) + env(safe-area-inset-top, 0px)) !important;
+  }
+  
+  /* Fix bottom positioning to account for home indicator */
+  .project-avatar,
+  .nft-carousel,
+  .team-info,
+  .manga-description,
+  .gaming-subtitle,
+  .socials-content {
+    bottom: calc(var(--original-bottom, 40px) + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  
+  /* Fix header positioning */
+  .navigation {
+    top: env(safe-area-inset-top, 0px) !important;
+  }
+}
+
+/* Prevent text size adjustment on orientation change */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Fix for iOS overscroll bounce effect */
+body {
+  overscroll-behavior-y: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+/* Keep scroll containers scrollable but prevent body bounce */
+.scrollable-container {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
+  position: relative;
+  max-height: calc(var(--vh, 1vh) * 100);
+}
+
+/* Fix for absolute positioned content inside responsive containers */
+.ios-device .responsive-content {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+/* Fix for text overflow on smaller iOS screens */
+.ios-device .section-content {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Fix for z-index issues on iOS with overlapping elements */
+.ios-device .z-top {
+  z-index: 100;
+  position: relative;
+}
+
+/* Fix for iOS Safari form controls */
+.ios-device input,
+.ios-device textarea,
+.ios-device select,
+.ios-device button {
+  font-size: 16px; /* prevents auto-zoom on focus */
+  -webkit-appearance: none; /* removes default iOS styling */
+  border-radius: 0; /* prevents iOS from rounding corners */
+  touch-action: manipulation; /* optimize for touch */
+  -webkit-touch-callout: none; /* prevent callout to copy image, etc on tap */
+  -webkit-user-select: none; /* prevent text selection */
+  user-select: none; /* prevent text selection */
+}
+
+/* Enhanced iOS button support */
+.ios-device .email-modal button {
+  cursor: pointer;
+  position: relative;
+  z-index: 100;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 12px 20px;
+  transform: translateZ(0); /* creates a stacking context */
+}
+
+.ios-device .email-modal .skip-button {
+  -webkit-tap-highlight-color: rgba(255,255,255,0.2);
+  position: relative;
+  z-index: 101;
+}
+
+/* Fix for iOS Safari's tendency to create stacking context issues */
+.ios-device .stacking-context-fix {
+  transform: translateZ(0);
+}
+
+/* Fix for -webkit-fill-available usage in nested contexts */
+.ios-device .full-height-nested {
+  height: 100%;
+  height: -webkit-fill-available;
+}
+
+/* Fix iOS notched devices (iPhone X and later) */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  /* Team section specific fixes */
+  .ios-device .team-section-bg {
+    height: calc(var(--vh, 1vh) * 100) !important;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  
+  .ios-device .team-info {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  
+  .ios-device .team-mobile-dots {
+    bottom: calc(30px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  
+  /* Fix for potential text overlaps on iOS */
+  .ios-device .team-name,
+  .ios-device .team-description-header,
+  .ios-device .team-title,
+  .ios-device .team-subtitle {
+    transform: translateZ(0); /* Creates a new stacking context */
+    max-width: 90%; /* Prevent horizontal overflow */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Fix for X button positioning on notched devices */
+  .ios-device .x-account-link {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    z-index: 200;
+  }
+}
+/* Fix for Arena section text overlap on iOS */
+.ios-device .arena-section .arena-title {
+  margin-bottom: 20px; /* Increase spacing between title and description */
+}
+
+.ios-device .arena-section .arena-description {
+  top: auto; /* Remove absolute positioning that causes overlap */
+  position: relative;
+  margin-top: 10px;
+  padding: 0 20px; /* Add horizontal padding for better readability */
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* For smaller iOS devices specifically */
+@media only screen and (max-width: 428px) and (-webkit-device-pixel-ratio: 3) {
+  .ios-device .arena-section .arena-title {
+    font-size: 42px; /* Reduce font size on smaller devices */
+    line-height: 1.2;
+    margin-bottom: 25px;
+  }
+  
+  .ios-device .arena-section .arena-description {
+    font-size: 14px;
+    line-height: 1.4;
+    margin-top: 15px;
+  }
+}

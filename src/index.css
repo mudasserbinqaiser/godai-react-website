@@ -1,3 +1,14 @@
+:root {
+  /* iOS safe area insets as CSS variables */
+  --sat: env(safe-area-inset-top, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  
+  /* Variable for reliable viewport height on mobile */
+  --vh: 1vh;
+}
+
 body {
   margin: 0;
   padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0) env(safe-area-inset-bottom, 0) env(safe-area-inset-left, 0);
@@ -8,10 +19,41 @@ body {
   -webkit-text-size-adjust: 100%;
   /* Prevent font zooming on iOS */
   text-rendering: optimizeLegibility;
+  /* Prevent iOS Safari overscroll effect */
+  overscroll-behavior: none;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
   color: var(--color-rust);
+}
+
+/* iOS-specific fixes */
+.ios-device .section,
+.ios-device .parallax-banner,
+.ios-device [style*="height: 100vh"] {
+  height: calc(var(--vh, 1vh) * 100) !important;
+}
+
+/* Fix for elements with fixed height in vh */
+.ios-device .hero-section,
+.ios-device .project-layer,
+.ios-device .nft-section-bg,
+.ios-device .gaming-section-bg,
+.ios-device .manga-section-bg,
+.ios-device .team-section-bg,
+.ios-device .socials-section-bg {
+  height: calc(var(--vh, 1vh) * 100) !important;
+}
+
+/* Ensure iOS safari full height */
+html, body, #root, .app {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  width: 100%;
+}
+
+html {
+  height: -webkit-fill-available;
 }

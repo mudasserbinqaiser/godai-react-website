@@ -80,6 +80,7 @@
     width: 100%;
     text-align: center;
     z-index: 5;
+    pointer-events: none; /* Prevents interaction with the text layer */
 }
 
 .team-name {
@@ -299,7 +300,7 @@
     align-items: center;
     gap: 23px;
     width: 266px;
-    z-index: 5;
+    z-index: 15; /* Increased z-index to ensure it's above other elements */
 }
 
 .x-line {
@@ -318,10 +319,15 @@
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
+    position: relative; /* Added position relative */
+    z-index: 20; /* Add higher z-index to ensure the button stays on top */
+    background-color: rgba(7, 23, 38, 0.7); /* Semi-transparent background */
 }
 
 .x-button:hover {
-    background: rgba(243, 237, 224, 0.1);
+    background: rgba(243, 237, 224, 0.2);
+    box-shadow: 0 0 15px rgba(243, 237, 224, 0.3);
+    transform: scale(1.05);
 }
 
 .x-button.disabled {

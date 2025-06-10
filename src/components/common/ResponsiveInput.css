@@ -1,0 +1,36 @@
+/* iOS-specific styling for input elements */
+.ios-input {
+  font-size: 16px; /* prevents auto-zoom on focus */
+  -webkit-appearance: none; /* removes default iOS styling */
+  border-radius: 0; /* prevents iOS from rounding corners */
+  padding: calc(8px + env(safe-area-inset-top, 0px) / 8) calc(12px + env(safe-area-inset-right, 0px) / 8);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ios-label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Make sure radio and checkbox inputs don't get too large */
+input[type="radio"].ios-input,
+input[type="checkbox"].ios-input {
+  width: auto;
+  height: auto;
+}
+
+/* Fix iOS input focus state */
+.ios-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+}
+
+/* Prevent auto-zoom on iOS form elements */
+@supports (-webkit-touch-callout: none) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}

@@ -1,0 +1,132 @@
+/* iOS Device-specific Media Queries */
+
+/* iPhone 14 Pro Max, 15 Pro Max, etc (430px width) */
+@media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
+  .ios-device .team-info {
+    top: 30% !important;
+    transform: translateY(0) !important;
+  }
+  
+  .ios-device .team-title {
+    top: 17% !important;
+    width: 80% !important;
+    left: 10% !important;
+    text-align: center !important;
+  }
+  
+  .ios-device .team-subtitle {
+    top: 24% !important;
+    left: 23% !important;
+  }
+  
+  .ios-device .team-member-display {
+    transform: scale(0.8) translateY(-10%) !important;
+    top: -5% !important;
+  }
+  
+  .ios-device .team-mobile-dots {
+    bottom: calc(50px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  
+  .ios-device .x-button {
+    position: relative !important;
+    transform: scale(0.9) !important;
+  }
+}
+
+/* iPhone 14, 14 Pro, etc (393px width) */
+@media only screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
+  .ios-device .team-info {
+    top: 25% !important;
+  }
+  
+  .ios-device .team-mobile-dots {
+    bottom: calc(35px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  
+  .ios-device .x-button {
+    transform: scale(0.8) !important;
+  }
+}
+
+/* iPhone 13 mini, 12 mini (375px width) */
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
+  .ios-device .team-info {
+    top: 28% !important;
+  }
+  
+  .ios-device .team-mobile-dots {
+    bottom: calc(30px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  
+  .ios-device .x-button {
+    transform: scale(0.7) !important;
+  }
+  
+  .ios-device .team-member-display {
+    transform: scale(0.75) !important;
+  }
+}
+
+/* Fix for older iPhones without notches */
+@media only screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait) {
+  .ios-device .team-info {
+    top: 30% !important;
+  }
+  
+  .ios-device .team-mobile-dots {
+    bottom: 20px !important;
+  }
+}
+
+/* Landscape orientation fixes */
+@media only screen and (orientation: landscape) and (-webkit-device-pixel-ratio: 2) {
+  .ios-device .team-member-display {
+    transform: scale(0.6) translateY(-15%) !important;
+  }
+  
+  .ios-device .team-info {
+    top: 20% !important;
+  }
+  
+  .ios-device .team-mobile-dots {
+    bottom: 10px !important;
+  }
+  
+  .ios-device .team-title,
+  .ios-device .team-subtitle {
+    display: none !important;
+  }
+}
+
+/* Larger iPads */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio: 2) {
+  .ios-device .team-info {
+    top: 65% !important;
+  }
+  
+  .ios-device .team-member-display {
+    transform: translateX(-50%) translateY(-60%) scale(1) !important;
+  }
+}
+
+/* Ensure buttons and interactive elements have proper touch targets */
+.ios-device button,
+.ios-device .team-mobile-dot,
+.ios-device .team-thumbnail,
+.ios-device .x-button {
+  min-width: 44px;
+  min-height: 44px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ios-device .x-button::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  z-index: -1;
+}

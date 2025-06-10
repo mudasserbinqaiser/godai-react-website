@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./TeamSection.css";
 import "../parallax/ProjectSection.css";
+import IOSTeamFix from "./IOSTeamFix";
 
 // Team member data
 const teamMembers = [
@@ -173,18 +174,18 @@ const TeamSection: React.FC<{ progress: number }> = ({ progress }) => {
       return -((activeIndex - 1) * (thumbnailHeight + thumbnailGap));
     }
   };
-
   return (
-    <div
-      className="team-section-bg"
-      style={{
-        transform: `translateX(${teamLayerX}px) translateY(${teamLayerY}px) scale(${zoom})`,
-        opacity: adjustedProgress > 0 ? 1 : 0,
-        pointerEvents: adjustedProgress > 0 ? "auto" : "none",
-        zIndex: 12,
-        transition: "transform 1s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.4s ease-in-out", // Updated transition
-      }}
-    >
+    <IOSTeamFix>
+      <div
+        className="team-section-bg"
+        style={{
+          transform: `translateX(${teamLayerX}px) translateY(${teamLayerY}px) scale(${zoom})`,
+          opacity: adjustedProgress > 0 ? 1 : 0,
+          pointerEvents: adjustedProgress > 0 ? "auto" : "none",
+          zIndex: 12,
+          transition: "transform 1s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.4s ease-in-out", // Updated transition
+        }}
+      >
       {/* Video background */}
       <video
         className="team-bg-video"
@@ -339,9 +340,9 @@ const TeamSection: React.FC<{ progress: number }> = ({ progress }) => {
         <div className="vertical-line v2"></div>
         <div className="vertical-line v3"></div>
         <div className="vertical-line v4"></div>
-        <div className="vertical-line v5"></div>
-      </div>
+        <div className="vertical-line v5"></div>      </div>
     </div>
+    </IOSTeamFix>
   );
 };
 
