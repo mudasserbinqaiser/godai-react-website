@@ -53,7 +53,7 @@ const MangaSection: React.FC<{ progress: number }> = ({ progress }) => {
 
   return (
     <div
-      className="manga-section-bg"
+      className={`manga-section-bg ${isIOS ? 'ios-safari' : ''}`}
       style={{
         transform: `translateX(${mangaLayerX}px) scale(${zoom})`,
         opacity: adjustedProgress > 0 ? 1 : 0,
@@ -111,7 +111,7 @@ const MangaSection: React.FC<{ progress: number }> = ({ progress }) => {
 
       {/* Description with main text and bold final line */}
       <div 
-        className="manga-description"
+        className={`manga-description ${isIOS ? 'ios-safari' : ''}`}
         style={{
           opacity: adjustedProgress,
           transform: `translateY(${(1 - adjustedProgress) * 30}px)`,
