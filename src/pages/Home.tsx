@@ -143,6 +143,25 @@ const Home = () => {
     return () => window.removeEventListener('wheel', handleWheel);
   }, []);
 
+  useEffect(() => {
+  const video = document.querySelector('.hero-bg-video') as HTMLVideoElement;
+  if (video) {
+    video.muted = true;
+    video.controls = false;
+    video.removeAttribute("controls");
+  }
+}, []);
+
+  useEffect(() => {
+  const video = document.querySelector('.gaming-bg-video') as HTMLVideoElement;
+  if (video) {
+    video.muted = true;
+    video.controls = false;
+    video.removeAttribute("controls");
+  }
+}, []);
+
+
   // Touch event handlers for mobile
   useEffect(() => {
     const handleTouchStart = (e: TouchEvent) => {
