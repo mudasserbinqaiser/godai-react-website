@@ -175,6 +175,16 @@
     font-weight: 800;
 }
 
+/* Add this if it doesn't exist already */
+.manga-title.ios-safari {
+    top: 47vh !important;
+    position: absolute !important;
+    z-index: 1000 !important;
+    width: 100% !important;
+    /* text-align: right !important; */
+    /* right: 6.1% !important; */
+}
+
 @media (max-width: 1200px) {
     .manga-title {
         font-size: 3rem;

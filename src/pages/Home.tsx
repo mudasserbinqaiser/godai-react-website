@@ -404,6 +404,7 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
                       muted
                       loop
                       playsInline
+                      controls={false}
                       className="background-video"
                     >
                       <source src="/assets/videos/hero-background.mp4" type="video/mp4" />
@@ -467,6 +468,7 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
                       autoPlay
                       muted
                       loop
+                      controls={false}
                       playsInline
                       className="background-video"
                       style={{ opacity: 1 }}

@@ -70,6 +70,7 @@ const NftSection: React.FC<{ progress: number }> = ({ progress }) => {
         src="/assets/videos/nft.mp4"
         autoPlay
         loop
+        controls={false}
         muted
         playsInline
         style={{

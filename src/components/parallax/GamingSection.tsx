@@ -179,6 +179,7 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
         className="gaming-bg-video"
         src="/assets/videos/gaming.mp4"
         autoPlay
+        controls={false}
         loop
         muted
         playsInline
