@@ -64,19 +64,16 @@ const MangaSection: React.FC<{ progress: number }> = ({ progress }) => {
       }}
     >
       {/* Image background */}
-      <img
+      <video
         className={`manga-bg-video ${isIOS ? 'ios-safari' : ''}`}
-        src="/assets/images/manga_bg_img.svg"
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100vw",
-          height: "100vh",
-          objectFit: "cover",
-          zIndex: 0,
-          pointerEvents: "none",
-        }}
+        src="/assets/videos/manga.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        controls={false}
+        disablePictureInPicture
+        controlsList="nodownload nofullscreen noremoteplayback"
       />
 
       {/* Title and Subtitle */}
