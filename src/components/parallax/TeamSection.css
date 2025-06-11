@@ -395,7 +395,7 @@
 
     /* Add these new rules for iOS Safari */
     .team-member-display.ios-safari {
-        top: -12vh !important;
+        top: -16vh !important;
         transform: scale(0.9) !important;
     }
 
@@ -404,8 +404,13 @@
     }
 
     .x-button.ios-safari {
-        bottom: 1vh !important;
+        bottom: -30vh !important;
         left: 31% !important;
+        position: absolute !important;
+    }
+
+    .x-account-link.ios-safari {
+        bottom: 15vh !important;
         position: absolute !important;
     }
 
