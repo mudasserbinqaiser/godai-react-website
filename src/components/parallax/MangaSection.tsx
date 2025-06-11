@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./MangaSection.css";
 import "../parallax/ProjectSection.css";
 import "../parallax/NftSection.css";
+
+// Function to detect iOS Safari
+const isIOSSafari = () => {
+  const ua = window.navigator.userAgent;
+  const iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+  const webkit = !!ua.match(/WebKit/i);
+  return iOS && webkit && !ua.match(/CriOS/i) && !ua.match(/OPiOS/i);
+};
 
 // Split the content into main paragraph and bold final line
 const MANGA_MAIN_TEXT = "Long before the first battle, the stories were written. These are the forgotten legends of warriors, spirits, and the path that led to war.";
@@ -11,6 +19,12 @@ const BUFFER = 0.4;
 const DELAY = 0.35;
 
 const MangaSection: React.FC<{ progress: number }> = ({ progress }) => {
+  const [isIOS, setIsIOS] = useState(false);
+
+  useEffect(() => {
+    setIsIOS(isIOSSafari());
+  }, []);
+
   // Real-time scroll progress with DELAY
   const adjustedProgress = Math.max(0, Math.min(1, (progress - DELAY) / (1 - DELAY)));
 
@@ -67,10 +81,10 @@ const MangaSection: React.FC<{ progress: number }> = ({ progress }) => {
 
       {/* Title and Subtitle */}
       <div 
-        className="manga-title"
+        className={`manga-title ${isIOS ? 'ios-safari' : ''}`}
         style={{
           opacity: adjustedProgress,
-          transform: `translateX(${(1 - adjustedProgress) * -50}px)`,
+          // transform: `translateX(${(1 - adjustedProgress) * -50}px)`,
           transition: 'opacity 0.5s ease-out, transform 0.5s ease-out'
         }}
       >

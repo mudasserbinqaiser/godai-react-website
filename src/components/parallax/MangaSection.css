@@ -175,6 +175,10 @@
     font-weight: 800;
 }
 
+.manga-title.ios-safari {
+    top: 40vh !important;
+}
+
 @media (max-width: 1200px) {
     .manga-title {
         font-size: 3rem;
