@@ -645,9 +645,26 @@ top: 55%;
 
 /* Add very extreme values for testing */
 .gaming-subtitle.ios-safari {
-  top: 70vh !important;
+  top: 65vh !important;
   left: 11vw !important;
   position: absolute !important;
   z-index: 1000 !important;
-  border: 5px solid red !important; /* Add this for visibility */
+}
+
+.gaming-description.ios-safari {
+  top: -17vh !important;
+  /* right: 0 !important; */
+  /* position: absolute !important; */
+  z-index: 1000 !important;
+  width: 90% !important;
+  max-width: 400px !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+}
+
+.gaming-title.ios-safari {
+  top: 33vh !important;
+  /* left: 11vw !important; */
+  position: absolute !important;
+  z-index: 1000 !important;
 }

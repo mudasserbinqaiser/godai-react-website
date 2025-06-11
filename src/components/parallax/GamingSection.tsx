@@ -339,24 +339,12 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
             </div>
             
             {/* Project Title */}
-            <div className="gaming-title" style={{
-              ...(isIOS ? { 
-                position: 'absolute',
-                top: '70vh', 
-                zIndex: 1000
-              } : {})
-            }}>
+            <div className={`gaming-title ${isIOS ? 'ios-safari' : ''}`}>
               ARENA
             </div>
 
             {/* Description for center card */}
-            <div className="gaming-description" style={{
-              ...(isIOS ? { 
-                position: 'absolute',
-                top: '-80vh',
-                zIndex: 1000
-              } : {})
-            }}>
+            <div className={`gaming-description ${isIOS ? 'ios-safari' : ''}`}>
               This is The Arena — where Elementals collide, and the war for balance unfolds.
               <br />
               <br />
