@@ -730,13 +730,13 @@
   }
   
   .nft-carousel-description.ios-safari {
-    top: 430px !important;
+    top: 400px !important;
     width: 320px !important;
     left: calc(50% - 320px/2) !important;
   }
   
   .nft-carousel-subtitle.ios-safari {
-    top: 500px !important;
+    top: 450px !important;
     width: 320px !important;
     left: calc(50% - 320px/2) !important;
   }
@@ -747,7 +747,7 @@
   }
 
   .nft-title.ios-safari {
-    top: 30vw !important;
+    top: 100vw !important;
     font-size: 28px !important;
   }
   
