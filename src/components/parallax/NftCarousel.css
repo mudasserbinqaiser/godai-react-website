@@ -722,6 +722,12 @@
     width: 110px !important;
     height: 140px !important;
   }
+
+  .nft-card-back-desc.ios-safari {
+    font-size: 9px !important;
+    line-height: 14px !important;
+    width: 80% !important;
+  }
   
   .nft-carousel-description.ios-safari {
     top: 430px !important;
@@ -738,6 +744,10 @@
   .nft-slider-controls.ios-safari {
     gap: 40px !important;
     bottom: 80px !important;
+  }
+
+  .nft-title.ios-safari {
+    top: 10vw !important;
   }
   
   

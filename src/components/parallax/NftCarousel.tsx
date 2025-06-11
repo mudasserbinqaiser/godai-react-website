@@ -195,7 +195,7 @@ const NftCarousel: React.FC<{ isIOS?: boolean }> = ({ isIOS = false }) => {
                   <div className="nft-card-back-main">
                     <div className="nft-card-back-content">
                       {/* <div className="nft-card-back-title">{nftTitles[i]}</div> */}
-                      <div className="nft-card-back-desc">{nftDescriptions[i]}</div>
+                      <div className={`nft-card-back-desc ${isIOS ? 'ios-safari' : ''}`}>{nftDescriptions[i]}</div>
                     </div>
                   </div>
                 </div>
