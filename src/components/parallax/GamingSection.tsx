@@ -342,7 +342,7 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
             <div className="gaming-title" style={{
               ...(isIOS ? { 
                 position: 'absolute',
-                top: '50vh', 
+                top: '70vh', 
                 zIndex: 1000
               } : {})
             }}>
