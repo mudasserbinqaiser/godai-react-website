@@ -714,13 +714,13 @@
   /* Safari-specific adjustments */
   .nft-card.ios-safari {
     width: 110px !important;
-    height: 155px !important;
+    height: 140px !important;
     margin-left: -55px !important;
   }
   
   .nft-card-back-main.ios-safari {
     width: 110px !important;
-    height: 155px !important;
+    height: 140px !important;
   }
   
   .nft-carousel-description.ios-safari {
@@ -746,7 +746,7 @@
 /* Also add the class-based approach */
 .nft-card.ios-safari {
   width: 110px !important;
-  height: 155px !important;
+  height: 140px !important;
   margin-left: -55px !important;
 }
 
