@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import Div100vh from "react-div-100vh";
 import "./GamingSection.css";
 
 const gamingItems = [
@@ -145,12 +146,11 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
   };
 
   return (
-    <div
+    <Div100vh
       className="gaming-carousel-bg"
       style={{
         position: "absolute",
         width: "100vw",
-        height: "100vh",
         top: 0,
         left: 0,
         background: "transparent",
@@ -345,7 +345,7 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
           </div>
         </>
       )}
-    </div>
+    </Div100vh>
   );
 };
 

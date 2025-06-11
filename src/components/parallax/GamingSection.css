@@ -611,3 +611,34 @@ top: 55%;
         font-weight: 400;
     }
 }
+
+/* Safari-specific fixes using @supports rule */
+@supports (-webkit-touch-callout: none) {
+  .gaming-carousel-bg {
+    height: -webkit-fill-available !important;
+  }
+  
+  .gaming-title {
+    top: 20vw !important;
+  }
+  
+  .gaming-subtitle {
+    top: 65vw !important;
+    left: 11vw !important;
+  }
+  
+  .gaming-description {
+    top: -15vw !important;
+  }
+  
+  /* Mobile-specific Safari adjustments */
+  @media (max-width: 768px) {
+    .gaming-carousel {
+      height: -webkit-fill-available !important;
+    }
+    
+    .mobile-gaming-slider {
+      top: -8vw !important;
+    }
+  }
+}
