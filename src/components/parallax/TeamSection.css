@@ -381,7 +381,7 @@
 
     /* Adjust mobile dots positioning */
     .team-mobile-dots.ios-safari {
-        bottom: 28vw !important;
+        bottom: 24vw !important;
         display: flex;
     }
 
@@ -395,7 +395,7 @@
 
     /* Add these new rules for iOS Safari */
     .team-member-display.ios-safari {
-        top: -14vh !important;
+        top: -12vh !important;
         transform: scale(0.9) !important;
     }
 
@@ -404,7 +404,7 @@
     }
 
     .x-button.ios-safari {
-        bottom: -8vh !important;
+        bottom: 1vh !important;
         left: 31% !important;
         position: absolute !important;
     }
