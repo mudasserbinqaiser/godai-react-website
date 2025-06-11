@@ -714,23 +714,23 @@
   /* Safari-specific adjustments */
   .nft-card.ios-safari {
     width: 110px !important;
-    height: 165px !important;
+    height: 155px !important;
     margin-left: -55px !important;
   }
   
   .nft-card-back-main.ios-safari {
     width: 110px !important;
-    height: 165px !important;
+    height: 155px !important;
   }
   
   .nft-carousel-description.ios-safari {
-    top: 470px !important;
+    top: 430px !important;
     width: 320px !important;
     left: calc(50% - 320px/2) !important;
   }
   
   .nft-carousel-subtitle.ios-safari {
-    top: 540px !important;
+    top: 500px !important;
     width: 320px !important;
     left: calc(50% - 320px/2) !important;
   }
@@ -740,65 +740,24 @@
     bottom: 80px !important;
   }
   
-  /* Mobile Safari adjustments */
-  @media (max-width: 480px) {
-    .nft-card.ios-safari {
-      width: 100px !important;
-      height: 150px !important;
-      margin-left: -50px !important;
-      top: 20% !important;
-    }
-    
-    .nft-carousel-description.ios-safari {
-      top: 430px !important;
-    }
-    
-    .nft-carousel-subtitle.ios-safari {
-      top: 500px !important;
-    }
-  }
   
-  @media (max-width: 376px) {
-    .nft-card.ios-safari {
-      width: 90px !important;
-      height: 135px !important;
-      margin-left: -45px !important;
-    }
-    
-    .nft-carousel-description.ios-safari {
-      top: 400px !important;
-    }
-    
-    .nft-carousel-subtitle.ios-safari {
-      top: 470px !important;
-    }
-  }
 }
 
 /* Also add the class-based approach */
 .nft-card.ios-safari {
   width: 110px !important;
-  height: 165px !important;
+  height: 155px !important;
   margin-left: -55px !important;
 }
 
 .nft-carousel-description.ios-safari {
-  top: 470px !important;
+  top: 430px !important;
   width: 320px !important;
   left: calc(50% - 320px/2) !important;
 }
 
 .nft-carousel-subtitle.ios-safari {
-  top: 540px !important;
+  top: 500px !important;
   width: 320px !important;
   left: calc(50% - 320px/2) !important;
-}
-
-@media (max-width: 480px) {
-  .nft-card.ios-safari {
-    width: 100px !important;
-    height: 150px !important;
-    margin-left: -50px !important;
-    top: 20% !important;
-  }
 }
