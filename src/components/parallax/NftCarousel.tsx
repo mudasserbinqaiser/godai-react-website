@@ -36,7 +36,7 @@ const fanAngles = [-45.17, -30.76, -15.45, 0, 15.45, 30.76, 45.17];
 const fanOffsets = [-650, -470, -250, 0, 250, 470, 650];
 const fanCurve = [200, 80, 10, 0, 10, 80, 200];   // Increased Y-offset for deeper curve
 
-export default function NftCarousel() {
+const NftCarousel: React.FC<{ isIOS?: boolean }> = ({ isIOS = false }) => {
   const [centerIdx, setCenterIdx] = useState(3);
   const [flipped, setFlipped] = useState(false);
   const intervalRef = useRef<number | null>(null);
@@ -123,7 +123,7 @@ export default function NftCarousel() {
   };
 
   return (
-    <div className="nft-carousel-bg">
+    <div className={`nft-carousel-bg ${isIOS ? 'ios-safari' : ''}`}>
       {/* <div className="nft-blur-gradient"></div> */}
       {/* <div className="project-lines">
         <div className="vertical-line v1"></div>
@@ -133,7 +133,7 @@ export default function NftCarousel() {
         <div className="vertical-line v5"></div>
       </div> */}
       <div
-        className="nft-carousel"
+        className={`nft-carousel ${isIOS ? 'ios-safari' : ''}`}
         onMouseEnter={pauseSlider}
         onMouseLeave={resumeSlider}
       >
@@ -143,7 +143,7 @@ export default function NftCarousel() {
           return (
             <div
               key={src}
-              className={`nft-card${isCenter ? " center" : ""}${flipped && isCenter ? " flipped" : ""}`}
+              className={`nft-card${isCenter ? " center" : ""}${flipped && isCenter ? " flipped" : ""} ${isIOS ? 'ios-safari' : ''}`}
               style={{
                 zIndex: z,
                 transform: `
@@ -205,10 +205,10 @@ export default function NftCarousel() {
         })}
       </div>
 
-      <div className="nft-carousel-description">
+      <div className={`nft-carousel-description ${isIOS ? 'ios-safari' : ''}`}>
         When the world began to fracture, 3333 ancient warriors were summoned. Each 1/1 hand drawn warrior is born from a single element. They are not relics of the past, they are the key to what comes next.
       </div>
-      <div className="nft-carousel-subtitle">
+      <div className={`nft-carousel-subtitle ${isIOS ? 'ios-safari' : ''}`}>
         The summoning has begun
         <br />
         Which element will you choose?
@@ -249,4 +249,6 @@ export default function NftCarousel() {
       </div>
     </div>
   );
-}
+};
+
+export default NftCarousel;

@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./NftSection.css";
 import "../parallax/ProjectSection.css";
 import NftCarousel from "./NftCarousel";
+
+// Function to detect iOS Safari
+const isIOSSafari = () => {
+  const ua = window.navigator.userAgent;
+  const iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+  const webkit = !!ua.match(/WebKit/i);
+  return iOS && webkit && !ua.match(/CriOS/i) && !ua.match(/OPiOS/i);
+};
 
 const BUFFER = 0.4;
 const DELAY = 0.35;
 
 const NftSection: React.FC<{ progress: number }> = ({ progress }) => {
+  const [isIOS, setIsIOS] = useState(false);
+
+  useEffect(() => {
+    setIsIOS(isIOSSafari());
+  }, []);
+
   // Real-time scroll progress with DELAY
   const adjustedProgress = Math.max(0, Math.min(1, (progress - DELAY) / (1 - DELAY)));
 
@@ -34,7 +48,7 @@ const NftSection: React.FC<{ progress: number }> = ({ progress }) => {
 
   return (
     <div
-      className="nft-section-bg"
+      className={`nft-section-bg ${isIOS ? 'ios-safari' : ''}`}
       style={{
         position: "absolute",
         width: "100vw",
@@ -90,7 +104,7 @@ const NftSection: React.FC<{ progress: number }> = ({ progress }) => {
 
       {/* NFT Section Title */}
       <div 
-        className="nft-title"
+        className={`nft-title ${isIOS ? 'ios-safari' : ''}`}
         style={{
           opacity: adjustedProgress,
           transform: `translateX(${(1 - adjustedProgress) * 50}px)`,
@@ -101,7 +115,7 @@ const NftSection: React.FC<{ progress: number }> = ({ progress }) => {
       </div>
 
       {/* NFT Carousel */}
-      <NftCarousel />
+      <NftCarousel isIOS={isIOS} />
     </div>
   );
 };
