@@ -382,6 +382,7 @@
     /* Adjust mobile dots positioning */
     .team-mobile-dots.ios-safari {
         bottom: 24vw !important;
+        left: 1vw !important;
         display: flex;
     }
 
