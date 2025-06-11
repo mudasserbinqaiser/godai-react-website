@@ -623,12 +623,12 @@ top: 55%;
   }
   
   .gaming-subtitle {
-    top: 65vw !important;
+    top: 85vw !important;
     left: 11vw !important;
   }
   
   .gaming-description {
-    top: -15vw !important;
+    top: -25vw !important;
   }
   
   /* Mobile-specific Safari adjustments */
