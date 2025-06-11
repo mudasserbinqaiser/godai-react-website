@@ -176,7 +176,7 @@
 }
 
 .manga-title.ios-safari {
-    top: 40vh !important;
+    top: 50vh !important;
 }
 
 @media (max-width: 1200px) {
