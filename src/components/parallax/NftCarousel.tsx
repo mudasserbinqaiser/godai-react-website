@@ -227,7 +227,7 @@ const NftCarousel: React.FC<{ isIOS?: boolean }> = ({ isIOS = false }) => {
             <path d="M12 2L4 12L12 22" stroke="#FF991C" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </div>
-        <div className="nft-dots">
+        <div className={`nft-dots ${isIOS ? 'ios-safari' : ''}`}>
           {[0, 1, 2,3,4,5,6].map((idx) => (
             <span
               key={idx}

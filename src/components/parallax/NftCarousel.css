@@ -730,13 +730,17 @@
   }
   
   .nft-carousel-description.ios-safari {
-    top: 55vh !important;
+    top: 60vh !important;
     width: 320px !important;
     left: calc(50% - 320px/2) !important;
   }
+
+  .nft-dots.ios-safari {
+    bottom: 10vh !important;
+  }
   
   .nft-carousel-subtitle.ios-safari {
-    top: 70vh !important;
+    top: 72vh !important;
     width: 320px !important;
     left: calc(50% - 320px/2) !important;
   }
@@ -756,13 +760,13 @@
 
 /* Also update the class-based approach */
 .nft-carousel-description.ios-safari {
-  top: 55vh !important;
+  top: 60vh !important;
   width: 320px !important;
   left: calc(50% - 320px/2) !important;
 }
 
 .nft-carousel-subtitle.ios-safari {
-  top: 70vh !important;
+  top: 72vh !important;
   width: 320px !important;
   left: calc(50% - 320px/2) !important;
 }
