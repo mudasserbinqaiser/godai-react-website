@@ -17,6 +17,7 @@
     object-fit: cover;
     z-index: 0;
     pointer-events: none;
+    
 }
 
 .gaming-blur-gradient {

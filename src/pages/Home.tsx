@@ -417,6 +417,17 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
                 speed: -15,
                 expanded: false,
                 children: (
+                  <>
+                  <div className="video-overlay" style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    height: "100%",
+                    width: "100%",
+                    zIndex: 1,
+                    pointerEvents: "none",
+                    background: "transparent",
+                  }} />
                   <div className="video-container" style={{ overflow:'hidden' }}>
                     <video
                       autoPlay
@@ -432,8 +443,9 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
                       className="background-video"
                     >
                       <source src="/assets/videos/hero-background.mp4" type="video/mp4" />
-                    </video>
+                    </video>  
                   </div>
+                  </>
                 )
               },
               {
@@ -487,6 +499,17 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
                 speed: -15,
                 expanded: false,
                 children: (
+                  <>
+                  <div className="video-overlay" style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    height: "100%",
+                    width: "100%",
+                    zIndex: 1,
+                    pointerEvents: "none",
+                    background: "transparent",
+                  }} />
                   <div className="video-container" style={{ opacity: 1, transition: 'opacity 0.4s' }}>
                     <video
                       autoPlay
@@ -504,6 +527,7 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
                       <source src="/assets/videos/2.mp4" type="video/mp4" />
                     </video>
                   </div>
+                  </>
                 )
               },
               {
