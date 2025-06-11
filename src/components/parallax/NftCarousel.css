@@ -747,7 +747,8 @@
   }
 
   .nft-title.ios-safari {
-    top: 10vw !important;
+    top: 30vw !important;
+    font-size: 28px !important;
   }
   
   
