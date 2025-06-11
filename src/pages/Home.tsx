@@ -506,12 +506,7 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
                   <>
                     {/* Project Title - Added */}
                     <div 
-                      className="project-title"
-                      style={{
-                        opacity: projectElementOpacity,
-                        transform: `translateY(${adjustedProgress * 5}px)`,
-                        transition: 'opacity 0.2s, transform 0.3s ease-out'
-                      }}
+                      className={`project-title ${isIOS ? 'ios-safari' : ''}`}
                     >
                       GODAI ORIGINS
                     </div>
