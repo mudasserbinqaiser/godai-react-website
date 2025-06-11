@@ -65,7 +65,7 @@ const MangaSection: React.FC<{ progress: number }> = ({ progress }) => {
     >
       {/* Image background */}
       <img
-        className="manga-bg-video"
+        className={`manga-bg-video ${isIOS ? 'ios-safari' : ''}`}
         src="/assets/images/manga_bg_img.svg"
         style={{
           position: "absolute",
