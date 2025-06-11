@@ -365,15 +365,7 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
 
             {/* Subtitle */}
             <div 
-              className="gaming-subtitle" 
-              style={{
-                ...(isIOS ? { 
-                  position: 'absolute',
-                  top: '200vh', 
-                  left: '11vw',
-                  zIndex: 1000
-                } : {})
-              }}
+              className={`gaming-subtitle ${isIOS ? 'ios-safari' : ''}`} 
             >
               Will you restore the balance… or tip the scales?
             </div>
