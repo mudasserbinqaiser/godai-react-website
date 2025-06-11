@@ -11,7 +11,6 @@ import TeamSection from '../components/parallax/TeamSection';
 import SocialSection from '../components/parallax/SocialSection';
 import { ScrollProgressContext } from '../context/ScrollProgressContext';
 
-
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 
 const mobileStyles = `
@@ -39,6 +38,13 @@ const mobileStyles = `
   }
 `;
 
+const isIOSSafari = () => {
+  const ua = window.navigator.userAgent;
+  const iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+  const webkit = !!ua.match(/WebKit/i);
+  return iOS && webkit && !ua.match(/CriOS/i) && !ua.match(/OPiOS/i);
+};
+
 const Home = () => {
   const [transitionProgress, setTransitionProgress] = useState(0); // 0 = hero, 1 = project, 2 = NFT, 3 = gaming, 4 = manga, 5 = team, 6 = socials
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -48,6 +54,7 @@ const Home = () => {
   const isScrollingRef = useRef(false);
   const [showEmailForm, setShowEmailForm] = useState(false);
   const [email, setEmail] = useState('');
+  const [isIOS, setIsIOS] = useState(false);
 
   const MAX_PROGRESS = 6; // 0-1: vertical, 1-2: NFT, 2-3: gaming, 3-4: manga, 4-5: team, 5-6: socials
   
@@ -283,6 +290,10 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
     };
   }, []);
 
+  useEffect(() => {
+    setIsIOS(isIOSSafari());
+  }, []);
+
   return (
     <>
       <style>{mobileStyles}</style>
@@ -299,7 +310,7 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
           bottom: isMobile ? 'auto' : 0
         }}
       >
-        <div className="enter-godai-text">
+        <div className={`enter-godai-text ${isIOS ? 'ios-safari' : ''}`}>
           ENTER GODAI
         </div>
       </div>

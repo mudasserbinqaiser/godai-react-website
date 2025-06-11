@@ -103,6 +103,14 @@
                0 0 45px rgba(255, 255, 255, 0.3);
 }
 
+.enter-godai-text.ios-safari {
+  bottom: 30vh !important;
+  /* position: absolute !important; */
+  /* font-size: 48px !important; */
+  z-index: 1000 !important;
+}
+
+
 /* Media Queries */
 @media (max-width: 1200px) {
   .enter-godai-text {
@@ -167,6 +175,11 @@
   }
     .hero-characters-container {
       width: 130% !important;
+    }
+
+    .enter-godai-text.ios-safari {
+      bottom: 30vh !important;
+      font-size: 36px !important;
     }
 
     .hero-characters-image {
