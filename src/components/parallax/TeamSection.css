@@ -381,12 +381,12 @@
 
     /* Adjust mobile dots positioning */
     .team-mobile-dots.ios-safari {
-        bottom: 22vw !important;
+        bottom: 30vw !important;
         display: flex;
     }
 
     .team-title.ios-safari {
-        top: 12vh !important;
+        top: 13vh !important;
     }
 
     .team-subtitle.ios-safari {
@@ -400,11 +400,11 @@
     }
 
     .team-info.ios-safari {
-        top: 30vh !important;
+        top: 40vh !important;
     }
 
     .x-button.ios-safari {
-        bottom: 5vh !important;
+        bottom: -15vh !important;
         left: 31% !important;
         position: absolute !important;
     }
