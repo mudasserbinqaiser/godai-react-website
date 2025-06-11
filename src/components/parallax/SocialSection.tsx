@@ -91,6 +91,12 @@ const SocialSection: React.FC<{ progress: number }> = ({ progress }) => {
           autoPlay
           loop
           muted
+          controls={false}
+          disablePictureInPicture
+          controlsList="nodownload nofullscreen noremoteplayback"
+          style={{
+            pointerEvents: "none"
+          }}
           playsInline
         >
           <source src="/assets/videos/socials.mp4" type="video/mp4" />

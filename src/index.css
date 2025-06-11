@@ -16,24 +16,25 @@ code {
   color: var(--color-rust);
 }
 
-/* Global fix for video play buttons in iOS Safari */
-video::-webkit-media-controls-start-playback-button,
-video::-webkit-media-controls-play-button,
-video::-webkit-media-controls-panel,
-video::-webkit-media-controls,
-video::-webkit-media-controls-overlay-play-button {
+/* Super aggressive video controls hiding */
+*::-webkit-media-controls-panel,
+*::-webkit-media-controls-play-button,
+*::-webkit-media-controls-start-playback-button,
+*::--webkit-media-controls-overlay-play-button {
   display: none !important;
   -webkit-appearance: none !important;
-  opacity: 0 !important;
 }
 
-/* Hide all video controls */
-video {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+/* Target all possible video elements */
+video,
+[type="video"],
+[src*=".mp4"],
+[src*=".webm"],
+[src*=".mov"] {
+  pointer-events: none !important;
 }
 
-video::-webkit-media-controls {
-  display: none !important;
+/* Prevent iOS from showing play buttons on any element */
+* {
+  -webkit-tap-highlight-color: transparent;
 }

@@ -73,6 +73,8 @@ const NftSection: React.FC<{ progress: number }> = ({ progress }) => {
         controls={false}
         muted
         playsInline
+        disablePictureInPicture
+        controlsList="nodownload nofullscreen noremoteplayback"
         style={{
           position: "absolute",
           top: 0,

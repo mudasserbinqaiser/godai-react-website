@@ -189,6 +189,12 @@ const TeamSection: React.FC<{ progress: number }> = ({ progress }) => {
       <video
         className="team-bg-video"
         autoPlay
+        controls={false}
+        disablePictureInPicture
+        controlsList="nodownload nofullscreen noremoteplayback"
+        style={{
+          pointerEvents: "none"
+        }}
         loop
         muted
         playsInline

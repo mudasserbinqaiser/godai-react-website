@@ -405,6 +405,11 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
                       loop
                       playsInline
                       controls={false}
+                      disablePictureInPicture
+                      controlsList="nodownload nofullscreen noremoteplayback"
+                      style={{
+                        pointerEvents: "none"
+                      }}
                       className="background-video"
                     >
                       <source src="/assets/videos/hero-background.mp4" type="video/mp4" />
@@ -471,7 +476,11 @@ const socialLayerProgress = calculateLayerProgress(5.5, 6);
                       controls={false}
                       playsInline
                       className="background-video"
-                      style={{ opacity: 1 }}
+                      disablePictureInPicture
+                      controlsList="nodownload nofullscreen noremoteplayback"
+                      style={{
+                        pointerEvents: "none"
+                      }}
                     >
                       <source src="/assets/videos/2.mp4" type="video/mp4" />
                     </video>

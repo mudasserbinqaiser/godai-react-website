@@ -183,6 +183,8 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
         loop
         muted
         playsInline
+        disablePictureInPicture
+        controlsList="nodownload nofullscreen noremoteplayback"
         style={{
           position: "absolute",
           top: 0,
