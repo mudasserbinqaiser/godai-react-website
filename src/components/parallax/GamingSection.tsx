@@ -18,6 +18,14 @@ const MOBILE_Y_OFFSETS = [100, 50, 0, 50, 100]; // Creating a V shape vertically
 const BUFFER = 0.4;
 const DELAY = 0.35;
 
+// Function to detect iOS Safari
+const isIOSSafari = () => {
+  const ua = window.navigator.userAgent;
+  const iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+  const webkit = !!ua.match(/WebKit/i);
+  return iOS && webkit && !ua.match(/CriOS/i) && !ua.match(/OPiOS/i);
+};
+
 const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
   const [centerIdx, setCenterIdx] = useState(2);
   const intervalRef = useRef<number | null>(null);
@@ -25,6 +33,7 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [touchStart, setTouchStart] = useState(0);
   const [swiping, setSwiping] = useState(false);
+  const [isIOS, setIsIOS] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -34,6 +43,10 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    setIsIOS(isIOSSafari());
   }, []);
 
   // Real-time scroll progress with DELAY
@@ -326,12 +339,20 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
             </div>
             
             {/* Project Title */}
-            <div className="gaming-title">
+            <div className="gaming-title" style={{
+              ...((/iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) ? 
+                { top: '25vw' } : {})
+            }}>
               ARENA
             </div>
 
             {/* Description for center card */}
-            <div className="gaming-description">
+            <div className="gaming-description" style={{
+              ...((/iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) ? 
+                { top: '-30vw' } : {})
+            }}>
               This is The Arena — where Elementals collide, and the war for balance unfolds.
               <br />
               <br />
@@ -339,7 +360,12 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
             </div>
 
             {/* Subtitle */}
-            <div className="gaming-subtitle">
+            <div 
+              className="gaming-subtitle" 
+              style={{
+                ...(isIOS ? { top: '90vh', left: '11vw' } : {})
+              }}
+            >
               Will you restore the balance… or tip the scales?
             </div>
           </div>
