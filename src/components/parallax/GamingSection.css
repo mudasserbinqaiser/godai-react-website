@@ -652,7 +652,7 @@ top: 55%;
 }
 
 .gaming-description.ios-safari {
-  top: -17vh !important;
+  top: -22vh !important;
   /* right: 0 !important; */
   /* position: absolute !important; */
   z-index: 1000 !important;
@@ -663,7 +663,7 @@ top: 55%;
 }
 
 .gaming-title.ios-safari {
-  top: 33vh !important;
+  top: 28vh !important;
   /* left: 11vw !important; */
   position: absolute !important;
   z-index: 1000 !important;
