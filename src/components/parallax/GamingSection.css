@@ -645,7 +645,7 @@ top: 55%;
 
 /* Add very extreme values for testing */
 .gaming-subtitle.ios-safari {
-  top: 200vh !important;
+  top: 70vh !important;
   left: 11vw !important;
   position: absolute !important;
   z-index: 1000 !important;
