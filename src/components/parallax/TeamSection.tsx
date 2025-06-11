@@ -217,10 +217,10 @@ const TeamSection: React.FC<{ progress: number }> = ({ progress }) => {
       </video>
 
       {/* Add the title to the left side of the screen */}
-      <div className="team-title">
+      <div className={`team-title ${isIOS ? 'ios-safari' : ''}`}>
         Council
       </div>
-      <div className="team-subtitle">
+      <div className={`team-subtitle ${isIOS ? 'ios-safari' : ''}`}>
         Meet the team behind Godai
       </div>
 

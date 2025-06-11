@@ -381,25 +381,34 @@
 
     /* Adjust mobile dots positioning */
     .team-mobile-dots.ios-safari {
-        bottom: 20vw;
+        bottom: 20vw !important;
         display: flex;
+    }
+
+    .team-title.ios-safari {
+        top: 10vh !important;
+    }
+
+    .team-subtitle.ios-safari {
+        top: 20vh !important;
     }
 
     /* Add these new rules for iOS Safari */
     .team-member-display.ios-safari {
-        top: -10vh !important;
+        top: -12vh !important;
         transform: scale(0.9) !important;
     }
 
     .team-info.ios-safari {
-        top: 20vh !important;
+        top: 10vh !important;
     }
 
     .x-button.ios-safari {
         bottom: 15vh !important;
+        left: 33% !important;
         position: absolute !important;
     }
-    
+
 }
 
 @media (max-width: 768px) {
