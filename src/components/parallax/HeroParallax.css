@@ -104,7 +104,7 @@
 }
 
 .enter-godai-text.ios-safari {
-  bottom: 30vh !important;
+  bottom: 10vh !important;
   /* position: absolute !important; */
   /* font-size: 48px !important; */
   z-index: 1000 !important;
@@ -175,11 +175,6 @@
   }
     .hero-characters-container {
       width: 130% !important;
-    }
-
-    .enter-godai-text.ios-safari {
-      bottom: 30vh !important;
-      font-size: 36px !important;
     }
 
     .hero-characters-image {
