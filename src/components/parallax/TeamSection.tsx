@@ -42,6 +42,13 @@ const teamMembers = [
   }
 ];
 
+const isIOSSafari = () => {
+  const ua = window.navigator.userAgent;
+  const iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+  const webkit = !!ua.match(/WebKit/i);
+  return iOS && webkit && !ua.match(/CriOS/i) && !ua.match(/OPiOS/i);
+};
+
 // const TEAM_PLACEHOLDER_TEXT = `Meet the council behind GODAI`;
 
 const BUFFER = 0.4;
@@ -52,6 +59,13 @@ const MOBILE_THUMBNAIL_HEIGHT = 80; // Smaller height for mobile
 const MOBILE_THUMBNAIL_GAP = 15; // Smaller gap for mobile
 
 const TeamSection: React.FC<{ progress: number }> = ({ progress }) => {
+
+  const [isIOS, setIsIOS] = useState(false);
+
+  useEffect(() => {
+    setIsIOS(isIOSSafari());
+  }, []);
+
   const [activeIndex, setActiveIndex] = useState(0);
   const intervalRef = useRef<number | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -216,13 +230,13 @@ const TeamSection: React.FC<{ progress: number }> = ({ progress }) => {
       {/* Main content container - for easier mobile layout */}
       <div className="team-content-wrapper">
         {/* Team member name and role */}
-        <div className="team-info">
+        <div className={`team-info ${isIOS ? 'ios-safari' : ''}`}>
           <h2 className="team-name">{teamMembers[activeIndex].name}</h2>
           <p className="team-description-header">{teamMembers[activeIndex].role}</p>
         </div>
 
         {/* Main team member display */}
-        <div className="team-member-display">
+        <div className={`team-member-display ${isIOS ? 'ios-safari' : ''}`}>
           <div className="svg-wrapper">
             <svg width="300" height="413" viewBox="0 0 315 413" xmlns="http://www.w3.org/2000/svg">
               <mask id="path-1-outside" maskUnits="userSpaceOnUse" x="-1" y="-0.2" width="316" height="413" fill="black">
@@ -305,7 +319,7 @@ const TeamSection: React.FC<{ progress: number }> = ({ progress }) => {
         </div>
 
         {/* Mobile horizontal slider dots */}
-        <div className="team-mobile-dots">
+        <div className={`team-mobile-dots ${isIOS ? 'ios-safari' : ''}`}>
           {teamMembers.map((_, index) => (
             <div 
               key={index} 
@@ -318,7 +332,7 @@ const TeamSection: React.FC<{ progress: number }> = ({ progress }) => {
         {/* X Account link */}
         <div className="x-account-link" onClick={handleOpenXLink}>
           <div className="x-line"></div>
-          <div className={`x-button ${!teamMembers[activeIndex].xLink ? 'disabled' : ''}`}>
+          <div className={`x-button ${!teamMembers[activeIndex].xLink ? 'disabled' : ''} ${isIOS ? 'ios-safari' : ''}`}>
             <svg width="19" height="20" viewBox="0 0 19 20" fill="none">
               <path d="M11.5 8.5L19 0H17.3L10.8 7.4L5.5 0H0L8 11.2L0 20H1.7L8.7 12.1L14.3 20H19.8L11.5 8.5ZM9.6 11L8.8 9.9L2.4 1.5H4.7L9.9 8.4L10.7 9.5L17.5 18.4H15.2L9.6 11Z" fill="#F3EDE0"/>
             </svg>

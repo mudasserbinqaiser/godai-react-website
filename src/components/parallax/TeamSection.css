@@ -376,6 +376,32 @@
     padding-top: 12px;
 }   
 
+/* Add to your existing @supports rule for Safari */
+@supports (-webkit-touch-callout: none) {
+
+    /* Adjust mobile dots positioning */
+    .team-mobile-dots.ios-safari {
+        bottom: 20vw;
+        display: flex;
+    }
+
+    /* Add these new rules for iOS Safari */
+    .team-member-display.ios-safari {
+        top: -10vh !important;
+        transform: scale(0.9) !important;
+    }
+
+    .team-info.ios-safari {
+        top: 20vh !important;
+    }
+
+    .x-button.ios-safari {
+        bottom: 15vh !important;
+        position: absolute !important;
+    }
+    
+}
+
 @media (max-width: 768px) {
     .team-content-wrapper {
         display: flex;
