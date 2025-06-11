@@ -1,15 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./MangaSection.css";
 import "../parallax/ProjectSection.css";
 import "../parallax/NftSection.css";
-
-// Function to detect iOS Safari
-const isIOSSafari = () => {
-  const ua = window.navigator.userAgent;
-  const iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
-  const webkit = !!ua.match(/WebKit/i);
-  return iOS && webkit && !ua.match(/CriOS/i) && !ua.match(/OPiOS/i);
-};
 
 // Split the content into main paragraph and bold final line
 const MANGA_MAIN_TEXT = "Long before the first battle, the stories were written. These are the forgotten legends of warriors, spirits, and the path that led to war.";
@@ -19,12 +11,6 @@ const BUFFER = 0.4;
 const DELAY = 0.35;
 
 const MangaSection: React.FC<{ progress: number }> = ({ progress }) => {
-  const [isIOS, setIsIOS] = useState(false);
-
-  useEffect(() => {
-    setIsIOS(isIOSSafari());
-  }, []);
-
   // Real-time scroll progress with DELAY
   const adjustedProgress = Math.max(0, Math.min(1, (progress - DELAY) / (1 - DELAY)));
 
@@ -53,7 +39,7 @@ const MangaSection: React.FC<{ progress: number }> = ({ progress }) => {
 
   return (
     <div
-      className={`manga-section-bg ${isIOS ? 'ios-safari' : ''}`}
+      className="manga-section-bg"
       style={{
         transform: `translateX(${mangaLayerX}px) scale(${zoom})`,
         opacity: adjustedProgress > 0 ? 1 : 0,
@@ -64,24 +50,27 @@ const MangaSection: React.FC<{ progress: number }> = ({ progress }) => {
       }}
     >
       {/* Image background */}
-      <video
-        className={`manga-bg-video ${isIOS ? 'ios-safari' : ''}`}
-        src="/assets/videos/manga.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        controls={false}
-        disablePictureInPicture
-        controlsList="nodownload nofullscreen noremoteplayback"
+      <img
+        className="manga-bg-video"
+        src="/assets/images/manga_bg_img.svg"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          objectFit: "cover",
+          zIndex: 0,
+          pointerEvents: "none",
+        }}
       />
 
       {/* Title and Subtitle */}
       <div 
-        className={`manga-title ${isIOS ? 'ios-safari' : ''}`}
+        className="manga-title"
         style={{
           opacity: adjustedProgress,
-          // transform: `translateX(${(1 - adjustedProgress) * -50}px)`,
+          transform: `translateX(${(1 - adjustedProgress) * -50}px)`,
           transition: 'opacity 0.5s ease-out, transform 0.5s ease-out'
         }}
       >
@@ -108,7 +97,7 @@ const MangaSection: React.FC<{ progress: number }> = ({ progress }) => {
 
       {/* Description with main text and bold final line */}
       <div 
-        className={`manga-description ${isIOS ? 'ios-safari' : ''}`}
+        className="manga-description"
         style={{
           opacity: adjustedProgress,
           transform: `translateY(${(1 - adjustedProgress) * 30}px)`,
