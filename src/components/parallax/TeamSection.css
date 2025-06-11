@@ -405,7 +405,7 @@
     }
 
     .x-button.ios-safari {
-        top: 50% !important;
+        top: 200% !important;
         left: 31% !important;
         position: absolute !important;
     }
