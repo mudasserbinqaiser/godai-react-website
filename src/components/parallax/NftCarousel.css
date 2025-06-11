@@ -730,13 +730,13 @@
   }
   
   .nft-carousel-description.ios-safari {
-    top: 300px !important;
+    top: 45vh !important;
     width: 320px !important;
     left: calc(50% - 320px/2) !important;
   }
   
   .nft-carousel-subtitle.ios-safari {
-    top: 350px !important;
+    top: 55vh !important;
     width: 320px !important;
     left: calc(50% - 320px/2) !important;
   }
@@ -754,21 +754,15 @@
   
 }
 
-/* Also add the class-based approach */
-.nft-card.ios-safari {
-  width: 110px !important;
-  height: 140px !important;
-  margin-left: -55px !important;
-}
-
+/* Also update the class-based approach */
 .nft-carousel-description.ios-safari {
-  top: 430px !important;
+  top: 45vh !important;
   width: 320px !important;
   left: calc(50% - 320px/2) !important;
 }
 
 .nft-carousel-subtitle.ios-safari {
-  top: 500px !important;
+  top: 55vh !important;
   width: 320px !important;
   left: calc(50% - 320px/2) !important;
 }
