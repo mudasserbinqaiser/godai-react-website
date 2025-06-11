@@ -340,18 +340,22 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
             
             {/* Project Title */}
             <div className="gaming-title" style={{
-              ...((/iPad|iPhone|iPod/.test(navigator.userAgent) || 
-                  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) ? 
-                { top: '35vw' } : {})
+              ...(isIOS ? { 
+                position: 'absolute',
+                top: '50vh', 
+                zIndex: 1000
+              } : {})
             }}>
               ARENA
             </div>
 
             {/* Description for center card */}
             <div className="gaming-description" style={{
-              ...((/iPad|iPhone|iPod/.test(navigator.userAgent) || 
-                  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) ? 
-                { top: '-50vw' } : {})
+              ...(isIOS ? { 
+                position: 'absolute',
+                top: '-80vh',
+                zIndex: 1000
+              } : {})
             }}>
               This is The Arena — where Elementals collide, and the war for balance unfolds.
               <br />
@@ -363,7 +367,12 @@ const GamingSection: React.FC<{ progress: number }> = ({ progress }) => {
             <div 
               className="gaming-subtitle" 
               style={{
-                ...(isIOS ? { top: '100vh', left: '11vw' } : {})
+                ...(isIOS ? { 
+                  position: 'absolute',
+                  top: '200vh', 
+                  left: '11vw',
+                  zIndex: 1000
+                } : {})
               }}
             >
               Will you restore the balance… or tip the scales?
