@@ -736,11 +736,11 @@
   }
 
   .nft-dots.ios-safari {
-    bottom: 25vh !important;
+    bottom: 35vh !important;
   }
   
   .nft-carousel-subtitle.ios-safari {
-    top: 68vh !important;
+    top: 71vh !important;
     width: 320px !important;
     left: calc(50% - 320px/2) !important;
   }

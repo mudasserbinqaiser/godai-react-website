@@ -392,7 +392,7 @@
 
     .team-subtitle.ios-safari {
         top: 21vh !important;
-        left: 7vw !important;
+        left: 15vw !important;
     }
 
     /* Add these new rules for iOS Safari */
@@ -402,7 +402,7 @@
     }
 
     .team-info.ios-safari {
-        top: 27vh !important;
+        top: 32vh !important;
     }
 
     .x-button.ios-safari {

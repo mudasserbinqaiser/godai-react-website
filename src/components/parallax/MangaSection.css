@@ -177,8 +177,8 @@
 
 /* Add this if it doesn't exist already */
 .manga-title.ios-safari {
-    top: 47vh !important;
-    right: 20vw !important;
+    top: 52vh !important;
+    right: 18vw !important;
     position: absolute !important;
     z-index: 1000 !important;
     width: 100% !important;
