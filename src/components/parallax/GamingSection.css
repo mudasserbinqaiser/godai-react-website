@@ -646,8 +646,8 @@ top: 55%;
 
 /* Add very extreme values for testing */
 .gaming-subtitle.ios-safari {
-  top: 65vh !important;
-  left: 11vw !important;
+  top: 50vh !important;
+  left: 16vw !important;
   position: absolute !important;
   z-index: 1000 !important;
 }
@@ -664,7 +664,7 @@ top: 55%;
 }
 
 .gaming-title.ios-safari {
-  top: 28vh !important;
+  top: 32vh !important;
   /* left: 11vw !important; */
   position: absolute !important;
   z-index: 1000 !important;

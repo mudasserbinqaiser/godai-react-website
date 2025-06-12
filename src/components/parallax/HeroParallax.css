@@ -104,7 +104,7 @@
 }
 
 .enter-godai-text.ios-safari {
-  bottom: 7vh !important;
+  bottom: 4vh !important;
   /* position: absolute !important; */
   /* font-size: 48px !important; */
   z-index: 1000 !important;
